@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:oak_log"
+        },
+        {
+            "item": "minecraft:spruce_log"
+        },
+        {
+            "item": "minecraft:birch_log"
+        },
+        {
+            "item": "minecraft:jungle_log"
+        },
+        {
+            "item": "minecraft:acacia_log"
+        },
+        {
+            "item": "minecraft:dark_oak_log"
+        },
+        {
+            "item": "minecraft:crimson_stem"
+        },
+        {
+            "item": "minecraft:warped_stem"
+        },
+        {
+            "item": "minecraft:stick"
+        }
+    ],
+    "result": {
+        "item": "strangery:unwieldy_stick",
+        "count": 1
+    }
+}
