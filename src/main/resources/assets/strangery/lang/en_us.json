@@ -1,3 +1,8 @@
 {
-    "item.strangery.unwieldy_stick": "Unwieldy Stick"
+    "item.strangery.unwieldy_stick": "Unwieldy Stick",
+
+    "effect.strangery.deaf": "Deaf",
+    "effect.strangery.bleeding": "Bleeding",
+    "effect.strangery.frostbite": "Frostbite",
+    "effect.strangery.confusion": "Confusion"
 }

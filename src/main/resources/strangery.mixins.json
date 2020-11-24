@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "client.ConfusionEffectApplier",
+    "client.DeafEffectApplier"
   ],
   "injectors": {
     "defaultRequire": 1
