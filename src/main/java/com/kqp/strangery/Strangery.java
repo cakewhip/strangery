@@ -1,6 +1,7 @@
 package com.kqp.strangery;
 
 import com.kqp.strangery.statuseffect.CustomStatusEffect;
+import com.kqp.strangery.statuseffect.HallucinatingStatusEffect;
 import com.kqp.strangery.statuseffect.HealthStatusEffect;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.entity.damage.DamageSource;
@@ -62,6 +63,10 @@ public class Strangery implements ModInitializer {
             StatusEffectType.HARMFUL,
             0xFFFFFF
         ), "confusion");
+        public static final StatusEffect HALLUCINATING = register(new HallucinatingStatusEffect(
+            StatusEffectType.HARMFUL,
+            0xFFFFFF
+        ), "hallucinating");
 
         public static void init() {
         }
