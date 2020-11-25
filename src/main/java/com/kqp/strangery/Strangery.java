@@ -130,6 +130,7 @@ public class Strangery implements ModInitializer {
         ), "chicken_tendies");
 
         public static final Item KOREAN_BBQ = register(new Item(new Item.Settings()
+
             .group(ItemGroup.FOOD)
             .food(foodComp(18, 0.5F))
         ), "korean_bbq");
