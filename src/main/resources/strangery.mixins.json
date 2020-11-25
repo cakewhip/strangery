@@ -4,6 +4,8 @@
   "package": "com.kqp.strangery.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "accessor.BlockAccessor",
+    "EmptyHandBreakDamageAdder",
     "SparringDamageAdder"
   ],
   "client": [
