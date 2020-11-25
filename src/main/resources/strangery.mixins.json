@@ -6,6 +6,7 @@
   "mixins": [
     "accessor.BlockAccessor",
     "EmptyHandBreakDamageAdder",
+    "MoreFoodAdder",
     "SparringDamageAdder"
   ],
   "client": [
