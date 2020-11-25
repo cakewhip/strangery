@@ -4,16 +4,31 @@ import com.kqp.strangery.statuseffect.CustomStatusEffect;
 import com.kqp.strangery.statuseffect.HallucinatingStatusEffect;
 import com.kqp.strangery.statuseffect.HealthStatusEffect;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,20 +38,51 @@ public class Strangery implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        B.init();
         I.init();
         SE.init();
 
         FD.init();
+
+        WF.init();
     }
 
     public static Identifier id(String name) {
         return new Identifier(MOD_ID, name);
     }
 
+    // Blocks
+    public static class B {
+        public static final Block FOODIUM_ORE =
+            register(new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES, 2)
+                .strength(3.0F, 3.0F)
+            ), "foodium_ore");
+
+        public static void init() {
+        }
+
+        private static Block register(Block block, String name) {
+            Registry.register(Registry.BLOCK, id(name), block);
+            Registry.register(
+                Registry.ITEM,
+                id(name),
+                new BlockItem(block, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS))
+            );
+
+            return block;
+        }
+    }
+
     // Items
     public static class I {
         public static final Item UNWIELDY_STICK =
-            register(new Item(new Item.Settings()), "unwieldy_stick");
+            register(new Item(new Item.Settings().group(ItemGroup.MATERIALS)), "unwieldy_stick");
+
+        public static final Item FOODIUM =
+            register(new Item(new Item.Settings().group(ItemGroup.MATERIALS)), "foodium");
 
         public static void init() {
         }
@@ -222,6 +268,35 @@ public class Strangery implements ModInitializer {
 
         private static void add(Item item, FoodComponent foodComponent) {
             ITEM_FOOD_COMPONENT_MAP.put(Registry.ITEM.getId(item), foodComponent);
+        }
+    }
+
+    public static class WF {
+        private static final ConfiguredFeature<?, ?> FOODIUM_ORE_OVERWORLD = Feature.ORE
+            .configure(new OreFeatureConfig(
+                OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+                B.FOODIUM_ORE.getDefaultState(),
+                8
+            ))
+            .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(
+                0,
+                0,
+                64
+            )))
+            .spreadHorizontally()
+            .repeat(12);
+
+        public static void init() {
+            Registry.register(
+                BuiltinRegistries.CONFIGURED_FEATURE,
+                id("foodium_ore"),
+                FOODIUM_ORE_OVERWORLD
+            );
+            BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Feature.UNDERGROUND_ORES,
+                BuiltinRegistries.CONFIGURED_FEATURE.getKey(FOODIUM_ORE_OVERWORLD).get()
+            );
         }
     }
 }
