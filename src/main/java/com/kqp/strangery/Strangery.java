@@ -42,7 +42,7 @@ public class Strangery implements ModInitializer {
         I.init();
         SE.init();
 
-        FD.init();
+        FDO.init();
 
         WF.init();
     }
@@ -84,6 +84,76 @@ public class Strangery implements ModInitializer {
         public static final Item FOODIUM =
             register(new Item(new Item.Settings().group(ItemGroup.MATERIALS)), "foodium");
 
+        public static final Item BUN = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(2, 0.1F))
+        ), "bun");
+
+        public static final Item CHEESE = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(1, 0.0F))
+        ), "cheese");
+
+        public static final Item RICE = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(2, 0.1F))
+        ), "rice");
+
+        public static final Item FRENCH_FRIES = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(4, 0.1F))
+        ), "french_fries");
+
+        public static final Item CHEESE_BURGER = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(12, 0.3F))
+        ), "cheese_burger");
+
+        public static final Item BLT = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(10, 0.3F))
+        ), "blt");
+
+        public static final Item ICE_CREAM = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(6, 0.1F))
+        ), "ice_cream");
+
+        public static final Item CHICKEN_FRIED_RICE = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(12, 0.3F))
+        ), "chicken_fried_rice");
+
+        public static final Item CHICKEN_TENDIES = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(10, 0.2F))
+        ), "chicken_tendies");
+
+        public static final Item KOREAN_BBQ = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(18, 0.5F))
+        ), "korean_bbq");
+
+        public static final Item SUSHI = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(18, 0.4F))
+        ), "sushi");
+
+        public static final Item PHO = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(16, 0.4F))
+        ), "pho");
+
+        public static final Item RAMEN = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(16, 0.25F))
+        ), "ramen");
+
+        public static final Item PIZZA = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(foodComp(18, 0.25F))
+        ), "pizza");
+
         public static void init() {
         }
 
@@ -91,6 +161,13 @@ public class Strangery implements ModInitializer {
             Registry.register(Registry.ITEM, id(name), item);
 
             return item;
+        }
+
+        private static FoodComponent foodComp(int hunger, float saturation) {
+            return new FoodComponent.Builder()
+                .hunger(hunger)
+                .saturationModifier(saturation)
+                .build();
         }
     }
 
@@ -135,10 +212,11 @@ public class Strangery implements ModInitializer {
         }
     }
 
-    // Food data
-    public static class FD {
+    // Food data overrides
+    public static class FDO {
         private static final Map<Identifier, FoodComponent>
             ITEM_FOOD_COMPONENT_MAP = new HashMap<Identifier, FoodComponent>();
+
         private static final FoodComponent FAUNA = (new FoodComponent.Builder())
             .hunger(1)
             .saturationModifier(0.1F)

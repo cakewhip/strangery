@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MoreFoodAdder {
     @Inject(method = "isFood", at = @At("HEAD"), cancellable = true)
     private void injectIsFood(CallbackInfoReturnable<Boolean> callbackInfo) {
-        FoodComponent foodComponent = Strangery.FD.get((Item) (Object) this);
+        FoodComponent foodComponent = Strangery.FDO.get((Item) (Object) this);
 
         if (foodComponent != null) {
             callbackInfo.cancel();
@@ -25,7 +25,7 @@ public class MoreFoodAdder {
 
     @Inject(method = "getFoodComponent", at = @At("HEAD"), cancellable = true)
     private void injectGetFoodComponent(CallbackInfoReturnable<FoodComponent> callbackInfo) {
-        FoodComponent foodComponent = Strangery.FD.get((Item) (Object) this);
+        FoodComponent foodComponent = Strangery.FDO.get((Item) (Object) this);
 
         if (foodComponent != null) {
             callbackInfo.cancel();
