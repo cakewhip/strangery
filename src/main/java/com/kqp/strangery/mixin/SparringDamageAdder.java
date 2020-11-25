@@ -25,8 +25,6 @@ public class SparringDamageAdder {
                 ItemStack stack = attacker.getMainHandStack();
 
                 if (stack.isEmpty() || !(stack.getItem() instanceof ToolItem)) {
-                    System.out.println("CANCEL");
-
                     callbackInfo.setReturnValue(
                         ((LivingEntity) (Object) this).damage(source, LOW_DAMAGE)
                     );
