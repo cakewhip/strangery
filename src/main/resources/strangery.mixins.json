@@ -1,16 +1,20 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "com.kqp.strangery.mixin",
-  "compatibilityLevel": "JAVA_8",
-  "mixins": [
-    "RainWaterImplementer"
-  ],
-  "client": [
-    "client.ConfusionEffectApplier",
-    "client.DeafEffectApplier"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
+    "required": true,
+    "minVersion": "0.8",
+    "package": "com.kqp.strangery.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "accessor.BlockAccessor",
+        "EmptyHandBreakDamageAdder",
+        "MoreFoodAdder",
+        "RainWaterImplementer",
+        "SparringDamageAdder"
+    ],
+    "client": [
+        "client.ConfusionEffectApplier",
+        "client.DeafEffectApplier"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
 }
