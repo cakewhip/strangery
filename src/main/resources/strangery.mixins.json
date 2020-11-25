@@ -4,6 +4,7 @@
   "package": "com.kqp.strangery.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "SparringDamageAdder"
   ],
   "client": [
     "client.ConfusionEffectApplier",
