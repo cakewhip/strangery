@@ -40,7 +40,6 @@ public class HallucinatingStatusEffect extends CustomStatusEffect {
             1.0F,
             0.5F
         );
-        System.out.println(amplifier);
     }
 
     @Override
