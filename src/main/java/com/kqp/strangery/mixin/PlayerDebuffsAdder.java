@@ -20,9 +20,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  */
 @Mixin(ServerPlayerEntity.class)
 public class PlayerDebuffsAdder {
+    private static final int DARKNESS_DEBUFF_THRESHOLD = 5 * 60 * 20;
     private static final int SLEEP_DEBUFF_THRESHOLD = 60 * 60 * 20;
     private static final int UNDERGROUND_DEBUFF_THRESHOLD = 30 * 60 * 20;
 
+    private int darknessTimer = 0;
     private int undergroundTimer = 0;
 
     @Inject(method = "playerTick", at = @At("HEAD"))
@@ -41,6 +43,12 @@ public class PlayerDebuffsAdder {
             // Darkness-induced hallucination and blindness
             if (world.getLightLevel(player.getBlockPos()) < 4
                 && !world.isSkyVisible(player.getBlockPos())) {
+                darknessTimer = Math.min(darknessTimer + 1, DARKNESS_DEBUFF_THRESHOLD);
+            } else {
+                darknessTimer = Math.max(0, darknessTimer - 1);
+            }
+
+            if (darknessTimer >= DARKNESS_DEBUFF_THRESHOLD) {
                 triggerHallucination = true;
                 triggerBlindness = true;
             }
