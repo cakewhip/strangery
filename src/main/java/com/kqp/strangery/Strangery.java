@@ -368,6 +368,7 @@ public class Strangery implements ModInitializer {
         }
     }
 
+    // World features
     public static class WF {
         private static final ConfiguredFeature<?, ?> FOODIUM_ORE_OVERWORLD = Feature.ORE
             .configure(new OreFeatureConfig(
