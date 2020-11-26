@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:rice"
+        },
+        {
+            "item": "strangery:rice"
+        },
+        {
+            "item": "minecraft:cooked_beef"
+        },
+        {
+            "item": "minecraft:cooked_pork"
+        },
+        {
+            "item": "minecraft:cooked_chicken"
+        }
+    ],
+    "result": {
+        "item": "strangery:korean_bbq",
+        "count": 1
+    }
+}
