@@ -1,1 +1,6 @@
-{  "parent": "block/cube_all",  "textures": {      "all": "strangery:block/foodium_ore"  }}
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "strangery:block/foodium_ore"
+    }
+}
