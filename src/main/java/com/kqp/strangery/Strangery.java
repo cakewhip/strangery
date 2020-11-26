@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
+import net.minecraft.block.FallingBlock;
 import net.minecraft.block.Material;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
@@ -68,6 +69,14 @@ public class Strangery implements ModInitializer {
                 .breakByTool(FabricToolTags.PICKAXES, 2)
                 .strength(9.0F, 9.0F)
             ), "randomium_ore");
+
+        public static final Block LOOSE_STONE =
+            register(new FallingBlock(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES)
+                .strength(0.75F, 3.0F)
+            ), "loose_stone");
 
         public static void init() {
         }
@@ -406,27 +415,32 @@ public class Strangery implements ModInitializer {
             .spreadHorizontally()
             .repeat(16);
 
-        public static void init() {
-            Registry.register(
-                BuiltinRegistries.CONFIGURED_FEATURE,
-                id("foodium_ore"),
-                FOODIUM_ORE_OVERWORLD
-            );
-            BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES,
-                BuiltinRegistries.CONFIGURED_FEATURE.getKey(FOODIUM_ORE_OVERWORLD).get()
-            );
+        private static final ConfiguredFeature<?, ?> LOOSE_STONE_OVERWORLD = Feature.ORE
+            .configure(new OreFeatureConfig(
+                OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+                B.LOOSE_STONE.getDefaultState(),
+                33
+            ))
+            .rangeOf(256)
+            .spreadHorizontally()
+            .repeat(8);
 
+        public static void init() {
+            register(FOODIUM_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES, "foodium_ore");
+            register(RANDOMIUM_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES, "randomium_ore");
+            register(LOOSE_STONE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_DECORATION, "loose_stone");
+        }
+
+        private static void register(ConfiguredFeature<?, ?> feature, GenerationStep.Feature step, String name) {
             Registry.register(
                 BuiltinRegistries.CONFIGURED_FEATURE,
-                id("randomium_ore"),
-                RANDOMIUM_ORE_OVERWORLD
+                id(name),
+                feature
             );
             BiomeModifications.addFeature(
                 BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES,
-                BuiltinRegistries.CONFIGURED_FEATURE.getKey(RANDOMIUM_ORE_OVERWORLD).get()
+                step,
+                BuiltinRegistries.CONFIGURED_FEATURE.getKey(feature).get()
             );
         }
     }
