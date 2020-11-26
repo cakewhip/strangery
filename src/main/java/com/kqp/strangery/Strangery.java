@@ -61,6 +61,14 @@ public class Strangery implements ModInitializer {
                 .strength(3.0F, 3.0F)
             ), "foodium_ore");
 
+        public static final Block RANDOMIUM_ORE =
+            register(new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES, 2)
+                .strength(9.0F, 9.0F)
+            ), "randomium_ore");
+
         public static void init() {
         }
 
@@ -373,7 +381,7 @@ public class Strangery implements ModInitializer {
         private static final ConfiguredFeature<?, ?> FOODIUM_ORE_OVERWORLD = Feature.ORE
             .configure(new OreFeatureConfig(
                 OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
-                B.FOODIUM_ORE.getDefaultState(),
+                B.RANDOMIUM_ORE.getDefaultState(),
                 8
             ))
             .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(
@@ -383,6 +391,20 @@ public class Strangery implements ModInitializer {
             )))
             .spreadHorizontally()
             .repeat(12);
+
+        private static final ConfiguredFeature<?, ?> RANDOMIUM_ORE_OVERWORLD = Feature.ORE
+            .configure(new OreFeatureConfig(
+                OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+                B.RANDOMIUM_ORE.getDefaultState(),
+                8
+            ))
+            .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(
+                0,
+                0,
+                128
+            )))
+            .spreadHorizontally()
+            .repeat(16);
 
         public static void init() {
             Registry.register(
@@ -394,6 +416,17 @@ public class Strangery implements ModInitializer {
                 BiomeSelectors.foundInOverworld(),
                 GenerationStep.Feature.UNDERGROUND_ORES,
                 BuiltinRegistries.CONFIGURED_FEATURE.getKey(FOODIUM_ORE_OVERWORLD).get()
+            );
+
+            Registry.register(
+                BuiltinRegistries.CONFIGURED_FEATURE,
+                id("randomium_ore"),
+                RANDOMIUM_ORE_OVERWORLD
+            );
+            BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Feature.UNDERGROUND_ORES,
+                BuiltinRegistries.CONFIGURED_FEATURE.getKey(RANDOMIUM_ORE_OVERWORLD).get()
             );
         }
     }
