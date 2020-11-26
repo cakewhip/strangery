@@ -5,9 +5,9 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "accessor.BlockAccessor",
-    "DarknessHallucinationAdder",
     "EmptyHandBreakDamageAdder",
     "MoreFoodAdder",
+    "PlayerDebuffsAdder",
     "SparringDamageAdder"
   ],
   "client": [
