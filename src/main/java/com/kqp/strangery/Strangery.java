@@ -109,11 +109,6 @@ public class Strangery implements ModInitializer {
             .food(foodComp(12, 0.3F))
         ), "cheese_burger");
 
-        public static final Item BLT = register(new Item(new Item.Settings()
-            .group(ItemGroup.FOOD)
-            .food(foodComp(10, 0.3F))
-        ), "blt");
-
         public static final Item ICE_CREAM = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
             .food(foodComp(6, 0.1F))
@@ -154,6 +149,22 @@ public class Strangery implements ModInitializer {
             .group(ItemGroup.FOOD)
             .food(foodComp(18, 0.25F))
         ), "pizza");
+
+        public static final Item ROCK_CANDY = register(new Item(new Item.Settings()
+            .group(ItemGroup.FOOD)
+            .food(new FoodComponent.Builder()
+                .hunger(4)
+                .saturationModifier(0.05F)
+                .snack()
+                .statusEffect(new StatusEffectInstance(
+                    StatusEffects.HASTE, 60 * 20, 0
+                ), 1.0F)
+                .statusEffect(new StatusEffectInstance(
+                    StatusEffects.SPEED, 30 * 20, 0
+                ), 1.0F)
+                .build()
+            )
+        ), "rock_candy");
 
         public static void init() {
         }
