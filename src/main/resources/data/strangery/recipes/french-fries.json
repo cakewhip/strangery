@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "minecraft:potato"
+        },
+        {
+            "item": "minecraft:potato"
+        },
+        {
+            "item": "minecraft:potato"
+        }
+    ],
+    "result": {
+        "item": "strangery:french_fries",
+        "count": 1
+    }
+}

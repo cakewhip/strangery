@@ -1,5 +1,22 @@
 {
+    "block.strangery.foodium_ore": "Foodium Ore",
+
     "item.strangery.unwieldy_stick": "Unwieldy Stick",
+    "item.strangery.foodium": "Foodium",
+    "item.strangery.bun": "Bun",
+    "item.strangery.cheese": "Cheese",
+    "item.strangery.rice": "Rice",
+    "item.strangery.french_fries": "French Fries",
+    "item.strangery.cheese_burger": "Cheese Burger",
+    "item.strangery.ice_cream": "Ice Cream",
+    "item.strangery.chicken_fried_rice": "Chicken Fried Rice",
+    "item.strangery.chicken_tendies": "Chicken Tendies",
+    "item.strangery.korean_bbq": "Korean BBQ",
+    "item.strangery.sushi": "Sushi",
+    "item.strangery.pho": "Pho",
+    "item.strangery.ramen": "Ramen",
+    "item.strangery.pizza": "Pizza",
+    "item.strangery.rock_candy": "Rock Candy",
 
     "effect.strangery.deaf": "Deaf",
     "effect.strangery.bleeding": "Bleeding",
