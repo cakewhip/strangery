@@ -7,6 +7,7 @@
     "accessor.BlockAccessor",
     "EmptyHandBreakDamageAdder",
     "MoreFoodAdder",
+    "PlayerDebuffsAdder",
     "SparringDamageAdder"
   ],
   "client": [
