@@ -14,9 +14,6 @@
             "item": "strangery:foodium"
         },
         {
-            "item": "strangery:foodium"
-        },
-        {
             "item": "strangery:rice"
         },
         {
@@ -24,6 +21,9 @@
         },
         {
             "item": "minecraft:tropical_fish"
+        },
+        {
+            "item": "minecraft:pufferfish"
         },
         {
             "item": "minecraft:salmon"

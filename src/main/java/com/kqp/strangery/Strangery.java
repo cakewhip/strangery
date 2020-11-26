@@ -86,75 +86,81 @@ public class Strangery implements ModInitializer {
 
         public static final Item BUN = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(2, 0.1F))
+            .food(foodComp(7, 0.6F))
         ), "bun");
 
         public static final Item CHEESE = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(1, 0.0F))
+            .food(foodComp(2, 0.2F))
         ), "cheese");
 
         public static final Item RICE = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(2, 0.1F))
+            .food(foodComp(7, 0.6F))
         ), "rice");
 
         public static final Item FRENCH_FRIES = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(4, 0.1F))
+            .food(foodComp(10, 0.5F))
         ), "french_fries");
 
         public static final Item CHEESE_BURGER = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(12, 0.3F))
+            .food(foodComp(20, 0.8F))
         ), "cheese_burger");
 
         public static final Item ICE_CREAM = register(new Item(new Item.Settings()
-            .group(ItemGroup.FOOD)
-            .food(foodComp(6, 0.1F))
+            .group(ItemGroup.FOOD).food(new FoodComponent.Builder()
+                .hunger(6)
+                .saturationModifier(0.3F)
+                .statusEffect(new StatusEffectInstance(
+                    StatusEffects.SPEED, 30 * 20, 0
+                ), 1.0F)
+                .alwaysEdible()
+                .build()
+            )
         ), "ice_cream");
 
         public static final Item CHICKEN_FRIED_RICE = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(12, 0.3F))
+            .food(foodComp(14, 0.7F))
         ), "chicken_fried_rice");
 
         public static final Item CHICKEN_TENDIES = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(10, 0.2F))
+            .food(foodComp(10, 0.7F))
         ), "chicken_tendies");
 
         public static final Item KOREAN_BBQ = register(new Item(new Item.Settings()
-
             .group(ItemGroup.FOOD)
-            .food(foodComp(18, 0.5F))
+            .food(foodComp(20, 1.0F))
         ), "korean_bbq");
 
         public static final Item SUSHI = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(18, 0.4F))
+            .food(foodComp(20, 0.9F))
         ), "sushi");
 
         public static final Item PHO = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(16, 0.4F))
+            .food(foodComp(16, 0.8F))
         ), "pho");
 
         public static final Item RAMEN = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(16, 0.25F))
+            .food(foodComp(14, 0.7F))
         ), "ramen");
 
         public static final Item PIZZA = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
-            .food(foodComp(18, 0.25F))
+            .food(foodComp(14, 0.6F))
         ), "pizza");
 
         public static final Item ROCK_CANDY = register(new Item(new Item.Settings()
             .group(ItemGroup.FOOD)
             .food(new FoodComponent.Builder()
-                .hunger(4)
-                .saturationModifier(0.05F)
+                .hunger(2)
+                .saturationModifier(0.0F)
                 .snack()
                 .statusEffect(new StatusEffectInstance(
                     StatusEffects.HASTE, 60 * 20, 0
@@ -162,6 +168,7 @@ public class Strangery implements ModInitializer {
                 .statusEffect(new StatusEffectInstance(
                     StatusEffects.SPEED, 30 * 20, 0
                 ), 1.0F)
+                .alwaysEdible()
                 .build()
             )
         ), "rock_candy");
