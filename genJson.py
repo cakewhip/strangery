@@ -18,6 +18,7 @@ ITEMS = [
     "rice",
     "french_fries",
     "cheese_burger",
+    "blt",
     "ice_cream",
     "chicken_fried_rice",
     "chicken_tendies",
@@ -25,8 +26,7 @@ ITEMS = [
     "sushi",
     "pho",
     "ramen",
-    "pizza",
-    "rock_candy"
+    "pizza"
 ]
 
 

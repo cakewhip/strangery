@@ -1,6 +1,1 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "strangery:item/cheese"
-    }
-}
+{  "parent": "item/generated",  "textures": {      "layer0": "strangery:item/cheese"  }}
