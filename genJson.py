@@ -7,6 +7,7 @@ MOD_ID = "strangery"
 
 BLOCKS = [
     "foodium_ore",
+    "randomium_ore"
 ]
 
 
