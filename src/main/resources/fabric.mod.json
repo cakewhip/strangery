@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "com.kqp.strangery.Strangery"
+    ],
+    "client": [
+      "com.kqp.strangery.client.StrangeryClient"
     ]
   },
   "mixins": [

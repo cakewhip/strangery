@@ -5,12 +5,14 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "accessor.BlockAccessor",
+    "accessor.MeleeAttackGoalAccessor",
     "EmptyHandBreakDamageAdder",
     "MoreFoodAdder",
     "PlayerDebuffsAdder",
     "SparringDamageAdder"
   ],
   "client": [
+    "client.accessor.HeldItemFeatureRendererAccessor",
     "client.ConfusionEffectApplier",
     "client.DeafEffectApplier"
   ],
