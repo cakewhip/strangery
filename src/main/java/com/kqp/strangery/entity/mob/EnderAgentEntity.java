@@ -1,21 +1,19 @@
 package com.kqp.strangery.entity.mob;
 
 import com.kqp.strangery.Strangery;
-import com.kqp.strangery.entity.ai.BetterMeleeAttackGoal;
+import com.kqp.strangery.entity.ai.MoveToTargetGoal;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -24,10 +22,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class EnderAgentEntity extends HostileEntity {
-    private static final Item[] HELD_ITEMS = {
-        Items.IRON_SWORD,
-        Items.IRON_AXE
-    };
+    private static final TargetPredicate ANIMAL_TARGET_PREDICATE = new TargetPredicate()
+        .setPredicate((animal) -> !(animal.getVehicle() instanceof EnderAgentEntity));
 
     public EnderAgentEntity(EntityType type, World world) {
         super(type, world);
@@ -62,15 +58,42 @@ public class EnderAgentEntity extends HostileEntity {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(0, new BetterMeleeAttackGoal(this, 2.0F));
-        this.goalSelector.add(3, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(5, new LookAroundGoal(this));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0D));
-
-        this.targetSelector.add(0, new HivemindTargetGoal(this));
-        this.targetSelector.add(3, new RevengeGoal(this));
-        this.targetSelector.add(5, new FollowTargetGoal(this, PlayerEntity.class, true));
+        this.goalSelector.add(0, new FleeEntityGoal<PlayerEntity>(this, PlayerEntity.class, 8.0F, 1.0D, 1.0D));
+        this.goalSelector.add(1, new MoveToTargetGoal(this, 1.0D, 32));
+        this.goalSelector.add(2, new LookAtEntityGoal(this, AnimalEntity.class, 8.0F));
+        this.goalSelector.add(3, new LookAroundGoal(this));
+        this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0D));
     }
+
+    @Override
+    public void tickMovement() {
+        if (!this.hasPassengers()) {
+            List<AnimalEntity> animals = this.world.<AnimalEntity>getEntitiesByClass(
+                AnimalEntity.class,
+                this.getBoundingBox().expand(0.25D, 0.0D, 0.25D),
+                (animal) -> !(animal.getVehicle() instanceof EnderAgentEntity)
+            );
+
+            for (AnimalEntity animal : animals) {
+                animal.startRiding(this, true);
+                this.setTarget(null);
+                break;
+            }
+        } else {
+            this.setTarget(this.world.getClosestEntityIncludingUngeneratedChunks(
+                AnimalEntity.class,
+                ANIMAL_TARGET_PREDICATE,
+                this,
+                this.getX(),
+                this.getEyeY(),
+                this.getZ(),
+                this.getBoundingBox().expand(48D)
+            ));
+        }
+
+        super.tickMovement();
+    }
+
 
     @Override
     public @Nullable EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable CompoundTag entityTag) {
@@ -88,57 +111,12 @@ public class EnderAgentEntity extends HostileEntity {
     }
 
     @Override
-    protected void initEquipment(LocalDifficulty difficulty) {
-        super.initEquipment(difficulty);
-
-        this.equipStack(EquipmentSlot.MAINHAND, new ItemStack(HELD_ITEMS[random.nextInt(HELD_ITEMS.length)]));
-    }
-
-    @Override
     public boolean hurtByWater() {
         return true;
     }
 
-    class HivemindTargetGoal extends TrackTargetGoal {
-        private EnderAgentEntity agentEntity;
-
-        public HivemindTargetGoal(EnderAgentEntity agentEntity) {
-            super(agentEntity, false, true);
-
-            this.agentEntity = agentEntity;
-        }
-
-        @Override
-        public boolean canStart() {
-            List<EnderAgentEntity> fellowAgents = getNearbyAgents();
-
-            for (EnderAgentEntity agent : fellowAgents) {
-                if (agent.getAttacker() != null) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        @Override
-        public boolean shouldContinue() {
-            List<EnderAgentEntity> fellowAgents = getNearbyAgents();
-
-            for (EnderAgentEntity otherAgent : fellowAgents) {
-                if (otherAgent.getAttacker() != null && otherAgent.getLastAttackedTime() != agentEntity.getLastAttackedTime()) {
-                    agentEntity.setAttacker(otherAgent.getAttacker());
-                    agentEntity.lastAttackedTicks = otherAgent.getLastAttackedTime();
-
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private List<EnderAgentEntity> getNearbyAgents() {
-            return mob.world.getEntitiesByClass(EnderAgentEntity.class, new Box(-16.0F, -16.0F, -16.0F, 16.0F, 16.0F, 16.0F), entity -> true);
-        }
+    @Override
+    public double getMountedHeightOffset() {
+        return 0.8D;
     }
 }

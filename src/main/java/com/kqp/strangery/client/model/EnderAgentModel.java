@@ -64,5 +64,10 @@ public class EnderAgentModel<T extends MobEntity> extends BipedEntityModel<T> {
         this.leftLeg.pivotX = 3.0F;
         this.leftLeg.pivotY = 18.0F;
         this.leftLeg.pivotZ = 0.1F;
+
+        if (livingEntity.hasPassengers()) {
+            this.leftArm.pitch = (float) Math.PI;
+            this.rightArm.pitch = (float) Math.PI;
+        }
     }
 }
