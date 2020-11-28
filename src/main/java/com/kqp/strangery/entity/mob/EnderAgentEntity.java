@@ -18,6 +18,8 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.FoxEntity;
+import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundEvent;
@@ -27,18 +29,18 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class EnderAgentEntity extends HostileEntity {
-    private static final int PLAYER_FLEE_DISTANCE = 16;
+    private static final int FLEE_DISTANCE = 16;
     private static final int KIDNAP_DISTANCE = 32;
-    private static final int KIDNAP_PLAYER_FLEE_DISTANCE = 48;
+    private static final int POST_KIDNAP_FLEE_DISTANCE = 48;
 
     private static final TargetPredicate ANIMAL_TARGET_PREDICATE = new TargetPredicate()
-        .setPredicate((animal) -> !(animal.getVehicle() instanceof EnderAgentEntity));
+        .setPredicate((animal) -> !(animal.getVehicle() instanceof EnderAgentEntity)
+            && (!(animal instanceof WolfEntity) && !(animal instanceof FoxEntity)));
 
     public EnderAgentEntity(EntityType type, World world) {
         super(type, world);
 
         this.setPathfindingPenalty(PathNodeType.WATER, -1.0F);
-        this.stepHeight = 1.6F;
     }
 
     @Override
@@ -68,10 +70,17 @@ public class EnderAgentEntity extends HostileEntity {
 
     @Override
     protected void initGoals() {
+        this.goalSelector.add(0, new FleeEntityGoal<WolfEntity>(
+            this,
+            WolfEntity.class,
+            FLEE_DISTANCE,
+            1.15D,
+            1.15D
+        ));
         this.goalSelector.add(0, new FleeEntityGoal<PlayerEntity>(
             this,
             PlayerEntity.class,
-            PLAYER_FLEE_DISTANCE,
+            FLEE_DISTANCE,
             1.15D,
             1.15D
         ));
@@ -84,11 +93,10 @@ public class EnderAgentEntity extends HostileEntity {
             this,
             PlayerEntity.class,
             // Ender agent kills kidnapped animal once at this range, so must flee beyond
-            KIDNAP_PLAYER_FLEE_DISTANCE + 16,
+            POST_KIDNAP_FLEE_DISTANCE + 16,
             1D,
             1D
         ));
-        this.goalSelector.add(3, new LookAtEntityGoal(this, AnimalEntity.class, 8.0F));
         this.goalSelector.add(4, new LookAroundGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0D));
     }
@@ -96,14 +104,15 @@ public class EnderAgentEntity extends HostileEntity {
     @Override
     public void tickMovement() {
         // TODO maybe move this to a target goal class
-        if (!world.isClient && age % 10 == 0) {
+        if (!world.isClient && age % 20 == 0) {
             if (!this.hasPassengers()) {
                 LivingEntity target = this.getTarget();
 
                 if (target != null && this.distanceTo(target) < 1.25D) {
                     target.startRiding(this, true);
                     this.setTarget(null);
-                } else if (target == null || this.distanceTo(target) > KIDNAP_DISTANCE) {
+                } else if (target == null ||
+                    (this.distanceTo(target) > KIDNAP_DISTANCE || target.isDead())) {
                     this.setTarget(this.world.getClosestEntityIncludingUngeneratedChunks(
                         AnimalEntity.class,
                         ANIMAL_TARGET_PREDICATE,
@@ -124,12 +133,12 @@ public class EnderAgentEntity extends HostileEntity {
     public void baseTick() {
         super.baseTick();
 
-        if (this.hasPassengers()) {
+        if (!this.world.isClient() && this.hasPassengers()) {
             PlayerEntity player = world.getClosestPlayer(
                 this.getX(),
                 this.getY(),
                 this.getZ(),
-                KIDNAP_PLAYER_FLEE_DISTANCE,
+                POST_KIDNAP_FLEE_DISTANCE,
                 true
             );
 
@@ -137,8 +146,8 @@ public class EnderAgentEntity extends HostileEntity {
                 for (Entity passenger : this.getPassengerList()) {
                     if (passenger instanceof LivingEntity) {
                         passenger.damage(
-                            DamageSource.MAGIC,
-                            Float.MAX_VALUE
+                            DamageSource.mob(this),
+                            (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE)
                         );
                     }
                 }
@@ -159,7 +168,7 @@ public class EnderAgentEntity extends HostileEntity {
         return HostileEntity.createHostileAttributes()
             .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
             .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.365D)
-            .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 0.5D)
+            .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0D)
             .add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D);
     }
 

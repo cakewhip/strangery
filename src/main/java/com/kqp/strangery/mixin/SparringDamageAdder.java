@@ -2,6 +2,7 @@ package com.kqp.strangery.mixin;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,13 +21,14 @@ public class SparringDamageAdder {
     private void removeWoodenSwordDamage(DamageSource source, float amount,
                                          CallbackInfoReturnable<Boolean> callbackInfo) {
         if (amount > LOW_DAMAGE) {
-            if (source.getAttacker() != null && source.getAttacker() instanceof LivingEntity) {
-                LivingEntity attacker = (LivingEntity) source.getAttacker();
+            if (source.getAttacker() != null && source.getAttacker() instanceof PlayerEntity) {
+                PlayerEntity attacker = (PlayerEntity) source.getAttacker();
                 ItemStack stack = attacker.getMainHandStack();
 
                 if (stack.isEmpty() || !(stack.getItem() instanceof ToolItem)) {
+                    callbackInfo.cancel();
                     callbackInfo.setReturnValue(
-                        ((LivingEntity) (Object) this).damage(source, LOW_DAMAGE)
+                        ((PlayerEntity) (Object) this).damage(source, LOW_DAMAGE)
                     );
                 }
             }
