@@ -17,18 +17,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class SparringDamageAdder {
     private static final float LOW_DAMAGE = 0.000001F;
 
+    // TODO this implementation sucks, since bows don't work and what not
+    //      it would work a lot better to inject in the player class itself
     @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
-    private void removeWoodenSwordDamage(DamageSource source, float amount,
-                                         CallbackInfoReturnable<Boolean> callbackInfo) {
+    private void injectDamage(DamageSource source, float amount,
+                              CallbackInfoReturnable<Boolean> callbackInfo) {
         if (amount > LOW_DAMAGE) {
             if (source.getAttacker() != null && source.getAttacker() instanceof PlayerEntity) {
                 PlayerEntity attacker = (PlayerEntity) source.getAttacker();
                 ItemStack stack = attacker.getMainHandStack();
 
                 if (stack.isEmpty() || !(stack.getItem() instanceof ToolItem)) {
-                    callbackInfo.cancel();
                     callbackInfo.setReturnValue(
-                        ((PlayerEntity) (Object) this).damage(source, LOW_DAMAGE)
+                        ((LivingEntity) (Object) this).damage(source, LOW_DAMAGE)
                     );
                 }
             }
