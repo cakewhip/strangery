@@ -10,7 +10,6 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
-import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -18,7 +17,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
@@ -35,7 +33,7 @@ public class EnderAgentEntity extends HostileEntity {
 
     private static final TargetPredicate ANIMAL_TARGET_PREDICATE = new TargetPredicate()
         .setPredicate((animal) -> !(animal.getVehicle() instanceof EnderAgentEntity)
-            && (!(animal instanceof WolfEntity) && !(animal instanceof FoxEntity)));
+            && !(animal instanceof WolfEntity));
 
     public EnderAgentEntity(EntityType type, World world) {
         super(type, world);

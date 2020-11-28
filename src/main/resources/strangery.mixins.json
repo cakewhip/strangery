@@ -6,10 +6,12 @@
   "mixins": [
     "accessor.BlockAccessor",
     "accessor.MeleeAttackGoalAccessor",
+    "accessor.MobEntityAccessor",
     "EmptyHandBreakDamageAdder",
     "MoreFoodAdder",
     "PlayerDebuffsAdder",
-    "SparringDamageAdder"
+    "SparringDamageAdder",
+    "WolfTargetEnderAgentMixin"
   ],
   "client": [
     "client.accessor.HeldItemFeatureRendererAccessor",
