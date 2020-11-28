@@ -23,5 +23,12 @@
     "effect.strangery.deaf": "Deaf",
     "effect.strangery.bleeding": "Bleeding",
     "effect.strangery.frostbite": "Frostbite",
-    "effect.strangery.confusion": "Confusion"
+    "effect.strangery.confusion": "Confusion",
+
+    "entity.strangery.ender_agent": "Ender Agent",
+    "item.strangery.ender_agent_spawn_egg": "Ender Agent Spawn Egg",
+
+    "subtitles.strangery.entity.ender_agent.ambient": "Ender Agent grunts",
+    "subtitles.strangery.entity.ender_agent.hurt": "Ender Agent hurts",
+    "subtitles.strangery.entity.ender_agent.death": "Ender Agent dies"
 }

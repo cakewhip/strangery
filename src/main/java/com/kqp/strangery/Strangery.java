@@ -1,26 +1,31 @@
 package com.kqp.strangery;
 
+import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.statuseffect.CustomStatusEffect;
 import com.kqp.strangery.statuseffect.HallucinatingStatusEffect;
 import com.kqp.strangery.statuseffect.HealthStatusEffect;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.block.Material;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.FoodComponent;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -39,8 +44,12 @@ public class Strangery implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        SND.init();
+
         B.init();
         I.init();
+
+        E.init();
         SE.init();
 
         FDO.init();
@@ -50,6 +59,23 @@ public class Strangery implements ModInitializer {
 
     public static Identifier id(String name) {
         return new Identifier(MOD_ID, name);
+    }
+
+    // Sounds
+    public static class SND {
+        public static final Identifier ENDER_AGENT_AMBIENT_ID = id("entity.ender_agent.ambient");
+        public static final Identifier ENDER_AGENT_DEATH_ID = id("entity.ender_agent.death");
+        public static final Identifier ENDER_AGENT_HURT_ID = id("entity.ender_agent.hurt");
+
+        public static final SoundEvent ENDER_AGENT_AMBIENT = new SoundEvent(ENDER_AGENT_AMBIENT_ID);
+        public static final SoundEvent ENDER_AGENT_DEATH = new SoundEvent(ENDER_AGENT_DEATH_ID);
+        public static final SoundEvent ENDER_AGENT_HURT = new SoundEvent(ENDER_AGENT_HURT_ID);
+
+        public static void init() {
+            Registry.register(Registry.SOUND_EVENT, ENDER_AGENT_AMBIENT_ID, ENDER_AGENT_AMBIENT);
+            Registry.register(Registry.SOUND_EVENT, ENDER_AGENT_DEATH_ID, ENDER_AGENT_DEATH);
+            Registry.register(Registry.SOUND_EVENT, ENDER_AGENT_HURT_ID, ENDER_AGENT_HURT);
+        }
     }
 
     // Blocks
@@ -204,6 +230,30 @@ public class Strangery implements ModInitializer {
                 .hunger(hunger)
                 .saturationModifier(saturation)
                 .build();
+        }
+    }
+    
+    // Entities
+    public static class E {
+        public static final EntityType<EnderAgentEntity> ENDER_AGENT = Registry.register(
+            Registry.ENTITY_TYPE,
+            id("ender_agent"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EnderAgentEntity::new)
+                .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
+                .trackable(72, 3)
+                .build()
+        );
+        
+        public static void init() {
+            register(ENDER_AGENT, 1447446, 0, EnderAgentEntity.createEnderAgentAttributes());
+        }
+
+        private static <T extends LivingEntity> void register(EntityType<T> type, int primaryColor, int secondaryColor, DefaultAttributeContainer.Builder attributeBuilder) {
+            Registry.register(Registry.ITEM, new Identifier(EntityType.getId(type).toString() + "_spawn_egg"),
+                new SpawnEggItem(type, primaryColor, secondaryColor, new Item.Settings().group(ItemGroup.MISC))
+            );
+
+            FabricDefaultAttributeRegistry.register(type, attributeBuilder);
         }
     }
 
