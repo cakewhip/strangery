@@ -21,13 +21,10 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class EnderAgentEntity extends HostileEntity {
     private static final int PLAYER_FLEE_DISTANCE = 16;
@@ -103,11 +100,9 @@ public class EnderAgentEntity extends HostileEntity {
             if (!this.hasPassengers()) {
                 LivingEntity target = this.getTarget();
 
-                if (target != null) {
-                    if (this.distanceTo(target) < 1.25D) {
-                        target.startRiding(this, true);
-                        this.setTarget(null);
-                    }
+                if (target != null && this.distanceTo(target) < 1.25D) {
+                    target.startRiding(this, true);
+                    this.setTarget(null);
                 } else if (target == null || this.distanceTo(target) > KIDNAP_DISTANCE) {
                     this.setTarget(this.world.getClosestEntityIncludingUngeneratedChunks(
                         AnimalEntity.class,
