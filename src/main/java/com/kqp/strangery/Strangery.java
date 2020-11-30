@@ -1,5 +1,6 @@
 package com.kqp.strangery;
 
+import com.kqp.strangery.entity.mob.CourierEntity;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.statuseffect.CustomStatusEffect;
 import com.kqp.strangery.statuseffect.HallucinatingStatusEffect;
@@ -243,9 +244,19 @@ public class Strangery implements ModInitializer {
                 .trackable(72, 3)
                 .build()
         );
+
+        public static final EntityType<CourierEntity> COURIER = Registry.register(
+            Registry.ENTITY_TYPE,
+            id("courier"),
+            FabricEntityTypeBuilder.<CourierEntity>create(SpawnGroup.AMBIENT, CourierEntity::new)
+                .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
+                .trackable(72, 3)
+                .build()
+        );
         
         public static void init() {
             register(ENDER_AGENT, 1447446, 0, EnderAgentEntity.createEnderAgentAttributes());
+            register(COURIER, 1447446, 0, CourierEntity.createCourierAttributes());
         }
 
         private static <T extends LivingEntity> void register(EntityType<T> type, int primaryColor, int secondaryColor, DefaultAttributeContainer.Builder attributeBuilder) {

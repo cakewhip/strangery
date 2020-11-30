@@ -27,6 +27,11 @@
 
     "entity.strangery.ender_agent": "Ender Agent",
     "item.strangery.ender_agent_spawn_egg": "Ender Agent Spawn Egg",
+    "entity.strangery.courier": "Courier",
+    "item.strangery.courier_spawn_egg": "Courier Spawn Egg",
+
+    "entity.strangery.courier.intro": "<Courier> I've been looking for you. Got something I'm supposed to deliver-- your hands only.",
+    "entity.strangery.courier.bye": "<Courier> Looks like that's it. Got to go.",
 
     "subtitles.strangery.entity.ender_agent.ambient": "Ender Agent grunts",
     "subtitles.strangery.entity.ender_agent.hurt": "Ender Agent hurts",
