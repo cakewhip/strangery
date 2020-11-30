@@ -8,7 +8,9 @@ MOD_ID = "strangery"
 BLOCKS = [
     "foodium_ore",
     "randomium_ore",
-    "loose_stone"
+    "loose_stone",
+    "bebsofyr_ore",
+    "bebsofyr_block"
 ]
 
 
@@ -28,11 +30,21 @@ ITEMS = [
     "pho",
     "ramen",
     "pizza",
-    "rock_candy"
+    "rock_candy",
+    "bebsofyr_ingot",
+    "bebsofyr_boots",
+    "bebsofyr_leggings",
+    "bebsofyr_chestplate",
+    "bebsofyr_helmet"
 ]
 
 
 TOOLS = [
+    "bebsofyr_pickaxe",
+    "bebsofyr_shovel",
+    "bebsofyr_axe",
+    "bebsofyr_hoe",
+    "bebsofyr_sword"
 ]
 
 
