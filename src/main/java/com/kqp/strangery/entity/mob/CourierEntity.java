@@ -150,8 +150,9 @@ public class CourierEntity extends PathAwareEntity {
 
         String title = HATE_MAIL_TITLES[RANDOM.nextInt(HATE_MAIL_TITLES.length)]
             .replace("${player}", attackerName)
-            .replace("${victim}", victimName)
-            .substring(0, 32);
+            .replace("${victim}", victimName);
+        title = title.substring(0, Math.min(32, title.length()));
+
         String body = HATE_MAIL_BODIES[RANDOM.nextInt(HATE_MAIL_BODIES.length)]
             .replace("${player}", attackerName)
             .replace("${victim}", victimName);
