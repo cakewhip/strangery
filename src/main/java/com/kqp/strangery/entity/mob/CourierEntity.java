@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.TrackTargetGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -47,10 +48,11 @@ public class CourierEntity extends PathAwareEntity {
     protected void initGoals() {
         super.initGoals();
 
-        this.goalSelector.add(0, new MoveToTargetGoal(this, 1.0D, 256));
-        this.goalSelector.add(1, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(2, new WanderAroundFarGoal(this, 0.8D));
-        this.goalSelector.add(3, new LookAroundGoal(this));
+        this.goalSelector.add(0, new SwimGoal(this));
+        this.goalSelector.add(1, new MoveToTargetGoal(this, 1.0D, 256));
+        this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(3, new WanderAroundFarGoal(this, 0.8D));
+        this.goalSelector.add(4, new LookAroundGoal(this));
 
         this.targetSelector.add(0, new TrackReceiverGoal(this));
     }
