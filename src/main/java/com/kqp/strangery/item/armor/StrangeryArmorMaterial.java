@@ -26,6 +26,17 @@ public class StrangeryArmorMaterial implements ArmorMaterial {
         () -> Ingredient.ofItems(Strangery.I.BEBSOFYR_INGOT)
     );
 
+    public static final ArmorMaterial CELESTIAL_STEEL = new StrangeryArmorMaterial(
+        "celestial_steel",
+        37,
+        new int[] {3, 6, 8, 3},
+        25,
+        () -> SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
+        6.0F,
+        0.3F,
+        () -> Ingredient.ofItems(Strangery.I.CELESTIAL_STEEL_INGOT)
+    );
+
     private static final int[] BASE_DURABILITY = new int[] {13, 15, 16, 11};
     private final String name;
     private final int durabilityMultiplier;

@@ -126,7 +126,6 @@ public class Strangery implements ModInitializer {
                 .breakByTool(FabricToolTags.PICKAXES, 3)
                 .strength(5.0F, 5.0F)
             ), "bebsofyr_ore");
-
         public static final Block BEBSOFYR_BLOCK =
             register(new Block(FabricBlockSettings
                 .of(Material.METAL)
@@ -135,6 +134,37 @@ public class Strangery implements ModInitializer {
                 .breakByTool(FabricToolTags.PICKAXES)
                 .strength(5.0F, 6.0F)
             ), "bebsofyr_block");
+
+        public static final Block MOONSTONE_ORE =
+            register(new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES, 3)
+                .strength(5.0F, 5.0F)
+            ), "moonstone_ore");
+        public static final Block MOONSTONE_BLOCK =
+            register(new Block(FabricBlockSettings
+                .of(Material.METAL)
+                .requiresTool()
+                .sounds(BlockSoundGroup.METAL)
+                .breakByTool(FabricToolTags.PICKAXES)
+                .strength(5.0F, 6.0F)
+            ), "moonstone_block");
+        public static final Block SUNSTONE_ORE =
+            register(new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES, 3)
+                .strength(5.0F, 5.0F)
+            ), "sunstone_ore");
+        public static final Block SUNSTONE_BLOCK =
+            register(new Block(FabricBlockSettings
+                .of(Material.METAL)
+                .requiresTool()
+                .sounds(BlockSoundGroup.METAL)
+                .breakByTool(FabricToolTags.PICKAXES)
+                .strength(5.0F, 6.0F)
+            ), "sunstone_block");
 
         public static void init() {
         }
@@ -283,6 +313,49 @@ public class Strangery implements ModInitializer {
             StrangeryArmorMaterial.BEBSOFYR,
             EquipmentSlot.FEET
         ), "bebsofyr_boots");
+
+        public static final Item MOONSTONE_FRAGMENT = register(
+            new Item(new Item.Settings().group(ItemGroup.MATERIALS)),
+            "moonstone_fragment"
+        );
+        public static final Item SUNSTONE_FRAGMENT = register(
+            new Item(new Item.Settings().group(ItemGroup.MATERIALS)),
+            "sunstone_fragment"
+        );
+        public static final Item CELESTIAL_STEEL_INGOT = register(
+            new Item(new Item.Settings().group(ItemGroup.MATERIALS)),
+            "celestial_steel_ingot"
+        );
+
+        public static final Item CELESTIAL_STEEL_PICKAXE = register(new StrangeryPickaxeItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_pickaxe");
+        public static final Item CELESTIAL_STEEL_SHOVEL = register(new StrangeryShovelItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_shovel");
+        public static final Item CELESTIAL_STEEL_AXE = register(new StrangeryAxeItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_axe");
+        public static final Item CELESTIAL_STEEL_SWORD = register(new StrangerySwordItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_sword");
+
+        public static final Item CELESTIAL_STEEL_HELMET = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.CELESTIAL_STEEL,
+            EquipmentSlot.HEAD
+        ), "celestial_steel_helmet");
+        public static final Item CELESTIAL_STEEL_CHESTPLATE = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.CELESTIAL_STEEL,
+            EquipmentSlot.CHEST
+        ), "celestial_steel_chestplate");
+        public static final Item CELESTIAL_STEEL_LEGGINGS = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.CELESTIAL_STEEL,
+            EquipmentSlot.LEGS
+        ), "celestial_steel_leggings");
+        public static final Item CELESTIAL_STEEL_BOOTS = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.CELESTIAL_STEEL,
+            EquipmentSlot.FEET
+        ), "celestial_steel_boots");
 
         public static void init() {
         }
