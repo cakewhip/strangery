@@ -1,6 +1,14 @@
 package com.kqp.strangery;
 
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
+import com.kqp.strangery.item.armor.StrangeryArmorItem;
+import com.kqp.strangery.item.armor.StrangeryArmorMaterial;
+import com.kqp.strangery.item.tool.StrangeryAxeItem;
+import com.kqp.strangery.item.tool.StrangeryHoeItem;
+import com.kqp.strangery.item.tool.StrangeryPickaxeItem;
+import com.kqp.strangery.item.tool.StrangeryShovelItem;
+import com.kqp.strangery.item.tool.StrangerySwordItem;
+import com.kqp.strangery.item.tool.StrangeryToolMaterial;
 import com.kqp.strangery.statuseffect.CustomStatusEffect;
 import com.kqp.strangery.statuseffect.HallucinatingStatusEffect;
 import com.kqp.strangery.statuseffect.HealthStatusEffect;
@@ -16,6 +24,7 @@ import net.minecraft.block.FallingBlock;
 import net.minecraft.block.Material;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -24,7 +33,13 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.FoodComponent;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
+import net.minecraft.item.SpawnEggItem;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -103,6 +118,23 @@ public class Strangery implements ModInitializer {
                 .breakByTool(FabricToolTags.PICKAXES)
                 .strength(0.75F, 3.0F)
             ), "loose_stone");
+
+        public static final Block BEBSOFYR_ORE =
+            register(new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES, 3)
+                .strength(5.0F, 5.0F)
+            ), "bebsofyr_ore");
+
+        public static final Block BEBSOFYR_BLOCK =
+            register(new Block(FabricBlockSettings
+                .of(Material.METAL)
+                .requiresTool()
+                .sounds(BlockSoundGroup.METAL)
+                .breakByTool(FabricToolTags.PICKAXES)
+                .strength(5.0F, 6.0F)
+            ), "bebsofyr_block");
 
         public static void init() {
         }
@@ -216,6 +248,42 @@ public class Strangery implements ModInitializer {
             )
         ), "rock_candy");
 
+        public static final Item BEBSOFYR_INGOT =
+            register(new Item(new Item.Settings().group(ItemGroup.MATERIALS)), "bebsofyr_ingot");
+
+        public static final Item BEBSOFYR_PICKAXE = register(new StrangeryPickaxeItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_pickaxe");
+        public static final Item BEBSOFYR_SHOVEL = register(new StrangeryShovelItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_shovel");
+        public static final Item BEBSOFYR_AXE = register(new StrangeryAxeItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_axe");
+        public static final Item BEBSOFYR_HOE = register(new StrangeryHoeItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_hoe");
+        public static final Item BEBSOFYR_SWORD = register(new StrangerySwordItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_sword");
+
+        public static final Item BEBSOFYR_HELMET = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.BEBSOFYR,
+            EquipmentSlot.HEAD
+        ), "bebsofyr_helmet");
+        public static final Item BEBSOFYR_CHESTPLATE = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.BEBSOFYR,
+            EquipmentSlot.CHEST
+        ), "bebsofyr_chestplate");
+        public static final Item BEBSOFYR_LEGGINGS = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.BEBSOFYR,
+            EquipmentSlot.LEGS
+        ), "bebsofyr_leggings");
+        public static final Item BEBSOFYR_BOOTS = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.BEBSOFYR,
+            EquipmentSlot.FEET
+        ), "bebsofyr_boots");
+
         public static void init() {
         }
 
@@ -232,7 +300,7 @@ public class Strangery implements ModInitializer {
                 .build();
         }
     }
-    
+
     // Entities
     public static class E {
         public static final EntityType<EnderAgentEntity> ENDER_AGENT = Registry.register(
@@ -243,14 +311,18 @@ public class Strangery implements ModInitializer {
                 .trackable(72, 3)
                 .build()
         );
-        
+
         public static void init() {
             register(ENDER_AGENT, 1447446, 0, EnderAgentEntity.createEnderAgentAttributes());
         }
 
-        private static <T extends LivingEntity> void register(EntityType<T> type, int primaryColor, int secondaryColor, DefaultAttributeContainer.Builder attributeBuilder) {
-            Registry.register(Registry.ITEM, new Identifier(EntityType.getId(type).toString() + "_spawn_egg"),
-                new SpawnEggItem(type, primaryColor, secondaryColor, new Item.Settings().group(ItemGroup.MISC))
+        private static <T extends LivingEntity> void register(EntityType<T> type, int primaryColor,
+                                                              int secondaryColor,
+                                                              DefaultAttributeContainer.Builder attributeBuilder) {
+            Registry.register(Registry.ITEM,
+                new Identifier(EntityType.getId(type).toString() + "_spawn_egg"),
+                new SpawnEggItem(type, primaryColor, secondaryColor,
+                    new Item.Settings().group(ItemGroup.MISC))
             );
 
             FabricDefaultAttributeRegistry.register(type, attributeBuilder);
@@ -475,13 +547,27 @@ public class Strangery implements ModInitializer {
             .spreadHorizontally()
             .repeat(8);
 
+        private static final ConfiguredFeature<?, ?> BEBSOFYR_ORE_OVERWORLD = Feature.ORE
+            .configure(new OreFeatureConfig(
+                OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+                B.BEBSOFYR_ORE.getDefaultState(),
+                6
+            ))
+            .rangeOf(16)
+            .spreadHorizontally();
+
         public static void init() {
             register(FOODIUM_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES, "foodium_ore");
-            register(RANDOMIUM_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES, "randomium_ore");
-            register(LOOSE_STONE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_DECORATION, "loose_stone");
+            register(RANDOMIUM_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES,
+                "randomium_ore");
+            register(LOOSE_STONE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_DECORATION,
+                "loose_stone");
+            register(BEBSOFYR_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES,
+                "bebsofyr_ore");
         }
 
-        private static void register(ConfiguredFeature<?, ?> feature, GenerationStep.Feature step, String name) {
+        private static void register(ConfiguredFeature<?, ?> feature, GenerationStep.Feature step,
+                                     String name) {
             Registry.register(
                 BuiltinRegistries.CONFIGURED_FEATURE,
                 id(name),

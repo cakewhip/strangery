@@ -2,6 +2,8 @@
     "block.strangery.foodium_ore": "Foodium Ore",
     "block.strangery.randomium_ore": "Randomium Ore",
     "block.strangery.loose_stone": "Loose Stone",
+    "block.strangery.bebsofyr_ore": "Bebsofyr Ore",
+    "block.strangery.bebsofyr_block": "Bebsofyr Block",
 
     "item.strangery.unwieldy_stick": "Unwieldy Stick",
     "item.strangery.foodium": "Foodium",
@@ -19,6 +21,17 @@
     "item.strangery.ramen": "Ramen",
     "item.strangery.pizza": "Pizza",
     "item.strangery.rock_candy": "Rock Candy",
+
+    "item.strangery.bebsofyr_ingot": "Bebsofyr Ingot",
+    "item.strangery.bebsofyr_pickaxe": "Bebsofyr Pickaxe",
+    "item.strangery.bebsofyr_sword": "Bebsofyr Sword",
+    "item.strangery.bebsofyr_shovel": "Bebsofyr Shovel",
+    "item.strangery.bebsofyr_axe": "Bebsofyr Axe",
+    "item.strangery.bebsofyr_hoe": "Bebsofyr Hoe",
+    "item.strangery.bebsofyr_helmet": "Bebsofyr Helmet",
+    "item.strangery.bebsofyr_chestplate": "Bebsofyr Chestplate",
+    "item.strangery.bebsofyr_leggings": "Bebsofyr Leggings",
+    "item.strangery.bebsofyr_boots": "Bebsofyr Boots",
 
     "effect.strangery.deaf": "Deaf",
     "effect.strangery.bleeding": "Bleeding",

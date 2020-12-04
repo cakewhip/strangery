@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XX",
+        "X#",
+        " #"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:stick"
+        },
+        "X": {
+            "item": "strangery:bebsofyr_ingot"
+        }
+    },
+    "result": {
+        "item": "strangery:bebsofyr_axe"
+    }
+}
