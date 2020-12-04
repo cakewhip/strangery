@@ -135,6 +135,14 @@ public class Strangery implements ModInitializer {
                 .strength(5.0F, 6.0F)
             ), "bebsofyr_block");
 
+        public static final Block OILY_BLACK_STONE =
+            register(new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES)
+                .strength(50.0F, 12000.0F)
+            ), "oily_black_stone");
+
         public static final Block MOONSTONE_ORE =
             register(new Block(FabricBlockSettings
                 .of(Material.STONE)

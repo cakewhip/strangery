@@ -9,6 +9,7 @@ BLOCKS = [
     "loose_stone",
     "bebsofyr_ore",
     "bebsofyr_block",
+    "oily_black_stone",
     "moonstone_ore",
     "moonstone_block",
     "sunstone_ore",
