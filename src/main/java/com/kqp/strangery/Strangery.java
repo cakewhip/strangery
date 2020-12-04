@@ -1,6 +1,12 @@
 package com.kqp.strangery;
 
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
+import com.kqp.strangery.item.StrangeryAxeItem;
+import com.kqp.strangery.item.StrangeryHoeItem;
+import com.kqp.strangery.item.StrangeryPickaxeItem;
+import com.kqp.strangery.item.StrangeryShovelItem;
+import com.kqp.strangery.item.StrangerySwordItem;
+import com.kqp.strangery.item.tool.StrangeryToolMaterial;
 import com.kqp.strangery.statuseffect.CustomStatusEffect;
 import com.kqp.strangery.statuseffect.HallucinatingStatusEffect;
 import com.kqp.strangery.statuseffect.HealthStatusEffect;
@@ -241,6 +247,22 @@ public class Strangery implements ModInitializer {
 
         public static final Item BEBSOFYR_INGOT =
             register(new Item(new Item.Settings().group(ItemGroup.MATERIALS)), "bebsofyr_ingot");
+
+        public static final Item BEBSOFYR_PICKAXE = register(new StrangeryPickaxeItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_pickaxe");
+        public static final Item BEBSOFYR_SHOVEL = register(new StrangeryShovelItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_shovel");
+        public static final Item BEBSOFYR_AXE = register(new StrangeryAxeItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_axe");
+        public static final Item BEBSOFYR_HOE = register(new StrangeryHoeItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_hoe");
+        public static final Item BEBSOFYR_SWORD = register(new StrangerySwordItem(
+            StrangeryToolMaterial.BEBSOFYR
+        ), "bebsofyr_sword");
 
         public static void init() {
         }
