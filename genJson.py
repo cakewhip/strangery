@@ -8,7 +8,11 @@ BLOCKS = [
     "randomium_ore",
     "loose_stone",
     "bebsofyr_ore",
-    "bebsofyr_block"
+    "bebsofyr_block",
+    "moonstone_ore",
+    "moonstone_block",
+    "sunstone_ore",
+    "sunstone_block"
 ]
 
 ITEMS = [
@@ -29,18 +33,19 @@ ITEMS = [
     "pizza",
     "rock_candy",
     "bebsofyr_ingot",
-    "bebsofyr_boots",
-    "bebsofyr_leggings",
-    "bebsofyr_chestplate",
-    "bebsofyr_helmet"
+    "moonstone_fragment",
+    "sunstone_fragment",
+    "celestial_steel_ingot"
 ]
 
 TOOLS = [
-    ("bebsofyr", "bebsofyr_ingot")
+    ("bebsofyr", "bebsofyr_ingot"),
+    ("celestial_steel", "celestial_steel_ingot")
 ]
 
 ARMOR = [
-    ("bebsofyr", "bebsofyr_ingot")
+    ("bebsofyr", "bebsofyr_ingot"),
+    ("celestial_steel", "celestial_steel_ingot")
 ]
 
 BOWS = [
