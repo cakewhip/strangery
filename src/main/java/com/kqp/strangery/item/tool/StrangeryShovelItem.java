@@ -1,4 +1,4 @@
-package com.kqp.strangery.item;
+package com.kqp.strangery.item.tool;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;

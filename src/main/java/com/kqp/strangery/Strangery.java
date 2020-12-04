@@ -1,11 +1,13 @@
 package com.kqp.strangery;
 
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
-import com.kqp.strangery.item.StrangeryAxeItem;
-import com.kqp.strangery.item.StrangeryHoeItem;
-import com.kqp.strangery.item.StrangeryPickaxeItem;
-import com.kqp.strangery.item.StrangeryShovelItem;
-import com.kqp.strangery.item.StrangerySwordItem;
+import com.kqp.strangery.item.armor.StrangeryArmorItem;
+import com.kqp.strangery.item.armor.StrangeryArmorMaterial;
+import com.kqp.strangery.item.tool.StrangeryAxeItem;
+import com.kqp.strangery.item.tool.StrangeryHoeItem;
+import com.kqp.strangery.item.tool.StrangeryPickaxeItem;
+import com.kqp.strangery.item.tool.StrangeryShovelItem;
+import com.kqp.strangery.item.tool.StrangerySwordItem;
 import com.kqp.strangery.item.tool.StrangeryToolMaterial;
 import com.kqp.strangery.statuseffect.CustomStatusEffect;
 import com.kqp.strangery.statuseffect.HallucinatingStatusEffect;
@@ -22,6 +24,7 @@ import net.minecraft.block.FallingBlock;
 import net.minecraft.block.Material;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -263,6 +266,23 @@ public class Strangery implements ModInitializer {
         public static final Item BEBSOFYR_SWORD = register(new StrangerySwordItem(
             StrangeryToolMaterial.BEBSOFYR
         ), "bebsofyr_sword");
+
+        public static final Item BEBSOFYR_HELMET = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.BEBSOFYR,
+            EquipmentSlot.HEAD
+        ), "bebsofyr_helmet");
+        public static final Item BEBSOFYR_CHESTPLATE = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.BEBSOFYR,
+            EquipmentSlot.CHEST
+        ), "bebsofyr_chestplate");
+        public static final Item BEBSOFYR_LEGGINGS = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.BEBSOFYR,
+            EquipmentSlot.LEGS
+        ), "bebsofyr_leggings");
+        public static final Item BEBSOFYR_BOOTS = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.BEBSOFYR,
+            EquipmentSlot.FEET
+        ), "bebsofyr_boots");
 
         public static void init() {
         }
