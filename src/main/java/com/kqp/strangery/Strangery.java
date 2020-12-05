@@ -147,16 +147,16 @@ public class Strangery implements ModInitializer {
             register(new Block(FabricBlockSettings
                 .of(Material.STONE)
                 .requiresTool()
-                .breakByTool(FabricToolTags.PICKAXES)
-                .strength(50.0F, 12000.0F)
+                .breakByTool(FabricToolTags.PICKAXES, 4)
+                .strength(7.5F, 12000.0F)
             ), "oily_black_stone");
 
         public static final Block MOONSTONE_ORE =
             register(new Block(FabricBlockSettings
                 .of(Material.STONE)
                 .requiresTool()
-                .breakByTool(FabricToolTags.PICKAXES, 3)
-                .strength(5.0F, 5.0F)
+                .breakByTool(FabricToolTags.PICKAXES, 4)
+                .strength(7.5F, 12000.0F)
             ), "moonstone_ore");
         public static final Block MOONSTONE_BLOCK =
             register(new Block(FabricBlockSettings
@@ -170,8 +170,8 @@ public class Strangery implements ModInitializer {
             register(new Block(FabricBlockSettings
                 .of(Material.STONE)
                 .requiresTool()
-                .breakByTool(FabricToolTags.PICKAXES, 3)
-                .strength(5.0F, 5.0F)
+                .breakByTool(FabricToolTags.PICKAXES, 4)
+                .strength(7.5F, 12000.0F)
             ), "sunstone_ore");
         public static final Block SUNSTONE_BLOCK =
             register(new Block(FabricBlockSettings
