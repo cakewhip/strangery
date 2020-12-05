@@ -6,7 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "strangery:moonstone_stone"
+                    "name": "strangery:moonstone_block"
                 }
             ],
             "conditions": [

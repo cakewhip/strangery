@@ -6,7 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "strangery:sunstone_stone"
+                    "name": "strangery:sunstone_block"
                 }
             ],
             "conditions": [
