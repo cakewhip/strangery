@@ -352,6 +352,9 @@ public class Strangery implements ModInitializer {
         public static final Item CELESTIAL_STEEL_AXE = register(new StrangeryAxeItem(
             StrangeryToolMaterial.CELESTIAL_STEEL
         ), "celestial_steel_axe");
+        public static final Item CELESTIAL_STEEL_HOE = register(new StrangeryHoeItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_hoe");
         public static final Item CELESTIAL_STEEL_SWORD = register(new StrangerySwordItem(
             StrangeryToolMaterial.CELESTIAL_STEEL
         ), "celestial_steel_sword");
@@ -661,7 +664,8 @@ public class Strangery implements ModInitializer {
             register(BEBSOFYR_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES,
                 "bebsofyr_ore");
 
-            Registry.register(Registry.STRUCTURE_PIECE, id("strange_monument_piece"), STRANGE_MONUMENT_PIECE);
+            Registry.register(Registry.STRUCTURE_PIECE, id("strange_monument_piece"),
+                STRANGE_MONUMENT_PIECE);
             FabricStructureBuilder.create(id("strange_monument"), STRANGE_MONUMENT)
                 .step(GenerationStep.Feature.VEGETAL_DECORATION)
                 .defaultConfig(32, 8, 12345)
