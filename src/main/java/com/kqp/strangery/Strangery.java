@@ -1,6 +1,8 @@
 package com.kqp.strangery;
 
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
+import com.kqp.strangery.gen.StrangeMonumentFeature;
+import com.kqp.strangery.gen.StrangeMonumentPiece;
 import com.kqp.strangery.item.armor.StrangeryArmorItem;
 import com.kqp.strangery.item.armor.StrangeryArmorMaterial;
 import com.kqp.strangery.item.tool.StrangeryAxeItem;
@@ -18,6 +20,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.FallingBlock;
@@ -41,15 +44,20 @@ import net.minecraft.item.Items;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.structure.StructurePieceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.StructureFeature;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -126,7 +134,6 @@ public class Strangery implements ModInitializer {
                 .breakByTool(FabricToolTags.PICKAXES, 3)
                 .strength(5.0F, 5.0F)
             ), "bebsofyr_ore");
-
         public static final Block BEBSOFYR_BLOCK =
             register(new Block(FabricBlockSettings
                 .of(Material.METAL)
@@ -135,6 +142,45 @@ public class Strangery implements ModInitializer {
                 .breakByTool(FabricToolTags.PICKAXES)
                 .strength(5.0F, 6.0F)
             ), "bebsofyr_block");
+
+        public static final Block OILY_BLACK_STONE =
+            register(new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES, 4)
+                .strength(7.5F, 12000.0F)
+            ), "oily_black_stone");
+
+        public static final Block MOONSTONE_ORE =
+            register(new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES, 4)
+                .strength(7.5F, 12000.0F)
+            ), "moonstone_ore");
+        public static final Block MOONSTONE_BLOCK =
+            register(new Block(FabricBlockSettings
+                .of(Material.METAL)
+                .requiresTool()
+                .sounds(BlockSoundGroup.METAL)
+                .breakByTool(FabricToolTags.PICKAXES)
+                .strength(5.0F, 6.0F)
+            ), "moonstone_block");
+        public static final Block SUNSTONE_ORE =
+            register(new Block(FabricBlockSettings
+                .of(Material.STONE)
+                .requiresTool()
+                .breakByTool(FabricToolTags.PICKAXES, 4)
+                .strength(7.5F, 12000.0F)
+            ), "sunstone_ore");
+        public static final Block SUNSTONE_BLOCK =
+            register(new Block(FabricBlockSettings
+                .of(Material.METAL)
+                .requiresTool()
+                .sounds(BlockSoundGroup.METAL)
+                .breakByTool(FabricToolTags.PICKAXES)
+                .strength(5.0F, 6.0F)
+            ), "sunstone_block");
 
         public static void init() {
         }
@@ -283,6 +329,52 @@ public class Strangery implements ModInitializer {
             StrangeryArmorMaterial.BEBSOFYR,
             EquipmentSlot.FEET
         ), "bebsofyr_boots");
+
+        public static final Item MOONSTONE_FRAGMENT = register(
+            new Item(new Item.Settings().group(ItemGroup.MATERIALS)),
+            "moonstone_fragment"
+        );
+        public static final Item SUNSTONE_FRAGMENT = register(
+            new Item(new Item.Settings().group(ItemGroup.MATERIALS)),
+            "sunstone_fragment"
+        );
+        public static final Item CELESTIAL_STEEL_INGOT = register(
+            new Item(new Item.Settings().group(ItemGroup.MATERIALS)),
+            "celestial_steel_ingot"
+        );
+
+        public static final Item CELESTIAL_STEEL_PICKAXE = register(new StrangeryPickaxeItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_pickaxe");
+        public static final Item CELESTIAL_STEEL_SHOVEL = register(new StrangeryShovelItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_shovel");
+        public static final Item CELESTIAL_STEEL_AXE = register(new StrangeryAxeItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_axe");
+        public static final Item CELESTIAL_STEEL_HOE = register(new StrangeryHoeItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_hoe");
+        public static final Item CELESTIAL_STEEL_SWORD = register(new StrangerySwordItem(
+            StrangeryToolMaterial.CELESTIAL_STEEL
+        ), "celestial_steel_sword");
+
+        public static final Item CELESTIAL_STEEL_HELMET = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.CELESTIAL_STEEL,
+            EquipmentSlot.HEAD
+        ), "celestial_steel_helmet");
+        public static final Item CELESTIAL_STEEL_CHESTPLATE = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.CELESTIAL_STEEL,
+            EquipmentSlot.CHEST
+        ), "celestial_steel_chestplate");
+        public static final Item CELESTIAL_STEEL_LEGGINGS = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.CELESTIAL_STEEL,
+            EquipmentSlot.LEGS
+        ), "celestial_steel_leggings");
+        public static final Item CELESTIAL_STEEL_BOOTS = register(new StrangeryArmorItem(
+            StrangeryArmorMaterial.CELESTIAL_STEEL,
+            EquipmentSlot.FEET
+        ), "celestial_steel_boots");
 
         public static void init() {
         }
@@ -556,6 +648,13 @@ public class Strangery implements ModInitializer {
             .rangeOf(16)
             .spreadHorizontally();
 
+        public static final StructurePieceType STRANGE_MONUMENT_PIECE =
+            StrangeMonumentPiece::new;
+        public static final StructureFeature<DefaultFeatureConfig> STRANGE_MONUMENT =
+            new StrangeMonumentFeature(DefaultFeatureConfig.CODEC);
+        public static final ConfiguredStructureFeature<?, ?> STRANGE_MONUMENT_CONFIGURED =
+            STRANGE_MONUMENT.configure(DefaultFeatureConfig.DEFAULT);
+
         public static void init() {
             register(FOODIUM_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES, "foodium_ore");
             register(RANDOMIUM_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES,
@@ -564,6 +663,24 @@ public class Strangery implements ModInitializer {
                 "loose_stone");
             register(BEBSOFYR_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES,
                 "bebsofyr_ore");
+
+            Registry.register(Registry.STRUCTURE_PIECE, id("strange_monument_piece"),
+                STRANGE_MONUMENT_PIECE);
+            FabricStructureBuilder.create(id("strange_monument"), STRANGE_MONUMENT)
+                .step(GenerationStep.Feature.VEGETAL_DECORATION)
+                .defaultConfig(32, 8, 12345)
+                .adjustsSurface()
+                .register();
+            RegistryKey strangeMonumentKey = RegistryKey.of(
+                Registry.CONFIGURED_STRUCTURE_FEATURE_WORLDGEN,
+                id("strange_monument")
+            );
+            BuiltinRegistries.add(
+                BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE,
+                strangeMonumentKey.getValue(),
+                STRANGE_MONUMENT_CONFIGURED
+            );
+            BiomeModifications.addStructure(BiomeSelectors.all(), strangeMonumentKey);
         }
 
         private static void register(ConfiguredFeature<?, ?> feature, GenerationStep.Feature step,

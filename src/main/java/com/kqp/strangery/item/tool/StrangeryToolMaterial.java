@@ -11,6 +11,10 @@ public class StrangeryToolMaterial implements ToolMaterial {
         3, 3122, 7.75F, 2.75F, 10
     );
 
+    public static final ToolMaterial CELESTIAL_STEEL = tool(
+        5, 8124, 12.0F, 6.9F, 22
+    );
+
     private final int miningLevel;
     private final int durability;
     private final float miningSpeed;
