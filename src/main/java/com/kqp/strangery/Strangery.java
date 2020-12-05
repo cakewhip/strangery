@@ -1,6 +1,8 @@
 package com.kqp.strangery;
 
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
+import com.kqp.strangery.gen.StrangeMonumentFeature;
+import com.kqp.strangery.gen.StrangeMonumentPiece;
 import com.kqp.strangery.item.armor.StrangeryArmorItem;
 import com.kqp.strangery.item.armor.StrangeryArmorMaterial;
 import com.kqp.strangery.item.tool.StrangeryAxeItem;
@@ -18,6 +20,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.FallingBlock;
@@ -41,15 +44,20 @@ import net.minecraft.item.Items;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.structure.StructurePieceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.StructureFeature;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -637,6 +645,13 @@ public class Strangery implements ModInitializer {
             .rangeOf(16)
             .spreadHorizontally();
 
+        public static final StructurePieceType STRANGE_MONUMENT_PIECE =
+            StrangeMonumentPiece::new;
+        public static final StructureFeature<DefaultFeatureConfig> STRANGE_MONUMENT =
+            new StrangeMonumentFeature(DefaultFeatureConfig.CODEC);
+        public static final ConfiguredStructureFeature<?, ?> STRANGE_MONUMENT_CONFIGURED =
+            STRANGE_MONUMENT.configure(DefaultFeatureConfig.DEFAULT);
+
         public static void init() {
             register(FOODIUM_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES, "foodium_ore");
             register(RANDOMIUM_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES,
@@ -645,6 +660,23 @@ public class Strangery implements ModInitializer {
                 "loose_stone");
             register(BEBSOFYR_ORE_OVERWORLD, GenerationStep.Feature.UNDERGROUND_ORES,
                 "bebsofyr_ore");
+
+            Registry.register(Registry.STRUCTURE_PIECE, id("strange_monument_piece"), STRANGE_MONUMENT_PIECE);
+            FabricStructureBuilder.create(id("strange_monument"), STRANGE_MONUMENT)
+                .step(GenerationStep.Feature.VEGETAL_DECORATION)
+                .defaultConfig(32, 8, 12345)
+                .adjustsSurface()
+                .register();
+            RegistryKey strangeMonumentKey = RegistryKey.of(
+                Registry.CONFIGURED_STRUCTURE_FEATURE_WORLDGEN,
+                id("strange_monument")
+            );
+            BuiltinRegistries.add(
+                BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE,
+                strangeMonumentKey.getValue(),
+                STRANGE_MONUMENT_CONFIGURED
+            );
+            BiomeModifications.addStructure(BiomeSelectors.all(), strangeMonumentKey);
         }
 
         private static void register(ConfiguredFeature<?, ?> feature, GenerationStep.Feature step,
