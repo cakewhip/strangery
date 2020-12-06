@@ -1,7 +1,6 @@
 package com.kqp.strangery.item;
 
 import com.kqp.strangery.Strangery.ECT;
-import java.util.Random;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -73,7 +72,7 @@ public class LongshotItem extends Item {
                     );
 
                     stack.damage(
-                        i,
+                        1,
                         player,
                         p -> {
                             p.sendToolBreakStatus(user.getActiveHand());
