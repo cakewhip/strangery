@@ -61,8 +61,10 @@ public class LongshotItem extends Item {
     ) {
         if (user instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) user;
+            boolean hasAirLoading =
+                EnchantmentHelper.getLevel(ECT.AIR_LOADING, stack) > 0;
 
-            if (player.isOnGround()) {
+            if (player.isOnGround() || hasAirLoading) {
                 int i = this.getMaxUseTime(stack) - remainingUseTicks;
                 float pullProgress = getPullProgress(i);
 
@@ -108,6 +110,10 @@ public class LongshotItem extends Item {
                             p.sendToolBreakStatus(user.getActiveHand());
                         }
                     );
+
+                    if (hasAirLoading) {
+                        player.fallDistance = 0.0F;
+                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.kqp.strangery;
 
+import com.kqp.strangery.enchantment.AirLoadingEnchantment;
 import com.kqp.strangery.enchantment.SlingEnchantment;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.gen.StrangeMonumentFeature;
@@ -95,6 +96,12 @@ public class Strangery implements ModInitializer {
             Registry.ENCHANTMENT,
             id("sling"),
             new SlingEnchantment()
+        );
+
+        public static Enchantment AIR_LOADING = Registry.register(
+            Registry.ENCHANTMENT,
+            id("air_loading"),
+            new AirLoadingEnchantment()
         );
 
         public static void init() {}
