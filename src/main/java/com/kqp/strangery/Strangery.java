@@ -3,6 +3,7 @@ package com.kqp.strangery;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.gen.StrangeMonumentFeature;
 import com.kqp.strangery.gen.StrangeMonumentPiece;
+import com.kqp.strangery.item.LongshotItem;
 import com.kqp.strangery.item.armor.StrangeryArmorItem;
 import com.kqp.strangery.item.armor.StrangeryArmorMaterial;
 import com.kqp.strangery.item.tool.StrangeryAxeItem;
@@ -547,6 +548,11 @@ public class Strangery implements ModInitializer {
                 EquipmentSlot.FEET
             ),
             "celestial_steel_boots"
+        );
+
+        public static final Item LONGSHOT = register(
+            new LongshotItem(),
+            "longshot"
         );
 
         public static void init() {}
