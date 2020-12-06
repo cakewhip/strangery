@@ -1,5 +1,5 @@
 {
-  "variants": {
-    "": { "model": "strangery:block/randomium_ore" }
-  }
+    "variants": {
+        "": { "model": "strangery:block/randomium_ore" }
+    }
 }

@@ -1,5 +1,5 @@
 {
-  "variants": {
-    "": { "model": "strangery:block/oily_black_stone" }
-  }
+    "variants": {
+        "": { "model": "strangery:block/oily_black_stone" }
+    }
 }

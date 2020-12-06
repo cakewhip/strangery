@@ -1,24 +1,24 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "com.kqp.strangery.mixin",
-  "compatibilityLevel": "JAVA_8",
-  "mixins": [
-    "accessor.BlockAccessor",
-    "accessor.MeleeAttackGoalAccessor",
-    "accessor.MobEntityAccessor",
-    "EmptyHandBreakDamageAdder",
-    "MoreFoodAdder",
-    "PlayerDebuffsAdder",
-    "SparringDamageAdder",
-    "WolfTargetEnderAgentMixin"
-  ],
-  "client": [
-    "client.accessor.HeldItemFeatureRendererAccessor",
-    "client.ConfusionEffectApplier",
-    "client.DeafEffectApplier"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
+    "required": true,
+    "minVersion": "0.8",
+    "package": "com.kqp.strangery.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "accessor.BlockAccessor",
+        "accessor.MeleeAttackGoalAccessor",
+        "accessor.MobEntityAccessor",
+        "EmptyHandBreakDamageAdder",
+        "MoreFoodAdder",
+        "PlayerDebuffsAdder",
+        "SparringDamageAdder",
+        "WolfTargetEnderAgentMixin"
+    ],
+    "client": [
+        "client.accessor.HeldItemFeatureRendererAccessor",
+        "client.ConfusionEffectApplier",
+        "client.DeafEffectApplier"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
 }

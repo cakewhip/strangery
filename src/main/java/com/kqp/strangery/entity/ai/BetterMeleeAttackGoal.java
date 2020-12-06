@@ -6,15 +6,15 @@ import net.minecraft.entity.mob.PathAwareEntity;
 
 public class BetterMeleeAttackGoal extends MeleeAttackGoal {
 
-  private final int tickAttackSpeed;
+    private final int tickAttackSpeed;
 
-  public BetterMeleeAttackGoal(PathAwareEntity mob, float attackSpeed) {
-    super(mob, 1.0F, false);
-    this.tickAttackSpeed = (int) ((1F / attackSpeed) * 20F);
-  }
+    public BetterMeleeAttackGoal(PathAwareEntity mob, float attackSpeed) {
+        super(mob, 1.0F, false);
+        this.tickAttackSpeed = (int) ((1F / attackSpeed) * 20F);
+    }
 
-  @Override
-  protected void method_28346() {
-    ((MeleeAttackGoalAccessor) this).setAttackTimer(tickAttackSpeed);
-  }
+    @Override
+    protected void method_28346() {
+        ((MeleeAttackGoalAccessor) this).setAttackTimer(tickAttackSpeed);
+    }
 }

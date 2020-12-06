@@ -1,36 +1,36 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:rice"
-    },
-    {
-      "item": "minecraft:cod"
-    },
-    {
-      "item": "minecraft:tropical_fish"
-    },
-    {
-      "item": "minecraft:pufferfish"
-    },
-    {
-      "item": "minecraft:salmon"
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:rice"
+        },
+        {
+            "item": "minecraft:cod"
+        },
+        {
+            "item": "minecraft:tropical_fish"
+        },
+        {
+            "item": "minecraft:pufferfish"
+        },
+        {
+            "item": "minecraft:salmon"
+        }
+    ],
+    "result": {
+        "item": "strangery:sushi",
+        "count": 1
     }
-  ],
-  "result": {
-    "item": "strangery:sushi",
-    "count": 1
-  }
 }

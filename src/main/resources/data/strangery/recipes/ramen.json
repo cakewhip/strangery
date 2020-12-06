@@ -1,36 +1,36 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "minecraft:water_bucket"
-    },
-    {
-      "item": "minecraft:cooked_chicken"
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "minecraft:water_bucket"
+        },
+        {
+            "item": "minecraft:cooked_chicken"
+        }
+    ],
+    "result": {
+        "item": "strangery:ramen",
+        "count": 1
     }
-  ],
-  "result": {
-    "item": "strangery:ramen",
-    "count": 1
-  }
 }

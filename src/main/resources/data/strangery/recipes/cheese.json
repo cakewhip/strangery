@@ -1,18 +1,18 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "minecraft:milk_bucket"
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "minecraft:milk_bucket"
+        }
+    ],
+    "result": {
+        "item": "strangery:cheese",
+        "count": 1
     }
-  ],
-  "result": {
-    "item": "strangery:cheese",
-    "count": 1
-  }
 }

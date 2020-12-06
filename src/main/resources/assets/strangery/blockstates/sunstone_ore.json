@@ -1,5 +1,5 @@
 {
-  "variants": {
-    "": { "model": "strangery:block/sunstone_ore" }
-  }
+    "variants": {
+        "": { "model": "strangery:block/sunstone_ore" }
+    }
 }

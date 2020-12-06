@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "strangery:item/celestial_steel_pickaxe"
-  }
+    "parent": "minecraft:item/handheld",
+    "textures": {
+        "layer0": "strangery:item/celestial_steel_pickaxe"
+    }
 }

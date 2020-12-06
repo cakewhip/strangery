@@ -1,5 +1,5 @@
 {
-  "variants": {
-    "": { "model": "strangery:block/bebsofyr_ore" }
-  }
+    "variants": {
+        "": { "model": "strangery:block/bebsofyr_ore" }
+    }
 }

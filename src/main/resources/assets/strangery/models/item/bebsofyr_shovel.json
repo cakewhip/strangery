@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "strangery:item/bebsofyr_shovel"
-  }
+    "parent": "minecraft:item/handheld",
+    "textures": {
+        "layer0": "strangery:item/bebsofyr_shovel"
+    }
 }
