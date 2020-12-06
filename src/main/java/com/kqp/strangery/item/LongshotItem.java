@@ -38,46 +38,28 @@ public class LongshotItem extends Item {
                 float pullProgress = getPullProgress(i);
 
                 if ((double) pullProgress >= 0.1D) {
-                    Random random = player.getRandom();
-
-                    float speed =
-                        (pullProgress * 3.0F) *
-                        (
-                            1.0F +
-                            0.5F *
-                            (
-                                EnchantmentHelper.getLevel(ECT.SLING, stack) /
-                                (float) ECT.SLING.getMaxLevel()
-                            )
-                        );
-                    float divergence = 1.0F;
-
                     float yaw = player.yaw;
                     float pitch = player.pitch;
 
-                    // TODO the y-vel is WAY too high
-                    Vec3d vec3d = new Vec3d(
-                        -MathHelper.sin(yaw * 0.017453292F) *
-                        MathHelper.cos(pitch * 0.017453292F),
-                        -MathHelper.sin(pitch * 0.017453292F),
-                        MathHelper.cos(yaw * 0.017453292F) *
-                        MathHelper.cos(pitch * 0.017453292F)
+                    double maxVelY = calcSlingVelocity(
+                        pullProgress,
+                        yaw,
+                        (float) Math.max(player.pitch, -15D),
+                        EnchantmentHelper.getLevel(ECT.SLING, stack)
                     )
-                        .normalize()
-                        .add(
-                            random.nextGaussian() *
-                            0.007499999832361937D *
-                            (double) divergence,
-                            random.nextGaussian() *
-                            0.007499999832361937D *
-                            (double) divergence,
-                            random.nextGaussian() *
-                            0.007499999832361937D *
-                            (double) divergence
-                        )
-                        .multiply(speed);
+                        .y;
+                    Vec3d normalVel = calcSlingVelocity(
+                        pullProgress,
+                        yaw,
+                        pitch,
+                        EnchantmentHelper.getLevel(ECT.SLING, stack)
+                    );
+                    double velY =
+                        Math.signum(maxVelY) *
+                        Math.min(Math.abs(maxVelY), Math.abs(normalVel.y));
+                    Vec3d finalVel = new Vec3d(normalVel.x, velY, normalVel.z);
 
-                    player.setVelocity(vec3d);
+                    player.setVelocity(finalVel);
 
                     world.playSound(
                         null,
@@ -136,5 +118,26 @@ public class LongshotItem extends Item {
     @Override
     public int getEnchantability() {
         return 1;
+    }
+
+    public static Vec3d calcSlingVelocity(
+        float pullProgress,
+        float yaw,
+        float pitch,
+        int slingLevel
+    ) {
+        float speed =
+            (pullProgress * 3.0F) *
+            (1.0F + 0.5F * (slingLevel / (float) ECT.SLING.getMaxLevel()));
+
+        return new Vec3d(
+            -MathHelper.sin(yaw * 0.017453292F) *
+            MathHelper.cos(pitch * 0.017453292F),
+            -MathHelper.sin(pitch * 0.017453292F),
+            MathHelper.cos(yaw * 0.017453292F) *
+            MathHelper.cos(pitch * 0.017453292F)
+        )
+            .normalize()
+            .multiply(speed);
     }
 }
