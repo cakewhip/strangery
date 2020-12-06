@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 
 public class LongshotItem extends Item {
 
+    private static final float MAX_PITCH = 25;
     private static final int MAX_LOAD_TIME = 15;
 
     public LongshotItem() {
@@ -72,7 +73,7 @@ public class LongshotItem extends Item {
                     double maxVelY = calcSlingVelocity(
                         pullProgress,
                         yaw,
-                        (float) Math.max(player.pitch, -15D),
+                        Math.max(player.pitch, -MAX_PITCH),
                         EnchantmentHelper.getLevel(ECT.SLING, stack)
                     )
                         .y;
@@ -151,7 +152,7 @@ public class LongshotItem extends Item {
     ) {
         float speed =
             (pullProgress * 3.0F) *
-            (1.0F + 0.75F * (slingLevel / (float) ECT.SLING.getMaxLevel()));
+            (1.0F + 1.15F * (slingLevel / (float) ECT.SLING.getMaxLevel()));
 
         return new Vec3d(
             -MathHelper.sin(yaw * 0.017453292F) *
