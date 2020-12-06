@@ -1,15 +1,12 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "X X",
-        "X X"
-    ],
-    "key": {
-        "X": {
-            "item": "strangery:celestial_steel_ingot"
-        }
-    },
-    "result": {
-        "item": "strangery:celestial_steel_boots"
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["X X", "X X"],
+  "key": {
+    "X": {
+      "item": "strangery:celestial_steel_ingot"
     }
+  },
+  "result": {
+    "item": "strangery:celestial_steel_boots"
+  }
 }

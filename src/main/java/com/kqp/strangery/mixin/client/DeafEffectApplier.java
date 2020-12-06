@@ -19,14 +19,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  */
 @Mixin(value = SoundSystem.class, priority = 100)
 public class DeafEffectApplier {
-    @Inject(method = "play", at = @At("HEAD"), cancellable = true)
-    public void tick(SoundInstance soundInstance, CallbackInfo callbackInfo) {
-        ClientPlayerEntity player = MinecraftClient.getInstance().player;
 
-        if (player != null) {
-            if (player.hasStatusEffect(Strangery.SE.DEAF)) {
-                callbackInfo.cancel();
-            }
-        }
+  @Inject(method = "play", at = @At("HEAD"), cancellable = true)
+  public void tick(SoundInstance soundInstance, CallbackInfo callbackInfo) {
+    ClientPlayerEntity player = MinecraftClient.getInstance().player;
+
+    if (player != null) {
+      if (player.hasStatusEffect(Strangery.SE.DEAF)) {
+        callbackInfo.cancel();
+      }
     }
+  }
 }

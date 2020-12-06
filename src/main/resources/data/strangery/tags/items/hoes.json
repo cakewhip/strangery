@@ -1,7 +1,4 @@
 {
-    "replace": false,
-    "values": [
-        "strangery:bebsofyr_hoe",
-        "strangery:celestial_steel_hoe"
-    ]
+  "replace": false,
+  "values": ["strangery:bebsofyr_hoe", "strangery:celestial_steel_hoe"]
 }

@@ -1,12 +1,12 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "strangery:sunstone_block"
-        }
-    ],
-    "result": {
-        "item": "strangery:sunstone_fragment",
-        "count": 9
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "strangery:sunstone_block"
     }
+  ],
+  "result": {
+    "item": "strangery:sunstone_fragment",
+    "count": 9
+  }
 }

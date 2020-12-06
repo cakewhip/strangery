@@ -1,5 +1,5 @@
 {
-    "variants": {
-        "": { "model": "strangery:block/moonstone_ore" }
-    }
+  "variants": {
+    "": { "model": "strangery:block/moonstone_ore" }
+  }
 }

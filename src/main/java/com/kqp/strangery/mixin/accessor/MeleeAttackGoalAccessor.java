@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(MeleeAttackGoal.class)
 public interface MeleeAttackGoalAccessor {
-    @Mutable
-    @Accessor("field_24667")
-    void setAttackTimer(int attackTimer);
+  @Mutable
+  @Accessor("field_24667")
+  void setAttackTimer(int attackTimer);
 }

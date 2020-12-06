@@ -1,36 +1,36 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "strangery:sunstone_fragment"
-        },
-        {
-            "item": "strangery:sunstone_fragment"
-        },
-        {
-            "item": "strangery:sunstone_fragment"
-        },
-        {
-            "item": "strangery:sunstone_fragment"
-        },
-        {
-            "item": "strangery:sunstone_fragment"
-        },
-        {
-            "item": "strangery:sunstone_fragment"
-        },
-        {
-            "item": "strangery:sunstone_fragment"
-        },
-        {
-            "item": "strangery:sunstone_fragment"
-        },
-        {
-            "item": "strangery:sunstone_fragment"
-        }
-    ],
-    "result": {
-        "item": "strangery:sunstone_block",
-        "count": 1
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "strangery:sunstone_fragment"
+    },
+    {
+      "item": "strangery:sunstone_fragment"
+    },
+    {
+      "item": "strangery:sunstone_fragment"
+    },
+    {
+      "item": "strangery:sunstone_fragment"
+    },
+    {
+      "item": "strangery:sunstone_fragment"
+    },
+    {
+      "item": "strangery:sunstone_fragment"
+    },
+    {
+      "item": "strangery:sunstone_fragment"
+    },
+    {
+      "item": "strangery:sunstone_fragment"
+    },
+    {
+      "item": "strangery:sunstone_fragment"
     }
+  ],
+  "result": {
+    "item": "strangery:sunstone_block",
+    "count": 1
+  }
 }

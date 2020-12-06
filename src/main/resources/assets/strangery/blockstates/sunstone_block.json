@@ -1,5 +1,5 @@
 {
-    "variants": {
-        "": { "model": "strangery:block/sunstone_block" }
-    }
+  "variants": {
+    "": { "model": "strangery:block/sunstone_block" }
+  }
 }

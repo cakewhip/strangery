@@ -1,7 +1,4 @@
 {
-    "replace": false,
-    "values": [
-        "strangery:bebsofyr_axe",
-        "strangery:celestial_steel_axe"
-    ]
+  "replace": false,
+  "values": ["strangery:bebsofyr_axe", "strangery:celestial_steel_axe"]
 }
