@@ -17,6 +17,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class LongshotItem extends Item {
+
     private static final int MAX_LOAD_TIME = 15;
 
     public LongshotItem() {
@@ -132,14 +133,9 @@ public class LongshotItem extends Item {
         Hand hand
     ) {
         ItemStack itemStack = user.getStackInHand(hand);
+        user.setCurrentHand(hand);
 
-        if (user.isOnGround()) {
-            user.setCurrentHand(hand);
-
-            return TypedActionResult.consume(itemStack);
-        }
-
-        return TypedActionResult.fail(itemStack);
+        return TypedActionResult.consume(itemStack);
     }
 
     @Override
