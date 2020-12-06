@@ -1,5 +1,6 @@
 package com.kqp.strangery;
 
+import com.kqp.strangery.enchantment.SlingEnchantment;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.gen.StrangeMonumentFeature;
 import com.kqp.strangery.gen.StrangeMonumentPiece;
@@ -28,6 +29,7 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.block.Material;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -68,6 +70,7 @@ public class Strangery implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ECT.init();
         SND.init();
 
         B.init();
@@ -83,6 +86,18 @@ public class Strangery implements ModInitializer {
 
     public static Identifier id(String name) {
         return new Identifier(MOD_ID, name);
+    }
+
+    // Enchantments
+    public static class ECT {
+
+        public static Enchantment SLING = Registry.register(
+            Registry.ENCHANTMENT,
+            id("sling"),
+            new SlingEnchantment()
+        );
+
+        public static void init() {}
     }
 
     // Sounds

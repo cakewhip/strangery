@@ -1,6 +1,8 @@
 package com.kqp.strangery.item;
 
+import com.kqp.strangery.Strangery.ECT;
 import java.util.Random;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -18,7 +20,7 @@ import net.minecraft.world.World;
 public class LongshotItem extends Item {
 
     public LongshotItem() {
-        super(new Settings().group(ItemGroup.TOOLS));
+        super(new Settings().group(ItemGroup.TOOLS).maxCount(1).maxDamage(256));
     }
 
     @Override
@@ -38,12 +40,22 @@ public class LongshotItem extends Item {
                 if ((double) pullProgress >= 0.1D) {
                     Random random = player.getRandom();
 
-                    float speed = pullProgress * 3.0F;
+                    float speed =
+                        (pullProgress * 3.0F) *
+                        (
+                            1.0F +
+                            0.5F *
+                            (
+                                EnchantmentHelper.getLevel(ECT.SLING, stack) /
+                                (float) ECT.SLING.getMaxLevel()
+                            )
+                        );
                     float divergence = 1.0F;
 
                     float yaw = player.yaw;
                     float pitch = player.pitch;
 
+                    // TODO the y-vel is WAY too high
                     Vec3d vec3d = new Vec3d(
                         -MathHelper.sin(yaw * 0.017453292F) *
                         MathHelper.cos(pitch * 0.017453292F),
@@ -77,6 +89,14 @@ public class LongshotItem extends Item {
                         1.0F,
                         pullProgress * 0.5F
                     );
+
+                    stack.damage(
+                        i,
+                        player,
+                        p -> {
+                            p.sendToolBreakStatus(user.getActiveHand());
+                        }
+                    );
                 }
             }
         }
@@ -106,5 +126,10 @@ public class LongshotItem extends Item {
 
         user.setCurrentHand(hand);
         return TypedActionResult.consume(itemStack);
+    }
+
+    @Override
+    public int getEnchantability() {
+        return 1;
     }
 }

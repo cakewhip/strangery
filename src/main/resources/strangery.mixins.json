@@ -11,6 +11,7 @@
         "MoreFoodAdder",
         "PlayerDebuffsAdder",
         "SparringDamageAdder",
+        "StrangeryEnchantmentMixin",
         "WolfTargetEnderAgentMixin"
     ],
     "client": [
