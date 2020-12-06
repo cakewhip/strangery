@@ -124,8 +124,13 @@ public class LongshotItem extends Item {
     ) {
         ItemStack itemStack = user.getStackInHand(hand);
 
-        user.setCurrentHand(hand);
-        return TypedActionResult.consume(itemStack);
+        if (user.isOnGround()) {
+            user.setCurrentHand(hand);
+
+            return TypedActionResult.consume(itemStack);
+        }
+
+        return TypedActionResult.fail(itemStack);
     }
 
     @Override
