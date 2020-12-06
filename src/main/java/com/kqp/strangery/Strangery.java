@@ -570,6 +570,35 @@ public class Strangery implements ModInitializer {
             "longshot"
         );
 
+        public static final Item FEATHER_SUIT_HELMET = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.HEAD
+            ),
+            "feather_suit_helmet"
+        );
+        public static final Item FEATHER_SUIT_CHESTPLATE = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.CHEST
+            ),
+            "feather_suit_chestplate"
+        );
+        public static final Item FEATHER_SUIT_LEGGINGS = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.LEGS
+            ),
+            "feather_suit_leggings"
+        );
+        public static final Item FEATHER_SUIT_BOOTS = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.FEET
+            ),
+            "feather_suit_boots"
+        );
+
         public static void init() {}
 
         private static Item register(Item item, String name) {

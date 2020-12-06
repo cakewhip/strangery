@@ -53,6 +53,11 @@
 
     "item.strangery.longshot": "Longshot",
 
+    "item.strangery.feather_suit_helmet": "Feather Suit Helmet",
+    "item.strangery.feather_suit_chestplate": "Feather Suit Chestplate",
+    "item.strangery.feather_suit_leggings": "Feather Suit Leggings",
+    "item.strangery.feather_suit_boots": "Feather Suit Boots",
+
     "effect.strangery.deaf": "Deaf",
     "effect.strangery.bleeding": "Bleeding",
     "effect.strangery.frostbite": "Frostbite",
