@@ -17,9 +17,37 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class LongshotItem extends Item {
+    private static final int MAX_LOAD_TIME = 15;
 
     public LongshotItem() {
         super(new Settings().group(ItemGroup.TOOLS).maxCount(1).maxDamage(256));
+    }
+
+    @Override
+    public void usageTick(
+        World world,
+        LivingEntity user,
+        ItemStack stack,
+        int remainingUseTicks
+    ) {
+        if (user instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) user;
+
+            int i = this.getMaxUseTime(stack) - remainingUseTicks;
+
+            if (i == MAX_LOAD_TIME) {
+                world.playSound(
+                    null,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    SoundEvents.ITEM_CROSSBOW_LOADING_END,
+                    SoundCategory.PLAYERS,
+                    1.0F,
+                    1.0F
+                );
+            }
+        }
     }
 
     @Override
@@ -68,7 +96,7 @@ public class LongshotItem extends Item {
                         SoundEvents.ENTITY_ARROW_SHOOT,
                         SoundCategory.PLAYERS,
                         1.0F,
-                        pullProgress * 0.5F
+                        pullProgress * 0.025F
                     );
 
                     stack.damage(
@@ -84,7 +112,7 @@ public class LongshotItem extends Item {
     }
 
     public static float getPullProgress(int useTicks) {
-        return Math.min(useTicks, 30) / 30F;
+        return (float) Math.min(useTicks, MAX_LOAD_TIME) / MAX_LOAD_TIME;
     }
 
     @Override
