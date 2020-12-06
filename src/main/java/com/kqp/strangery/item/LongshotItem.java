@@ -127,7 +127,7 @@ public class LongshotItem extends Item {
     ) {
         float speed =
             (pullProgress * 3.0F) *
-            (1.0F + 0.5F * (slingLevel / (float) ECT.SLING.getMaxLevel()));
+            (1.0F + 0.75F * (slingLevel / (float) ECT.SLING.getMaxLevel()));
 
         return new Vec3d(
             -MathHelper.sin(yaw * 0.017453292F) *
