@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "strangery:item/chicken_fried_rice"
-  }
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "strangery:item/chicken_fried_rice"
+    }
 }

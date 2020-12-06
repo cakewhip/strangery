@@ -7,7 +7,7 @@ import net.minecraft.item.ToolMaterial;
 
 public class StrangeryHoeItem extends HoeItem {
 
-  public StrangeryHoeItem(ToolMaterial material) {
-    super(material, -3, 0.0F, new Item.Settings().group(ItemGroup.TOOLS));
-  }
+    public StrangeryHoeItem(ToolMaterial material) {
+        super(material, -3, 0.0F, new Item.Settings().group(ItemGroup.TOOLS));
+    }
 }

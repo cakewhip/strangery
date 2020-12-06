@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "strangery:item/bun"
-  }
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "strangery:item/bun"
+    }
 }

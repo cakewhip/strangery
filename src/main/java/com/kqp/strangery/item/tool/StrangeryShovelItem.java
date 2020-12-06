@@ -7,7 +7,12 @@ import net.minecraft.item.ToolMaterial;
 
 public class StrangeryShovelItem extends ShovelItem {
 
-  public StrangeryShovelItem(ToolMaterial material) {
-    super(material, 1.5F, -3.0F, new Item.Settings().group(ItemGroup.TOOLS));
-  }
+    public StrangeryShovelItem(ToolMaterial material) {
+        super(
+            material,
+            1.5F,
+            -3.0F,
+            new Item.Settings().group(ItemGroup.TOOLS)
+        );
+    }
 }

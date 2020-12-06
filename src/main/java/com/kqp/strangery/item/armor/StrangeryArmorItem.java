@@ -8,7 +8,7 @@ import net.minecraft.item.ItemGroup;
 
 public class StrangeryArmorItem extends ArmorItem {
 
-  public StrangeryArmorItem(ArmorMaterial material, EquipmentSlot slot) {
-    super(material, slot, new Item.Settings().group(ItemGroup.COMBAT));
-  }
+    public StrangeryArmorItem(ArmorMaterial material, EquipmentSlot slot) {
+        super(material, slot, new Item.Settings().group(ItemGroup.COMBAT));
+    }
 }

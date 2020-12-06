@@ -1,21 +1,21 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": ["DDD", "MNS", "DDD"],
-  "key": {
-    "D": {
-      "item": "minecraft:diamond"
+    "type": "minecraft:crafting_shaped",
+    "pattern": ["DDD", "MNS", "DDD"],
+    "key": {
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "N": {
+            "item": "minecraft:netherite_ingot"
+        },
+        "M": {
+            "item": "strangery:moonstone_block"
+        },
+        "S": {
+            "item": "strangery:sunstone_block"
+        }
     },
-    "N": {
-      "item": "minecraft:netherite_ingot"
-    },
-    "M": {
-      "item": "strangery:moonstone_block"
-    },
-    "S": {
-      "item": "strangery:sunstone_block"
+    "result": {
+        "item": "strangery:celestial_steel_ingot"
     }
-  },
-  "result": {
-    "item": "strangery:celestial_steel_ingot"
-  }
 }

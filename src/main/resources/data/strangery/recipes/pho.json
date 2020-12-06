@@ -1,36 +1,36 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:foodium"
-    },
-    {
-      "item": "strangery:cooked_beef"
-    },
-    {
-      "item": "strangery:cooked_beef"
-    },
-    {
-      "item": "minecraft:water_bucket"
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:foodium"
+        },
+        {
+            "item": "strangery:cooked_beef"
+        },
+        {
+            "item": "strangery:cooked_beef"
+        },
+        {
+            "item": "minecraft:water_bucket"
+        }
+    ],
+    "result": {
+        "item": "strangery:pho",
+        "count": 1
     }
-  ],
-  "result": {
-    "item": "strangery:pho",
-    "count": 1
-  }
 }

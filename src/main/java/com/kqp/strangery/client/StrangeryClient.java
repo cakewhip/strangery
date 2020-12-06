@@ -7,11 +7,11 @@ import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 
 public class StrangeryClient implements ClientModInitializer {
 
-  @Override
-  public void onInitializeClient() {
-    EntityRendererRegistry.INSTANCE.register(
-      Strangery.E.ENDER_AGENT,
-      (dispatcher, context) -> new EnderAgentRenderer(dispatcher)
-    );
-  }
+    @Override
+    public void onInitializeClient() {
+        EntityRendererRegistry.INSTANCE.register(
+            Strangery.E.ENDER_AGENT,
+            (dispatcher, context) -> new EnderAgentRenderer(dispatcher)
+        );
+    }
 }

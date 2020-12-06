@@ -7,7 +7,12 @@ import net.minecraft.item.ToolMaterial;
 
 public class StrangeryAxeItem extends AxeItem {
 
-  public StrangeryAxeItem(ToolMaterial material) {
-    super(material, 6.0F, -3.0F, new Item.Settings().group(ItemGroup.TOOLS));
-  }
+    public StrangeryAxeItem(ToolMaterial material) {
+        super(
+            material,
+            6.0F,
+            -3.0F,
+            new Item.Settings().group(ItemGroup.TOOLS)
+        );
+    }
 }
