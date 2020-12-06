@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "strangery:foodium"
-        },
-        {
-            "item": "strangery:foodium"
-        },
-        {
-            "item": "strangery:foodium"
-        },
-        {
-            "item": "minecraft:bread"
-        }
-    ],
-    "result": {
-        "item": "strangery:bun",
-        "count": 1
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "strangery:foodium"
+    },
+    {
+      "item": "strangery:foodium"
+    },
+    {
+      "item": "strangery:foodium"
+    },
+    {
+      "item": "minecraft:bread"
     }
+  ],
+  "result": {
+    "item": "strangery:bun",
+    "count": 1
+  }
 }

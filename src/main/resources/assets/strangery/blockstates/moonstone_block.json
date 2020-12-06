@@ -1,5 +1,5 @@
 {
-    "variants": {
-        "": { "model": "strangery:block/moonstone_block" }
-    }
+  "variants": {
+    "": { "model": "strangery:block/moonstone_block" }
+  }
 }

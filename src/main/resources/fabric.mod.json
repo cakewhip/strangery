@@ -5,9 +5,7 @@
 
   "name": "Strangery",
   "description": "What a strange mod",
-  "authors": [
-    "KQP"
-  ],
+  "authors": ["KQP"],
   "contact": {
     "homepage": "https://fabricmc.net/",
     "sources": "https://github.com/FabricMC/fabric-example-mod"
@@ -18,16 +16,10 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.kqp.strangery.Strangery"
-    ],
-    "client": [
-      "com.kqp.strangery.client.StrangeryClient"
-    ]
+    "main": ["com.kqp.strangery.Strangery"],
+    "client": ["com.kqp.strangery.client.StrangeryClient"]
   },
-  "mixins": [
-    "strangery.mixins.json"
-  ],
+  "mixins": ["strangery.mixins.json"],
 
   "depends": {
     "fabricloader": ">=0.7.4",

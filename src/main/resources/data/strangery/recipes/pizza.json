@@ -1,36 +1,36 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "strangery:foodium"
-        },
-        {
-            "item": "strangery:foodium"
-        },
-        {
-            "item": "strangery:foodium"
-        },
-        {
-            "item": "strangery:foodium"
-        },
-        {
-            "item": "strangery:foodium"
-        },
-        {
-            "item": "strangery:foodium"
-        },
-        {
-            "item": "strangery:cheese"
-        },
-        {
-            "item": "minecraft:bread"
-        },
-        {
-            "item": "minecraft:redstone"
-        }
-    ],
-    "result": {
-        "item": "strangery:pizza",
-        "count": 1
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "strangery:foodium"
+    },
+    {
+      "item": "strangery:foodium"
+    },
+    {
+      "item": "strangery:foodium"
+    },
+    {
+      "item": "strangery:foodium"
+    },
+    {
+      "item": "strangery:foodium"
+    },
+    {
+      "item": "strangery:foodium"
+    },
+    {
+      "item": "strangery:cheese"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "minecraft:redstone"
     }
+  ],
+  "result": {
+    "item": "strangery:pizza",
+    "count": 1
+  }
 }

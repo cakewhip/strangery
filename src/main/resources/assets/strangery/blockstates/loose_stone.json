@@ -1,5 +1,5 @@
 {
-    "variants": {
-        "": { "model": "strangery:block/loose_stone" }
-    }
+  "variants": {
+    "": { "model": "strangery:block/loose_stone" }
+  }
 }

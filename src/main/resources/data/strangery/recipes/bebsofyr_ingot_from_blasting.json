@@ -1,9 +1,9 @@
 {
-    "type": "minecraft:blasting",
-    "ingredient": {
-        "item": "strangery:bebsofyr_ore"
-    },
-    "result": "strangery:bebsofyr_ingot",
-    "experience": 5.6,
-    "cookingtime": 100
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "strangery:bebsofyr_ore"
+  },
+  "result": "strangery:bebsofyr_ingot",
+  "experience": 5.6,
+  "cookingtime": 100
 }

@@ -12,16 +12,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WolfEntity.class)
 public class WolfTargetEnderAgentMixin {
-    @Inject(method = "initGoals", at = @At("HEAD"))
-    private void injectInitGoals(CallbackInfo callbackInfo) {
-        WolfEntity wolf = (WolfEntity) (Object) this;
-        GoalSelector targetSelector = ((MobEntityAccessor) wolf).getTargetSelector();
 
-        targetSelector.add(4, new FollowTargetGoal(
-            wolf,
-            EnderAgentEntity.class,
-            true,
-            false
-        ));
-    }
+  @Inject(method = "initGoals", at = @At("HEAD"))
+  private void injectInitGoals(CallbackInfo callbackInfo) {
+    WolfEntity wolf = (WolfEntity) (Object) this;
+    GoalSelector targetSelector =
+      ((MobEntityAccessor) wolf).getTargetSelector();
+
+    targetSelector.add(
+      4,
+      new FollowTargetGoal(wolf, EnderAgentEntity.class, true, false)
+    );
+  }
 }

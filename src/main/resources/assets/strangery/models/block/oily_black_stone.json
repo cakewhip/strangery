@@ -1,6 +1,6 @@
 {
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "strangery:block/oily_black_stone"
-    }
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "strangery:block/oily_black_stone"
+  }
 }

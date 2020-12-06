@@ -1,16 +1,12 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "X X",
-        "XXX",
-        "XXX"
-    ],
-    "key": {
-        "X": {
-            "item": "strangery:celestial_steel_ingot"
-        }
-    },
-    "result": {
-        "item": "strangery:celestial_steel_chestplate"
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["X X", "XXX", "XXX"],
+  "key": {
+    "X": {
+      "item": "strangery:celestial_steel_ingot"
     }
+  },
+  "result": {
+    "item": "strangery:celestial_steel_chestplate"
+  }
 }

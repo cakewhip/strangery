@@ -1,5 +1,5 @@
 {
-    "variants": {
-        "": { "model": "strangery:block/foodium_ore" }
-    }
+  "variants": {
+    "": { "model": "strangery:block/foodium_ore" }
+  }
 }
