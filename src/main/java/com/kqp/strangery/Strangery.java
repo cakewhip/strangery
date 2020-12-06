@@ -1,5 +1,6 @@
 package com.kqp.strangery;
 
+import com.kqp.strangery.block.XmasLightsBlock;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.gen.StrangeMonumentFeature;
 import com.kqp.strangery.gen.StrangeMonumentPiece;
@@ -236,6 +237,18 @@ public class Strangery implements ModInitializer {
                     .strength(5.0F, 6.0F)
             ),
             "sunstone_block"
+        );
+
+        public static final Block XMAS_LIGHTS = register(
+            new XmasLightsBlock(
+                FabricBlockSettings
+                    .of(Material.METAL)
+                    .sounds(BlockSoundGroup.VINE)
+                    .strength(0.2F)
+                    .noCollision()
+                    .luminance(10)
+            ),
+            "xmas_lights"
         );
 
         public static void init() {}
