@@ -31,64 +31,59 @@ public class LongshotItem extends Item {
         if (user instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) user;
 
-            int i = this.getMaxUseTime(stack) - remainingUseTicks;
-            float pullProgress = getPullProgress(i);
+            if (player.isOnGround()) {
+                int i = this.getMaxUseTime(stack) - remainingUseTicks;
+                float pullProgress = getPullProgress(i);
 
-            if ((double) pullProgress >= 0.1D) {
-                Random random = player.getRandom();
+                if ((double) pullProgress >= 0.1D) {
+                    Random random = player.getRandom();
 
-                float speed = pullProgress * 3.0F;
-                float divergence = 1.0F;
+                    float speed = pullProgress * 3.0F;
+                    float divergence = 1.0F;
 
-                float yaw = player.yaw;
-                float pitch = player.pitch;
-                float roll = 0.0F;
+                    float yaw = player.yaw;
+                    float pitch = player.pitch;
 
-                Vec3d vec3d = new Vec3d(
-                    -MathHelper.sin(yaw * 0.017453292F) *
-                    MathHelper.cos(pitch * 0.017453292F),
-                    -MathHelper.sin((pitch + roll) * 0.017453292F),
-                    MathHelper.cos(yaw * 0.017453292F) *
-                    MathHelper.cos(pitch * 0.017453292F)
-                )
-                    .normalize()
-                    .add(
-                        random.nextGaussian() *
-                        0.007499999832361937D *
-                        (double) divergence,
-                        random.nextGaussian() *
-                        0.007499999832361937D *
-                        (double) divergence,
-                        random.nextGaussian() *
-                        0.007499999832361937D *
-                        (double) divergence
+                    Vec3d vec3d = new Vec3d(
+                        -MathHelper.sin(yaw * 0.017453292F) *
+                        MathHelper.cos(pitch * 0.017453292F),
+                        -MathHelper.sin(pitch * 0.017453292F),
+                        MathHelper.cos(yaw * 0.017453292F) *
+                        MathHelper.cos(pitch * 0.017453292F)
                     )
-                    .multiply(speed);
+                        .normalize()
+                        .add(
+                            random.nextGaussian() *
+                            0.007499999832361937D *
+                            (double) divergence,
+                            random.nextGaussian() *
+                            0.007499999832361937D *
+                            (double) divergence,
+                            random.nextGaussian() *
+                            0.007499999832361937D *
+                            (double) divergence
+                        )
+                        .multiply(speed);
 
-                player.setVelocity(vec3d);
+                    player.setVelocity(vec3d);
 
-                world.playSound(
-                    null,
-                    player.getX(),
-                    player.getY(),
-                    player.getZ(),
-                    SoundEvents.ENTITY_ARROW_SHOOT,
-                    SoundCategory.PLAYERS,
-                    1.0F,
-                    pullProgress * 0.5F
-                );
+                    world.playSound(
+                        null,
+                        player.getX(),
+                        player.getY(),
+                        player.getZ(),
+                        SoundEvents.ENTITY_ARROW_SHOOT,
+                        SoundCategory.PLAYERS,
+                        1.0F,
+                        pullProgress * 0.5F
+                    );
+                }
             }
         }
     }
 
     public static float getPullProgress(int useTicks) {
-        float f = (float) useTicks / 20.0F;
-        f = (f * f + f * 2.0F) / 3.0F;
-        if (f > 1.0F) {
-            f = 1.0F;
-        }
-
-        return f;
+        return Math.min(useTicks, 30) / 30F;
     }
 
     @Override
