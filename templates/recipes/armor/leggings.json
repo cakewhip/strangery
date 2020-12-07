@@ -1,10 +1,6 @@
 {
     "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "XXX",
-        "X X",
-        "X X"
-    ],
+    "pattern": ["XXX", "X X", "X X"],
     "key": {
         "X": {
             "item": "namespace:material_item"

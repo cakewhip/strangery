@@ -1,8 +1,6 @@
 {
     "type": "minecraft:crafting_shaped",
-    "pattern": ["ISO",
-                " MS",
-                "I I"],
+    "pattern": ["ISO", " MS", "I I"],
     "key": {
         "S": {
             "item": "minecraft:string"
