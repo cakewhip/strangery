@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": ["ISO",
+                " MS",
+                "I I"],
+    "key": {
+        "S": {
+            "item": "minecraft:string"
+        },
+        "I": {
+            "item": "strangery:unwieldy_stick"
+        },
+        "O": {
+            "item": "minecraft:slime_ball"
+        },
+        "M": {
+            "item": "minecraft:iron_ingot"
+        }
+    },
+    "result": {
+        "item": "strangery:longshot"
+    }
+}

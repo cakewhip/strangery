@@ -1,8 +1,11 @@
 package com.kqp.strangery;
 
+import com.kqp.strangery.enchantment.AirLoadingEnchantment;
+import com.kqp.strangery.enchantment.SlingEnchantment;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.gen.StrangeMonumentFeature;
 import com.kqp.strangery.gen.StrangeMonumentPiece;
+import com.kqp.strangery.item.LongshotItem;
 import com.kqp.strangery.item.armor.StrangeryArmorItem;
 import com.kqp.strangery.item.armor.StrangeryArmorMaterial;
 import com.kqp.strangery.item.tool.StrangeryAxeItem;
@@ -27,6 +30,7 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.block.Material;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -67,6 +71,7 @@ public class Strangery implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ECT.init();
         SND.init();
 
         B.init();
@@ -82,6 +87,24 @@ public class Strangery implements ModInitializer {
 
     public static Identifier id(String name) {
         return new Identifier(MOD_ID, name);
+    }
+
+    // Enchantments
+    public static class ECT {
+
+        public static Enchantment SLING = Registry.register(
+            Registry.ENCHANTMENT,
+            id("sling"),
+            new SlingEnchantment()
+        );
+
+        public static Enchantment AIR_LOADING = Registry.register(
+            Registry.ENCHANTMENT,
+            id("air_loading"),
+            new AirLoadingEnchantment()
+        );
+
+        public static void init() {}
     }
 
     // Sounds
@@ -547,6 +570,40 @@ public class Strangery implements ModInitializer {
                 EquipmentSlot.FEET
             ),
             "celestial_steel_boots"
+        );
+
+        public static final Item LONGSHOT = register(
+            new LongshotItem(),
+            "longshot"
+        );
+
+        public static final Item FEATHER_SUIT_HELMET = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.HEAD
+            ),
+            "feather_suit_helmet"
+        );
+        public static final Item FEATHER_SUIT_CHESTPLATE = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.CHEST
+            ),
+            "feather_suit_chestplate"
+        );
+        public static final Item FEATHER_SUIT_LEGGINGS = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.LEGS
+            ),
+            "feather_suit_leggings"
+        );
+        public static final Item FEATHER_SUIT_BOOTS = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.FEET
+            ),
+            "feather_suit_boots"
         );
 
         public static void init() {}
