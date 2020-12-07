@@ -88,6 +88,16 @@ public class LeeSinEntity extends HostileEntity {
         return damaged;
     }
 
+    public void tickMovement() {
+        if (this.isAlive()) {
+            if (this.isAffectedByDaylight()) {
+                this.setOnFireFor(8);
+            }
+        }
+
+        super.tickMovement();
+    }
+
     public static DefaultAttributeContainer.Builder createLeeSinAttributes() {
         return HostileEntity
             .createHostileAttributes()
