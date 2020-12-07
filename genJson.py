@@ -1,16 +1,20 @@
 import shutil
 from os import path
 
-
 MOD_ID = "strangery"
-
 
 BLOCKS = [
     "foodium_ore",
     "randomium_ore",
-    "loose_stone"
+    "loose_stone",
+    "bebsofyr_ore",
+    "bebsofyr_block",
+    "oily_black_stone",
+    "moonstone_ore",
+    "moonstone_block",
+    "sunstone_ore",
+    "sunstone_block"
 ]
-
 
 ITEMS = [
     "unwieldy_stick",
@@ -28,31 +32,79 @@ ITEMS = [
     "pho",
     "ramen",
     "pizza",
-    "rock_candy"
+    "rock_candy",
+    "bebsofyr_ingot",
+    "moonstone_fragment",
+    "sunstone_fragment",
+    "celestial_steel_ingot"
 ]
-
 
 TOOLS = [
+    ("bebsofyr", "bebsofyr_ingot"),
+    ("celestial_steel", "celestial_steel_ingot")
 ]
 
+ARMOR = [
+    ("bebsofyr", "bebsofyr_ingot"),
+    ("celestial_steel", "celestial_steel_ingot")
+]
 
 BOWS = [
 ]
 
+SRC_DIR = "./src"
+RESOURCES_DIR = f"{SRC_DIR}/main/resources"
+MODELS_DIR = f"{RESOURCES_DIR}/assets/{MOD_ID}/models/"
+ITEM_MODELS_DIR = f"{MODELS_DIR}item/"
+BLOCK_MODELS_DIR = f"{MODELS_DIR}block/"
+BLOCKSTATES_DIR = f"{RESOURCES_DIR}/assets/{MOD_ID}/blockstates/"
+DATA_DIR = f"{RESOURCES_DIR}/data/{MOD_ID}/recipes"
 
-models_dir = f"src/main/resources/assets/{MOD_ID}/models/"
-item_models_dir = f"{models_dir}item/"
-block_models_dir = f"{models_dir}block/"
-block_states_dir = f"src/main/resources/assets/{MOD_ID}/blockstates/"
+PLACEHOLDER_TEXTURE_PATH = f"src/main/resources/assets/{MOD_ID}/textures/placeholder_texture.png"
+ITEM_TEXTURES_DIR = f"src/main/resources/assets/{MOD_ID}/textures/item/"
 
-placeholder_texture_path = f"src/main/resources/assets/{MOD_ID}/textures/placeholder_texture.png"
-item_textures_dir = f"src/main/resources/assets/{MOD_ID}/textures/item/"
+TEMPLATES_DIR = "./templates"
+
+TOOL_TYPES = [
+    "pickaxe",
+    "shovel",
+    "axe",
+    "hoe",
+    "sword"
+]
+TOOL_MODEL_TEMPLATE = (
+    lambda x: f"{ITEM_MODELS_DIR}/{x}.json",
+    open(f"{TEMPLATES_DIR}/models/items/tool.json", "r").read()
+)
+TOOL_RECIPE_TEMPLATES = [
+    (
+        f"{DATA_DIR}/material_name_{tool_type}.json",
+        open(f"{TEMPLATES_DIR}/recipes/tools/{tool_type}.json", "r").read()
+    )
+    for tool_type in TOOL_TYPES
+]
+
+ARMOR_TYPES = [
+    "helmet",
+    "chestplate",
+    "leggings",
+    "boots"
+]
+ARMOR_RECIPE_TEMPLATES = [
+    (
+        f"{DATA_DIR}/material_name_{armor_type}.json",
+        open(f"{TEMPLATES_DIR}/recipes/armor/{armor_type}.json", "r").read()
+    )
+    for armor_type in ARMOR_TYPES
+]
+
 
 def write_texture(name):
-    texture_path = f"{item_textures_dir}{name}.png"
+    texture_path = f"{ITEM_TEXTURES_DIR}{name}.png"
 
     if not path.exists(texture_path):
-        shutil.copyfile(placeholder_texture_path, texture_path)
+        shutil.copyfile(PLACEHOLDER_TEXTURE_PATH, texture_path)
+
 
 def write_json(path, json):
     f = open(path, "w")
@@ -167,22 +219,56 @@ def bow_json(name):
 
 
 def write_block(name):
-    write_json(f"{block_models_dir}{name}.json", block_json(name))
-    write_json(f"{item_models_dir}{name}.json", item_block_json(name))
-    write_json(f"{block_states_dir}{name}.json", blockstate_json(name))
+    write_json(f"{BLOCK_MODELS_DIR}{name}.json", block_json(name))
+    write_json(f"{ITEM_MODELS_DIR}{name}.json", item_block_json(name))
+    write_json(f"{BLOCKSTATES_DIR}{name}.json", blockstate_json(name))
 
 
 def write_item(name):
-    write_json(f"{item_models_dir}{name}.json", item_json(name))
+    write_json(f"{ITEM_MODELS_DIR}{name}.json", item_json(name))
     write_texture(name)
 
 
 def write_tool(name):
-    write_json(f"{item_models_dir}{name}.json", tool_json(name))
+    write_json(f"{ITEM_MODELS_DIR}{name}.json", tool_json(name))
 
 
 def write_bow(name):
-    write_json(f"{item_models_dir}{name}.json", bow_json(name))
+    write_json(f"{ITEM_MODELS_DIR}{name}.json", bow_json(name))
+
+
+def write_tools(material_name, item_name):
+    for (json_path, json) in TOOL_RECIPE_TEMPLATES:
+        write_json(
+            json_path.replace("material_name", material_name),
+            json
+                .replace("namespace", MOD_ID)
+                .replace("material_name", material_name)
+                .replace("material_item", item_name)
+        )
+
+    for tool_type in TOOL_TYPES:
+        write_json(
+            TOOL_MODEL_TEMPLATE[0](f"{material_name}_{tool_type}"),
+            TOOL_MODEL_TEMPLATE[1]
+                .replace("namespace", MOD_ID)
+                .replace("material_name", material_name)
+                .replace("tool", tool_type)
+        )
+
+
+def write_armor(material_name, item_name):
+    for (json_path, json) in ARMOR_RECIPE_TEMPLATES:
+        write_json(
+            json_path.replace("material_name", material_name),
+            json
+                .replace("namespace", MOD_ID)
+                .replace("material_name", material_name)
+                .replace("material_item", item_name)
+        )
+
+    for armor_type in ARMOR_TYPES:
+        write_item(f"{material_name}_{armor_type}")
 
 
 for block in BLOCKS:
@@ -191,8 +277,11 @@ for block in BLOCKS:
 for item in ITEMS:
     write_item(item)
 
-for tool in TOOLS:
-    write_tool(tool)
+for (material, item) in TOOLS:
+    write_tools(material, item)
+
+for (material, item) in ARMOR:
+    write_armor(material, item)
 
 for bow in BOWS:
     write_bow(bow)

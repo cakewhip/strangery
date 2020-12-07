@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "strangery:block/sunstone_block" }
+    }
+}

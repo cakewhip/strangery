@@ -1,6 +1,7 @@
 package com.kqp.strangery.entity.mob;
 
 import com.kqp.strangery.entity.ai.MoveToTargetGoal;
+import java.util.Random;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -24,9 +25,8 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import java.util.Random;
-
 public class CourierEntity extends PathAwareEntity {
+
     private static final String RECEIVER_ID_KEY = "Receiver";
     private static final String MAIL_KEY = "Mail";
 
@@ -50,7 +50,10 @@ public class CourierEntity extends PathAwareEntity {
 
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new MoveToTargetGoal(this, 1.0D, 256));
-        this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(
+                2,
+                new LookAtEntityGoal(this, PlayerEntity.class, 8.0F)
+            );
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 0.8D));
         this.goalSelector.add(4, new LookAroundGoal(this));
 
@@ -64,12 +67,18 @@ public class CourierEntity extends PathAwareEntity {
         if (!world.isClient()) {
             if (receiver != null) {
                 if (distanceTo(receiver) < 2.5D) {
-                    receiver
-                        .sendMessage(new TranslatableText("entity.strangery.courier.intro"), false);
-                    receiver
-                        .sendMessage(new TranslatableText("entity.strangery.courier.bye"), false);
+                    receiver.sendMessage(
+                        new TranslatableText("entity.strangery.courier.intro"),
+                        false
+                    );
+                    receiver.sendMessage(
+                        new TranslatableText("entity.strangery.courier.bye"),
+                        false
+                    );
 
-                    Vec3d dropVec = receiver.getPos().subtract(this.getPos())
+                    Vec3d dropVec = receiver
+                        .getPos()
+                        .subtract(this.getPos())
                         .normalize()
                         .multiply(0.2D, 0D, 0.2D)
                         .add(0D, 0.2D, 0D);
@@ -107,7 +116,8 @@ public class CourierEntity extends PathAwareEntity {
         super.readCustomDataFromTag(tag);
 
         if (tag.contains(RECEIVER_ID_KEY)) {
-            receiver = (PlayerEntity) world.getEntityById(tag.getInt(RECEIVER_ID_KEY));
+            receiver =
+                (PlayerEntity) world.getEntityById(tag.getInt(RECEIVER_ID_KEY));
             this.setTarget(receiver);
         }
 
@@ -117,7 +127,8 @@ public class CourierEntity extends PathAwareEntity {
     }
 
     public static DefaultAttributeContainer.Builder createCourierAttributes() {
-        return HostileEntity.createHostileAttributes()
+        return HostileEntity
+            .createHostileAttributes()
             .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 256.0D)
             .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.333D)
             .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0D)
@@ -125,12 +136,15 @@ public class CourierEntity extends PathAwareEntity {
     }
 
     class TrackReceiverGoal extends TrackTargetGoal {
+
         public TrackReceiverGoal(CourierEntity courier) {
             super(courier, false, false);
         }
 
         public boolean shouldContinue() {
-            return ((CourierEntity) mob).receiver != null || super.shouldContinue();
+            return (
+                ((CourierEntity) mob).receiver != null || super.shouldContinue()
+            );
         }
 
         @Override
@@ -146,18 +160,27 @@ public class CourierEntity extends PathAwareEntity {
         }
     }
 
-    public static ItemStack generateHateMail(PlayerEntity attacker, MobEntity victim) {
+    public static ItemStack generateHateMail(
+        PlayerEntity attacker,
+        MobEntity victim
+    ) {
         String attackerName = getTagFriendlyName(attacker);
         String victimName = getTagFriendlyName(victim);
 
-        String title = HATE_MAIL_TITLES[RANDOM.nextInt(HATE_MAIL_TITLES.length)]
-            .replace("${player}", attackerName)
-            .replace("${victim}", victimName);
+        String title =
+            HATE_MAIL_TITLES[RANDOM.nextInt(HATE_MAIL_TITLES.length)].replace(
+                    "${player}",
+                    attackerName
+                )
+                .replace("${victim}", victimName);
         title = title.substring(0, Math.min(32, title.length()));
 
-        String body = HATE_MAIL_BODIES[RANDOM.nextInt(HATE_MAIL_BODIES.length)]
-            .replace("${player}", attackerName)
-            .replace("${victim}", victimName);
+        String body =
+            HATE_MAIL_BODIES[RANDOM.nextInt(HATE_MAIL_BODIES.length)].replace(
+                    "${player}",
+                    attackerName
+                )
+                .replace("${victim}", victimName);
         body = "[{text:'" + body + "'}]";
 
         CompoundTag tag = new CompoundTag();
@@ -183,10 +206,15 @@ public class CourierEntity extends PathAwareEntity {
      * @return string
      */
     private static String getTagFriendlyName(Entity entity) {
-        return entity instanceof PlayerEntity ? entity.getDisplayName().asString() : (
-            entity.getCustomName() != null ? entity.getCustomName().asString() :
-                "'}, {translate:'" + entity.getType().getTranslationKey() + "'}, {text:'"
-        );
+        return entity instanceof PlayerEntity
+            ? entity.getDisplayName().asString()
+            : (
+                entity.getCustomName() != null
+                    ? entity.getCustomName().asString()
+                    : "'}, {translate:'" +
+                    entity.getType().getTranslationKey() +
+                    "'}, {text:'"
+            );
     }
 
     private static final Random RANDOM = new Random();
@@ -206,7 +234,7 @@ public class CourierEntity extends PathAwareEntity {
         "why why why why why why",
         "HOW",
         "i hate u",
-        "you suck"
+        "you suck",
     };
 
     private static final String[] HATE_MAIL_BODIES = {
@@ -216,6 +244,6 @@ public class CourierEntity extends PathAwareEntity {
         "DEAR ${player},\\nU SUX!!!!!\\n\\nFROM: ${victim}",
         "i had a family",
         "I HAD A FAMILY",
-        "i will FIND you\\n\\nFROM: ${victim}"
+        "i will FIND you\\n\\nFROM: ${victim}",
     };
 }

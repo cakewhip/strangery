@@ -1,9 +1,7 @@
 {
     "entity.ender_agent.ambient": {
         "subtitle": "subtitles.strangery.entity.ender_agent.ambient",
-        "sounds": [
-            "strangery:entity/ender_agent/ambient"
-        ]
+        "sounds": ["strangery:entity/ender_agent/ambient"]
     },
     "entity.ender_agent.death": {
         "subtitle": "subtitles.strangery.entity.ender_agent.death",
@@ -14,8 +12,6 @@
     },
     "entity.ender_agent.hurt": {
         "subtitle": "subtitles.strangery.entity.ender_agent.hurt",
-        "sounds": [
-            "strangery:entity/ender_agent/hurt"
-        ]
+        "sounds": ["strangery:entity/ender_agent/hurt"]
     }
 }

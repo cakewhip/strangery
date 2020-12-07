@@ -8,6 +8,7 @@ import net.minecraft.world.WorldView;
 
 // TODO this doesn't make sense as a sub class of MoveToTargetPosGoal
 public class MoveToTargetGoal extends MoveToTargetPosGoal {
+
     public MoveToTargetGoal(PathAwareEntity mob, double speed, int range) {
         super(mob, speed, range);
     }
@@ -22,12 +23,13 @@ public class MoveToTargetGoal extends MoveToTargetPosGoal {
     public void tick() {
         LivingEntity target = this.mob.getTarget();
 
-        this.mob.getNavigation().startMovingTo(
-            target.getX(),
-            target.getY(),
-            target.getZ(),
-            this.speed
-        );
+        this.mob.getNavigation()
+            .startMovingTo(
+                target.getX(),
+                target.getY(),
+                target.getZ(),
+                this.speed
+            );
     }
 
     @Override

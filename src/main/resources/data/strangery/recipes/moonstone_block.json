@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "strangery:moonstone_fragment"
+        },
+        {
+            "item": "strangery:moonstone_fragment"
+        },
+        {
+            "item": "strangery:moonstone_fragment"
+        },
+        {
+            "item": "strangery:moonstone_fragment"
+        },
+        {
+            "item": "strangery:moonstone_fragment"
+        },
+        {
+            "item": "strangery:moonstone_fragment"
+        },
+        {
+            "item": "strangery:moonstone_fragment"
+        },
+        {
+            "item": "strangery:moonstone_fragment"
+        },
+        {
+            "item": "strangery:moonstone_fragment"
+        }
+    ],
+    "result": {
+        "item": "strangery:moonstone_block",
+        "count": 1
+    }
+}

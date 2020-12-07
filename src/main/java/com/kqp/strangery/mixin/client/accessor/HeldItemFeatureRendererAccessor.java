@@ -16,5 +16,13 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(HeldItemFeatureRenderer.class)
 public interface HeldItemFeatureRendererAccessor {
     @Invoker("renderItem")
-    void callRenderItem(LivingEntity entity, ItemStack stack, ModelTransformation.Mode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light);
+    void callRenderItem(
+        LivingEntity entity,
+        ItemStack stack,
+        ModelTransformation.Mode transformationMode,
+        Arm arm,
+        MatrixStack matrices,
+        VertexConsumerProvider vertexConsumers,
+        int light
+    );
 }

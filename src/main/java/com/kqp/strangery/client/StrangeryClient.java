@@ -7,6 +7,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 
 public class StrangeryClient implements ClientModInitializer {
+
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.INSTANCE.register(
@@ -16,7 +17,8 @@ public class StrangeryClient implements ClientModInitializer {
 
         EntityRendererRegistry.INSTANCE.register(
             Strangery.E.COURIER,
-            (dispatcher, context) -> new GenericBipedRenderer(dispatcher, "courier")
+            (dispatcher, context) ->
+                new GenericBipedRenderer(dispatcher, "courier")
         );
     }
 }

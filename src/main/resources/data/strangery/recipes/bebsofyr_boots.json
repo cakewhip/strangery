@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": ["X X", "X X"],
+    "key": {
+        "X": {
+            "item": "strangery:bebsofyr_ingot"
+        }
+    },
+    "result": {
+        "item": "strangery:bebsofyr_boots"
+    }
+}

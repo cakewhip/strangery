@@ -2,6 +2,7 @@ package com.kqp.strangery.mixin;
 
 import com.kqp.strangery.Strangery;
 import com.kqp.strangery.entity.mob.CourierEntity;
+import java.util.Random;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
@@ -13,13 +14,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Random;
-
 /**
  * Spawns couriers with hate mail.
  */
 @Mixin(LivingEntity.class)
 public class CourierSpawningMixin {
+
     private static final float HATE_MAIL_COURIER_CHANCE = 0.05F;
 
     private static final Random RANDOM = new Random();
@@ -27,20 +27,24 @@ public class CourierSpawningMixin {
     @Inject(method = "onDeath", at = @At("HEAD"))
     private void injectOnDeath(DamageSource source, CallbackInfo callbackInfo) {
         LivingEntity victim = (LivingEntity) (Object) this;
-        if (source.getAttacker() instanceof PlayerEntity && victim instanceof MobEntity) {
+        if (
+            source.getAttacker() instanceof PlayerEntity &&
+            victim instanceof MobEntity
+        ) {
             if (RANDOM.nextFloat() < HATE_MAIL_COURIER_CHANCE) {
                 PlayerEntity attacker = (PlayerEntity) source.getAttacker();
                 World world = attacker.getEntityWorld();
 
-                BlockPos spawnPos = findSpawnPosition(world, attacker.getBlockPos(), 4);
+                BlockPos spawnPos = findSpawnPosition(
+                    world,
+                    attacker.getBlockPos(),
+                    4
+                );
 
                 if (spawnPos != null) {
                     System.out.println("Spawning at " + spawnPos);
                     CourierEntity courier = Strangery.E.COURIER.create(world);
-                    courier.makeHateMailCourier(
-                        attacker,
-                        (MobEntity) victim
-                    );
+                    courier.makeHateMailCourier(attacker, (MobEntity) victim);
 
                     courier.updatePositionAndAngles(
                         spawnPos.getX(),
@@ -65,7 +69,11 @@ public class CourierSpawningMixin {
      * @param retries retries
      * @return block pos
      */
-    private static BlockPos findSpawnPosition(World world, BlockPos origin, int retries) {
+    private static BlockPos findSpawnPosition(
+        World world,
+        BlockPos origin,
+        int retries
+    ) {
         if (retries == 0) {
             return null;
         }

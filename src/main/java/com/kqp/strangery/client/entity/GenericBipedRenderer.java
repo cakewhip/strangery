@@ -11,18 +11,23 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class GenericBipedRenderer<T extends MobEntity, M extends GenericBipedModel<T>> extends
-    BipedEntityRenderer<T, M> {
+public class GenericBipedRenderer<T extends MobEntity, M extends GenericBipedModel<T>>
+    extends BipedEntityRenderer<T, M> {
+
     public final Identifier texture;
 
-    public GenericBipedRenderer(EntityRenderDispatcher dispatcher, String path) {
+    public GenericBipedRenderer(
+        EntityRenderDispatcher dispatcher,
+        String path
+    ) {
         super(dispatcher, (M) new GenericBipedModel<T>(0F, false), 0.5F);
-
-        this.addFeature(new ArmorFeatureRenderer(
-            this,
-            new GenericBipedModel<T>(0.5F, true),
-            new GenericBipedModel<T>(1F, true)
-        ));
+        this.addFeature(
+                new ArmorFeatureRenderer(
+                    this,
+                    new GenericBipedModel<T>(0.5F, true),
+                    new GenericBipedModel<T>(1F, true)
+                )
+            );
 
         this.texture = Strangery.id("textures/entity/" + path + ".png");
     }
