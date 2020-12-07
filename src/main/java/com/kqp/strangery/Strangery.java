@@ -4,6 +4,7 @@ import com.kqp.strangery.enchantment.AirLoadingEnchantment;
 import com.kqp.strangery.enchantment.SlingEnchantment;
 import com.kqp.strangery.entity.mob.CourierEntity;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
+import com.kqp.strangery.entity.mob.LeeSinEntity;
 import com.kqp.strangery.gen.StrangeMonumentFeature;
 import com.kqp.strangery.gen.StrangeMonumentPiece;
 import com.kqp.strangery.item.LongshotItem;
@@ -646,6 +647,16 @@ public class Strangery implements ModInitializer {
                 .build()
         );
 
+        public static final EntityType<LeeSinEntity> LEE_SIN = Registry.register(
+            Registry.ENTITY_TYPE,
+            id("lee_sin"),
+            FabricEntityTypeBuilder
+                .create(SpawnGroup.MONSTER, LeeSinEntity::new)
+                .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
+                .trackable(72, 3)
+                .build()
+        );
+
         public static void init() {
             register(
                 ENDER_AGENT,
@@ -659,12 +670,11 @@ public class Strangery implements ModInitializer {
                 0,
                 CourierEntity.createCourierAttributes()
             );
-
             register(
-                ENDER_AGENT,
+                LEE_SIN,
                 1447446,
                 0,
-                EnderAgentEntity.createEnderAgentAttributes()
+                LeeSinEntity.createLeeSinAttributes()
             );
         }
 
