@@ -1,6 +1,5 @@
 package com.kqp.strangery;
 
-import com.kqp.strangery.block.StarBlock;
 import com.kqp.strangery.block.XmasLightsBlock;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.gen.StrangeMonumentFeature;
@@ -253,6 +252,7 @@ public class Strangery implements ModInitializer {
         );
 
         // TODO fix star texture
+        /*
         public static final Block STAR = register(
             new StarBlock(
                 FabricBlockSettings
@@ -262,6 +262,7 @@ public class Strangery implements ModInitializer {
             ),
             "star"
         );
+         */
 
         public static void init() {}
 
