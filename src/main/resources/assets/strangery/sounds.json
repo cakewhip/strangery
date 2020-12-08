@@ -13,5 +13,9 @@
     "entity.ender_agent.hurt": {
         "subtitle": "subtitles.strangery.entity.ender_agent.hurt",
         "sounds": ["strangery:entity/ender_agent/hurt"]
+    },
+    "entity.sans.music": {
+        "subtitle": "subtitles.strangery.entity.sans.music",
+        "sounds": ["strangery:entity/sans/music"]
     }
 }
