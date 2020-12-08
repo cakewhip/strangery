@@ -1,6 +1,6 @@
 package com.kqp.strangery.item.armor;
 
-import com.kqp.strangery.Strangery;
+import com.kqp.strangery.init.StrangeryItems;
 import java.util.function.Supplier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -24,7 +24,7 @@ public class StrangeryArmorMaterial implements ArmorMaterial {
         () -> SoundEvents.ITEM_ARMOR_EQUIP_IRON,
         1.75F,
         0.0F,
-        () -> Ingredient.ofItems(Strangery.I.BEBSOFYR_INGOT)
+        () -> Ingredient.ofItems(StrangeryItems.BEBSOFYR_INGOT)
     );
 
     public static final ArmorMaterial CELESTIAL_STEEL = new StrangeryArmorMaterial(
@@ -35,7 +35,7 @@ public class StrangeryArmorMaterial implements ArmorMaterial {
         () -> SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
         6.0F,
         0.3F,
-        () -> Ingredient.ofItems(Strangery.I.CELESTIAL_STEEL_INGOT)
+        () -> Ingredient.ofItems(StrangeryItems.CELESTIAL_STEEL_INGOT)
     );
 
     public static final ArmorMaterial FEATHER_SUIT = new StrangeryArmorMaterial(

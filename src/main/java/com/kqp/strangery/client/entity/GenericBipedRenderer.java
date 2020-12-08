@@ -1,7 +1,7 @@
 package com.kqp.strangery.client.entity;
 
-import com.kqp.strangery.Strangery;
 import com.kqp.strangery.client.model.GenericBipedModel;
+import com.kqp.strangery.init.Strangery;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.BipedEntityRenderer;

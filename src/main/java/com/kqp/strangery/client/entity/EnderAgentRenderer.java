@@ -1,7 +1,7 @@
 package com.kqp.strangery.client.entity;
 
-import com.kqp.strangery.Strangery;
 import com.kqp.strangery.client.model.EnderAgentModel;
+import com.kqp.strangery.init.Strangery;
 import com.kqp.strangery.mixin.client.accessor.HeldItemFeatureRendererAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

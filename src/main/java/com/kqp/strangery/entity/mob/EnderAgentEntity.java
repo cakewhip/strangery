@@ -1,7 +1,7 @@
 package com.kqp.strangery.entity.mob;
 
-import com.kqp.strangery.Strangery;
 import com.kqp.strangery.entity.ai.MoveToTargetGoal;
+import com.kqp.strangery.init.StrangerySounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
@@ -46,17 +46,17 @@ public class EnderAgentEntity extends HostileEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return Strangery.SND.ENDER_AGENT_AMBIENT;
+        return StrangerySounds.ENDER_AGENT_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return Strangery.SND.ENDER_AGENT_HURT;
+        return StrangerySounds.ENDER_AGENT_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return Strangery.SND.ENDER_AGENT_DEATH;
+        return StrangerySounds.ENDER_AGENT_DEATH;
     }
 
     @Override
