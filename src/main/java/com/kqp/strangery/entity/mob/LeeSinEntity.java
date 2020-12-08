@@ -8,6 +8,7 @@ import net.minecraft.entity.ai.goal.FollowTargetGoal;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -21,12 +22,15 @@ import net.minecraft.world.World;
 
 public class LeeSinEntity extends HostileEntity {
 
+    private static final double KNOCKBACK_MULT = 10.0D;
+
     public LeeSinEntity(EntityType type, World world) {
         super(type, world);
     }
 
     @Override
     protected void initGoals() {
+        this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(0, new MeleeAttackGoal(this, 1.0F, true));
         this.goalSelector.add(
                 1,
@@ -74,9 +78,9 @@ public class LeeSinEntity extends HostileEntity {
         boolean damaged = target.damage(DamageSource.mob(this), attackDamage);
         if (damaged) {
             target.setVelocity(
-                target.getVelocity().x,
-                target.getVelocity().y + 1.5D,
-                target.getVelocity().z
+                target.getVelocity().x * KNOCKBACK_MULT,
+                target.getVelocity().y * KNOCKBACK_MULT * 0.1D,
+                target.getVelocity().z * KNOCKBACK_MULT
             );
 
             this.setVelocity(this.getVelocity().multiply(0.6D, 1.0D, 0.6D));
