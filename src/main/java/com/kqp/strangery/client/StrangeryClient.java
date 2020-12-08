@@ -1,6 +1,7 @@
 package com.kqp.strangery.client;
 
 import com.kqp.strangery.Strangery;
+import com.kqp.strangery.Strangery.E;
 import com.kqp.strangery.client.entity.EnderAgentRenderer;
 import com.kqp.strangery.client.entity.GenericBipedRenderer;
 import net.fabricmc.api.ClientModInitializer;
@@ -19,6 +20,12 @@ public class StrangeryClient implements ClientModInitializer {
             Strangery.E.COURIER,
             (dispatcher, context) ->
                 new GenericBipedRenderer(dispatcher, "courier")
+        );
+
+        EntityRendererRegistry.INSTANCE.register(
+            E.LEE_SIN,
+            (dispatcher, context) ->
+                new GenericBipedRenderer(dispatcher, "lee_sin")
         );
     }
 }

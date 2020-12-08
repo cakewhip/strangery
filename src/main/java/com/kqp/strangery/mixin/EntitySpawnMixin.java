@@ -1,0 +1,36 @@
+package com.kqp.strangery.mixin;
+
+import com.kqp.strangery.Strangery.E;
+import java.util.List;
+import java.util.Map.Entry;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.biome.SpawnSettings.SpawnEntry;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(DefaultBiomeFeatures.class)
+public class EntitySpawnMixin {
+
+    @Inject(method = "addMonsters", at = @At("HEAD"))
+    private static void injectAddMonsters(
+        SpawnSettings.Builder builder,
+        int zombieWeight,
+        int zombieVillagerWeight,
+        int skeletonWeight,
+        CallbackInfo callbackInfo
+    ) {
+        E.initSpawns();
+
+        for (Entry<SpawnGroup, List<SpawnEntry>> entry : E.SPAWNS.entrySet()) {
+            if (entry.getKey() == SpawnGroup.MONSTER) {
+                for (SpawnEntry spawnEntry : entry.getValue()) {
+                    builder.spawn(SpawnGroup.MONSTER, spawnEntry);
+                }
+            }
+        }
+    }
+}
