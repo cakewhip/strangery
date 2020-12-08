@@ -665,20 +665,20 @@ public class Strangery implements ModInitializer {
         public static void init() {
             register(
                 ENDER_AGENT,
-                1447446,
-                0,
+                0x000000,
+                0xCC00FA,
                 EnderAgentEntity.createEnderAgentAttributes()
             );
             register(
                 COURIER,
-                1447446,
-                0,
+                0x3D2919,
+                0x857261,
                 CourierEntity.createCourierAttributes()
             );
             register(
                 LEE_SIN,
-                1447446,
-                0,
+                0x8F6650,
+                0xC71019,
                 LeeSinEntity.createLeeSinAttributes()
             );
         }
