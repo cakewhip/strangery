@@ -42,7 +42,6 @@ public class CourierSpawningMixin {
                 );
 
                 if (spawnPos != null) {
-                    System.out.println("Spawning at " + spawnPos);
                     CourierEntity courier = Strangery.E.COURIER.create(world);
                     courier.makeHateMailCourier(attacker, (MobEntity) victim);
 
