@@ -1,5 +1,6 @@
 package com.kqp.strangery.init;
 
+import com.kqp.strangery.block.XmasLightsBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
@@ -121,6 +122,31 @@ public class StrangeryBlocks {
         ),
         "sunstone_block"
     );
+
+    public static final Block XMAS_LIGHTS = register(
+        new XmasLightsBlock(
+            FabricBlockSettings
+                .of(Material.METAL)
+                .sounds(BlockSoundGroup.VINE)
+                .strength(0.2F)
+                .noCollision()
+                .luminance(10)
+        ),
+        "xmas_lights"
+    );
+
+    // TODO fix star texture
+    /*
+        public static final Block STAR = register(
+            new StarBlock(
+                FabricBlockSettings
+                    .of(Material.METAL)
+                    .sounds(BlockSoundGroup.METAL)
+                    .luminance(16)
+            ),
+            "star"
+        );
+         */
 
     public static void init() {}
 
