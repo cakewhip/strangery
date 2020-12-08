@@ -19,7 +19,9 @@ import com.kqp.strangery.item.tool.StrangeryToolMaterial;
 import com.kqp.strangery.statuseffect.CustomStatusEffect;
 import com.kqp.strangery.statuseffect.HallucinatingStatusEffect;
 import com.kqp.strangery.statuseffect.HealthStatusEffect;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -57,6 +59,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.biome.SpawnSettings.SpawnEntry;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
@@ -627,6 +630,8 @@ public class Strangery implements ModInitializer {
     // Entities
     public static class E {
 
+        public static final Map<SpawnGroup, List<SpawnEntry>> SPAWNS = new HashMap<SpawnGroup, List<SpawnEntry>>();
+
         public static final EntityType<EnderAgentEntity> ENDER_AGENT = Registry.register(
             Registry.ENTITY_TYPE,
             id("ender_agent"),
@@ -678,6 +683,13 @@ public class Strangery implements ModInitializer {
             );
         }
 
+        public static void initSpawns() {
+            if (SPAWNS.isEmpty()) {
+                addSpawn(SpawnGroup.MONSTER, spawnEntry(ENDER_AGENT, 10, 1, 1));
+                addSpawn(SpawnGroup.MONSTER, spawnEntry(LEE_SIN, 5, 1, 1));
+            }
+        }
+
         private static <T extends LivingEntity> void register(
             EntityType<T> type,
             int primaryColor,
@@ -698,6 +710,32 @@ public class Strangery implements ModInitializer {
             );
 
             FabricDefaultAttributeRegistry.register(type, attributeBuilder);
+        }
+
+        private static SpawnEntry spawnEntry(
+            EntityType<?> type,
+            int weight,
+            int min,
+            int max
+        ) {
+            return new SpawnEntry(type, weight, min, max);
+        }
+
+        private static void addSpawn(
+            SpawnGroup spawnGroup,
+            SpawnEntry spawnEntry
+        ) {
+            SPAWNS.compute(
+                spawnGroup,
+                (key, val) -> {
+                    if (val == null) {
+                        val = new ArrayList<SpawnEntry>();
+                    }
+
+                    val.add(spawnEntry);
+                    return val;
+                }
+            );
         }
     }
 
