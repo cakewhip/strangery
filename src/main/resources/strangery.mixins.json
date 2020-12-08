@@ -7,10 +7,14 @@
         "accessor.BlockAccessor",
         "accessor.MeleeAttackGoalAccessor",
         "accessor.MobEntityAccessor",
+        "CourierSpawningMixin",
         "EmptyHandBreakDamageAdder",
+        "EntitySpawnMixin",
+        "FeatherSuitEffectMixin",
         "MoreFoodAdder",
         "PlayerDebuffsAdder",
         "SparringDamageAdder",
+        "StrangeryEnchantmentMixin",
         "WolfTargetEnderAgentMixin"
     ],
     "client": [

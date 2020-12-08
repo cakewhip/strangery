@@ -3,10 +3,10 @@
     "pattern": ["X X", "XXX", "XXX"],
     "key": {
         "X": {
-            "item": "namespace:material_item"
+            "item": "minecraft:feather"
         }
     },
     "result": {
-        "item": "namespace:material_name_chestplate"
+        "item": "strangery:feather_suit_chestplate"
     }
 }

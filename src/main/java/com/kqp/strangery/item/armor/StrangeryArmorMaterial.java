@@ -6,6 +6,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -35,6 +36,17 @@ public class StrangeryArmorMaterial implements ArmorMaterial {
         6.0F,
         0.3F,
         () -> Ingredient.ofItems(Strangery.I.CELESTIAL_STEEL_INGOT)
+    );
+
+    public static final ArmorMaterial FEATHER_SUIT = new StrangeryArmorMaterial(
+        "feather_suit",
+        16,
+        new int[] { 0, 0, 1, 0 },
+        12,
+        () -> SoundEvents.ITEM_ARMOR_EQUIP_GENERIC,
+        0.0F,
+        -0.3F,
+        () -> Ingredient.ofItems(Items.FEATHER)
     );
 
     private static final int[] BASE_DURABILITY = new int[] { 13, 15, 16, 11 };

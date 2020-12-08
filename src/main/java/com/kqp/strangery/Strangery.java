@@ -1,9 +1,14 @@
 package com.kqp.strangery;
 
 import com.kqp.strangery.block.XmasLightsBlock;
+import com.kqp.strangery.enchantment.AirLoadingEnchantment;
+import com.kqp.strangery.enchantment.SlingEnchantment;
+import com.kqp.strangery.entity.mob.CourierEntity;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
+import com.kqp.strangery.entity.mob.LeeSinEntity;
 import com.kqp.strangery.gen.StrangeMonumentFeature;
 import com.kqp.strangery.gen.StrangeMonumentPiece;
+import com.kqp.strangery.item.LongshotItem;
 import com.kqp.strangery.item.armor.StrangeryArmorItem;
 import com.kqp.strangery.item.armor.StrangeryArmorMaterial;
 import com.kqp.strangery.item.tool.StrangeryAxeItem;
@@ -15,7 +20,9 @@ import com.kqp.strangery.item.tool.StrangeryToolMaterial;
 import com.kqp.strangery.statuseffect.CustomStatusEffect;
 import com.kqp.strangery.statuseffect.HallucinatingStatusEffect;
 import com.kqp.strangery.statuseffect.HealthStatusEffect;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -28,6 +35,7 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.block.Material;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -52,6 +60,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.biome.SpawnSettings.SpawnEntry;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
@@ -68,6 +77,7 @@ public class Strangery implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ECT.init();
         SND.init();
 
         B.init();
@@ -83,6 +93,24 @@ public class Strangery implements ModInitializer {
 
     public static Identifier id(String name) {
         return new Identifier(MOD_ID, name);
+    }
+
+    // Enchantments
+    public static class ECT {
+
+        public static Enchantment SLING = Registry.register(
+            Registry.ENCHANTMENT,
+            id("sling"),
+            new SlingEnchantment()
+        );
+
+        public static Enchantment AIR_LOADING = Registry.register(
+            Registry.ENCHANTMENT,
+            id("air_loading"),
+            new AirLoadingEnchantment()
+        );
+
+        public static void init() {}
     }
 
     // Sounds
@@ -575,6 +603,40 @@ public class Strangery implements ModInitializer {
             "celestial_steel_boots"
         );
 
+        public static final Item LONGSHOT = register(
+            new LongshotItem(),
+            "longshot"
+        );
+
+        public static final Item FEATHER_SUIT_HELMET = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.HEAD
+            ),
+            "feather_suit_helmet"
+        );
+        public static final Item FEATHER_SUIT_CHESTPLATE = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.CHEST
+            ),
+            "feather_suit_chestplate"
+        );
+        public static final Item FEATHER_SUIT_LEGGINGS = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.LEGS
+            ),
+            "feather_suit_leggings"
+        );
+        public static final Item FEATHER_SUIT_BOOTS = register(
+            new StrangeryArmorItem(
+                StrangeryArmorMaterial.FEATHER_SUIT,
+                EquipmentSlot.FEET
+            ),
+            "feather_suit_boots"
+        );
+
         public static void init() {}
 
         private static Item register(Item item, String name) {
@@ -594,6 +656,8 @@ public class Strangery implements ModInitializer {
     // Entities
     public static class E {
 
+        public static final Map<SpawnGroup, List<SpawnEntry>> SPAWNS = new HashMap<SpawnGroup, List<SpawnEntry>>();
+
         public static final EntityType<EnderAgentEntity> ENDER_AGENT = Registry.register(
             Registry.ENTITY_TYPE,
             id("ender_agent"),
@@ -604,13 +668,52 @@ public class Strangery implements ModInitializer {
                 .build()
         );
 
+        public static final EntityType<CourierEntity> COURIER = Registry.register(
+            Registry.ENTITY_TYPE,
+            id("courier"),
+            FabricEntityTypeBuilder
+                .<CourierEntity>create(SpawnGroup.AMBIENT, CourierEntity::new)
+                .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
+                .trackable(72, 3)
+                .build()
+        );
+
+        public static final EntityType<LeeSinEntity> LEE_SIN = Registry.register(
+            Registry.ENTITY_TYPE,
+            id("lee_sin"),
+            FabricEntityTypeBuilder
+                .create(SpawnGroup.MONSTER, LeeSinEntity::new)
+                .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
+                .trackable(72, 3)
+                .build()
+        );
+
         public static void init() {
             register(
                 ENDER_AGENT,
-                1447446,
-                0,
+                0x000000,
+                0xCC00FA,
                 EnderAgentEntity.createEnderAgentAttributes()
             );
+            register(
+                COURIER,
+                0x3D2919,
+                0x857261,
+                CourierEntity.createCourierAttributes()
+            );
+            register(
+                LEE_SIN,
+                0x8F6650,
+                0xC71019,
+                LeeSinEntity.createLeeSinAttributes()
+            );
+        }
+
+        public static void initSpawns() {
+            if (SPAWNS.isEmpty()) {
+                addSpawn(SpawnGroup.MONSTER, spawnEntry(ENDER_AGENT, 10, 1, 1));
+                addSpawn(SpawnGroup.MONSTER, spawnEntry(LEE_SIN, 5, 1, 1));
+            }
         }
 
         private static <T extends LivingEntity> void register(
@@ -633,6 +736,32 @@ public class Strangery implements ModInitializer {
             );
 
             FabricDefaultAttributeRegistry.register(type, attributeBuilder);
+        }
+
+        private static SpawnEntry spawnEntry(
+            EntityType<?> type,
+            int weight,
+            int min,
+            int max
+        ) {
+            return new SpawnEntry(type, weight, min, max);
+        }
+
+        private static void addSpawn(
+            SpawnGroup spawnGroup,
+            SpawnEntry spawnEntry
+        ) {
+            SPAWNS.compute(
+                spawnGroup,
+                (key, val) -> {
+                    if (val == null) {
+                        val = new ArrayList<SpawnEntry>();
+                    }
+
+                    val.add(spawnEntry);
+                    return val;
+                }
+            );
         }
     }
 
