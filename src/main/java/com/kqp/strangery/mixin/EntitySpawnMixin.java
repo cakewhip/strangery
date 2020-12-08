@@ -1,6 +1,6 @@
 package com.kqp.strangery.mixin;
 
-import com.kqp.strangery.Strangery.E;
+import com.kqp.strangery.init.StrangeryEntities;
 import java.util.List;
 import java.util.Map.Entry;
 import net.minecraft.entity.SpawnGroup;
@@ -23,9 +23,9 @@ public class EntitySpawnMixin {
         int skeletonWeight,
         CallbackInfo callbackInfo
     ) {
-        E.initSpawns();
+        StrangeryEntities.initSpawns();
 
-        for (Entry<SpawnGroup, List<SpawnEntry>> entry : E.SPAWNS.entrySet()) {
+        for (Entry<SpawnGroup, List<SpawnEntry>> entry : StrangeryEntities.SPAWNS.entrySet()) {
             if (entry.getKey() == SpawnGroup.MONSTER) {
                 for (SpawnEntry spawnEntry : entry.getValue()) {
                     builder.spawn(SpawnGroup.MONSTER, spawnEntry);

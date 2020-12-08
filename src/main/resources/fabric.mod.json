@@ -16,8 +16,8 @@
 
     "environment": "*",
     "entrypoints": {
-        "main": ["com.kqp.strangery.Strangery"],
-        "client": ["com.kqp.strangery.client.StrangeryClient"]
+        "main": ["com.kqp.strangery.init.Strangery"],
+        "client": ["com.kqp.strangery.init.client.StrangeryClient"]
     },
     "mixins": ["strangery.mixins.json"],
 

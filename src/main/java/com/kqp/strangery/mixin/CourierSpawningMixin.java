@@ -1,7 +1,7 @@
 package com.kqp.strangery.mixin;
 
-import com.kqp.strangery.Strangery;
 import com.kqp.strangery.entity.mob.CourierEntity;
+import com.kqp.strangery.init.StrangeryEntities;
 import java.util.Random;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -42,7 +42,7 @@ public class CourierSpawningMixin {
                 );
 
                 if (spawnPos != null) {
-                    CourierEntity courier = Strangery.E.COURIER.create(world);
+                    CourierEntity courier = StrangeryEntities.COURIER.create(world);
                     courier.makeHateMailCourier(attacker, (MobEntity) victim);
 
                     courier.updatePositionAndAngles(

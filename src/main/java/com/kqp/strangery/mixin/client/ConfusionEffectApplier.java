@@ -1,6 +1,6 @@
 package com.kqp.strangery.mixin.client;
 
-import com.kqp.strangery.Strangery;
+import com.kqp.strangery.init.StrangeryStatusEffects;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.input.KeyboardInput;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -28,7 +28,7 @@ public class ConfusionEffectApplier {
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
 
         if (player != null) {
-            if (player.hasStatusEffect(Strangery.SE.CONFUSION)) {
+            if (player.hasStatusEffect(StrangeryStatusEffects.CONFUSION)) {
                 input.pressingForward = settings.keyBack.isPressed();
                 input.pressingBack = settings.keyForward.isPressed();
                 input.pressingLeft = settings.keyRight.isPressed();

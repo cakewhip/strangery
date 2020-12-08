@@ -1,14 +1,12 @@
 package com.kqp.strangery.gen;
 
-import com.google.common.collect.ImmutableSet;
-import com.kqp.strangery.Strangery;
+import com.kqp.strangery.init.StrangeryBlocks;
+import com.kqp.strangery.init.StrangeryWorldFeatures;
 import com.kqp.strangery.util.GenUtil;
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.structure.SimpleStructurePiece;
 import net.minecraft.structure.StructureManager;
@@ -29,14 +27,14 @@ public class StrangeMonumentPiece extends SimpleStructurePiece {
         StructureManager structureManager,
         CompoundTag compoundTag
     ) {
-        super(Strangery.WF.STRANGE_MONUMENT_PIECE, compoundTag);
+        super(StrangeryWorldFeatures.STRANGE_MONUMENT_PIECE, compoundTag);
     }
 
     public StrangeMonumentPiece(
         StructureManager structureManager,
         BlockPos blockPos
     ) {
-        super(Strangery.WF.STRANGE_MONUMENT_PIECE, 0);
+        super(StrangeryWorldFeatures.STRANGE_MONUMENT_PIECE, 0);
         this.pos = blockPos;
         this.setOrientation(Direction.NORTH);
         this.boundingBox =
@@ -86,7 +84,7 @@ public class StrangeMonumentPiece extends SimpleStructurePiece {
             for (BlockPos spherePos : spherePosSet) {
                 world.setBlockState(
                     spherePos,
-                    Strangery.B.OILY_BLACK_STONE.getDefaultState(),
+                    StrangeryBlocks.OILY_BLACK_STONE.getDefaultState(),
                     2
                 );
             }
@@ -110,8 +108,8 @@ public class StrangeMonumentPiece extends SimpleStructurePiece {
         Set<BlockPos> sphereBlocks
     ) {
         BlockState blockState = random.nextBoolean()
-            ? Strangery.B.MOONSTONE_ORE.getDefaultState()
-            : Strangery.B.SUNSTONE_ORE.getDefaultState();
+            ? StrangeryBlocks.MOONSTONE_ORE.getDefaultState()
+            : StrangeryBlocks.SUNSTONE_ORE.getDefaultState();
 
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {

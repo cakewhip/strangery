@@ -1,6 +1,6 @@
 package com.kqp.strangery.mixin;
 
-import com.kqp.strangery.Strangery;
+import com.kqp.strangery.init.StrangeryStatusEffects;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -95,7 +95,7 @@ public class PlayerDebuffsAdder {
                 if (triggerHallucination) {
                     player.addStatusEffect(
                         new StatusEffectInstance(
-                            Strangery.SE.HALLUCINATING,
+                            StrangeryStatusEffects.HALLUCINATING,
                             5 * 20,
                             0,
                             true,

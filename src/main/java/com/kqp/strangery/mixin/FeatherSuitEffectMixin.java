@@ -1,6 +1,6 @@
 package com.kqp.strangery.mixin;
 
-import com.kqp.strangery.Strangery.I;
+import com.kqp.strangery.init.StrangeryItems;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -27,10 +27,10 @@ public class FeatherSuitEffectMixin {
         Item boots = player.getEquippedStack(EquipmentSlot.FEET).getItem();
 
         if (
-            helmet == I.FEATHER_SUIT_HELMET &&
-            chestplate == I.FEATHER_SUIT_CHESTPLATE &&
-            leggings == I.FEATHER_SUIT_LEGGINGS &&
-            boots == I.FEATHER_SUIT_BOOTS
+            helmet == StrangeryItems.FEATHER_SUIT_HELMET &&
+            chestplate == StrangeryItems.FEATHER_SUIT_CHESTPLATE &&
+            leggings == StrangeryItems.FEATHER_SUIT_LEGGINGS &&
+            boots == StrangeryItems.FEATHER_SUIT_BOOTS
         ) {
             callbackInfo.setReturnValue(false);
         }
