@@ -17,5 +17,9 @@
     "entity.sans.music": {
         "subtitle": "subtitles.strangery.entity.sans.music",
         "sounds": ["strangery:entity/sans/music"]
+    },
+    "entity.sans.hurt": {
+        "subtitle": "subtitles.strangery.entity.sans.hurt",
+        "sounds": ["strangery:entity/sans/hurt"]
     }
 }

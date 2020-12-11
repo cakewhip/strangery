@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.passive.MerchantEntity;
@@ -86,6 +87,11 @@ public class SansEntity extends HostileEntity {
     @Override
     protected SoundEvent getAmbientSound() {
         return StrangerySounds.SANS_MUSIC;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return StrangerySounds.SANS_HURT;
     }
 
     @Override
