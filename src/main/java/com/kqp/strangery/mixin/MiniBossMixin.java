@@ -3,9 +3,8 @@ package com.kqp.strangery.mixin;
 import com.google.common.collect.ImmutableMultimap;
 import com.kqp.strangery.entity.BossLevel;
 import com.kqp.strangery.init.StrangeryItems;
-import java.util.Random;
-
 import com.kqp.strangery.mixin.accessor.CreeperEntityAccessor;
+import java.util.Random;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.SpawnReason;
@@ -94,9 +93,7 @@ public class MiniBossMixin {
                         .append(" ")
                         .append(mob.getDisplayName())
                         .formatted(bossLevel.formatting),
-                    BossBar.Color.values()[RANDOM.nextInt(
-                            BossBar.Color.values().length
-                        )],
+                    BossBar.Color.WHITE,
                     BossBar.Style.PROGRESS
                 );
 
@@ -136,7 +133,7 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_ATTACK_DAMAGE,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                        bossLevel.level * (0.25D + RANDOM.nextDouble() * 0.25D),
+                    bossLevel.level * (0.25D + RANDOM.nextDouble() * 0.25D),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
@@ -144,7 +141,7 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_MAX_HEALTH,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                        bossLevel.level,
+                    bossLevel.level,
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
@@ -152,7 +149,9 @@ public class MiniBossMixin {
             mob.setHealth(mob.getMaxHealth());
 
             if (mob instanceof CreeperEntity) {
-                mob.getDataTracker().set(((CreeperEntityAccessor) mob).getCharged(), true);
+                mob
+                    .getDataTracker()
+                    .set(((CreeperEntityAccessor) mob).getCharged(), true);
             }
         }
     }
