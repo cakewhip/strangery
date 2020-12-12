@@ -41,28 +41,6 @@ public class MiniBossMixin {
 
     private static final Random RANDOM = new Random();
     private static final float BOSS_CHANCE = 0.2F;
-    private static final Item[] POSSIBLE_LOOT = new Item[] {
-        Items.DIAMOND_PICKAXE,
-        Items.DIAMOND_AXE,
-        Items.DIAMOND_SWORD,
-        Items.DIAMOND_HELMET,
-        Items.DIAMOND_CHESTPLATE,
-        Items.DIAMOND_LEGGINGS,
-        Items.DIAMOND_BOOTS,
-        StrangeryItems.BEBSOFYR_PICKAXE,
-        StrangeryItems.BEBSOFYR_AXE,
-        StrangeryItems.BEBSOFYR_SWORD,
-        StrangeryItems.BEBSOFYR_HELMET,
-        StrangeryItems.BEBSOFYR_CHESTPLATE,
-        StrangeryItems.BEBSOFYR_LEGGINGS,
-        StrangeryItems.BEBSOFYR_BOOTS,
-        Items.DIAMOND,
-        Items.EMERALD,
-        Items.IRON_BLOCK,
-        Items.GOLD_BLOCK,
-        Items.GOLDEN_APPLE,
-        Items.ENCHANTED_GOLDEN_APPLE,
-    };
 
     @Shadow
     protected int experiencePoints;
@@ -99,41 +77,49 @@ public class MiniBossMixin {
 
             this.experiencePoints = bossLevel.level * (5 + RANDOM.nextInt(5));
 
-            mob.addStatusEffect(
-                new StatusEffectInstance(
-                    StatusEffects.STRENGTH,
-                    Integer.MAX_VALUE,
-                    RANDOM.nextInt(1 + bossLevel.level)
-                )
-            );
-            mob.addStatusEffect(
-                new StatusEffectInstance(
-                    StatusEffects.SPEED,
-                    Integer.MAX_VALUE,
-                    RANDOM.nextInt(bossLevel.level)
-                )
-            );
-            mob.addStatusEffect(
-                new StatusEffectInstance(
-                    StatusEffects.REGENERATION,
-                    Integer.MAX_VALUE,
-                    RANDOM.nextInt(1 + bossLevel.level)
-                )
-            );
-            mob.addStatusEffect(
-                new StatusEffectInstance(
-                    StatusEffects.RESISTANCE,
-                    Integer.MAX_VALUE,
-                    RANDOM.nextInt(1 + bossLevel.level)
-                )
-            );
+            if (RANDOM.nextBoolean()) {
+                mob.addStatusEffect(
+                    new StatusEffectInstance(
+                        StatusEffects.STRENGTH,
+                        Integer.MAX_VALUE,
+                        RANDOM.nextInt(4)
+                    )
+                );
+            }
+            if (RANDOM.nextBoolean()) {
+                mob.addStatusEffect(
+                    new StatusEffectInstance(
+                        StatusEffects.SPEED,
+                        Integer.MAX_VALUE,
+                        RANDOM.nextInt(3)
+                    )
+                );
+            }
+            if (RANDOM.nextBoolean()) {
+                mob.addStatusEffect(
+                    new StatusEffectInstance(
+                        StatusEffects.REGENERATION,
+                        Integer.MAX_VALUE,
+                        RANDOM.nextInt(2)
+                    )
+                );
+            }
+            if (RANDOM.nextBoolean()) {
+                mob.addStatusEffect(
+                    new StatusEffectInstance(
+                        StatusEffects.RESISTANCE,
+                        Integer.MAX_VALUE,
+                        RANDOM.nextInt(3)
+                    )
+                );
+            }
 
             ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
             builder.put(
                 EntityAttributes.GENERIC_ATTACK_DAMAGE,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                    bossLevel.level * (0.25D + RANDOM.nextDouble() * 0.25D),
+                    2.25D * ((double) bossLevel.level / BossLevel.GODLIKE.level),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
@@ -141,7 +127,7 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_MAX_HEALTH,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                    bossLevel.level,
+                    Math.min(bossLevel.level, 7.5),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
@@ -189,7 +175,7 @@ public class MiniBossMixin {
         if (strangeryBossBar != null) {
             for (int i = 0; i < bossLevel.level; i++) {
                 ItemStack drop = new ItemStack(
-                    POSSIBLE_LOOT[RANDOM.nextInt(POSSIBLE_LOOT.length)]
+                    bossLevel.loot[RANDOM.nextInt(bossLevel.loot.length)]
                 );
 
                 if (
