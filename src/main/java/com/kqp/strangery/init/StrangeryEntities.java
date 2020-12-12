@@ -3,6 +3,7 @@ package com.kqp.strangery.init;
 import com.kqp.strangery.entity.mob.CourierEntity;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.entity.mob.LeeSinEntity;
+import com.kqp.strangery.entity.mob.SansEntity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,6 +56,16 @@ public class StrangeryEntities {
             .build()
     );
 
+    public static final EntityType<SansEntity> SANS = Registry.register(
+        Registry.ENTITY_TYPE,
+        Strangery.id("sans"),
+        FabricEntityTypeBuilder
+            .create(SpawnGroup.MONSTER, SansEntity::new)
+            .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
+            .trackable(72, 3)
+            .build()
+    );
+
     public static void init() {
         register(
             ENDER_AGENT,
@@ -74,6 +85,7 @@ public class StrangeryEntities {
             0xC71019,
             LeeSinEntity.createLeeSinAttributes()
         );
+        register(SANS, 0xCCCCCC, 0x0000CC, SansEntity.createSansAttributes());
     }
 
     public static void initSpawns() {

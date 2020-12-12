@@ -1,9 +1,7 @@
 package com.kqp.strangery.entity.mob;
 
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
+import com.kqp.strangery.init.StrangerySounds;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.FollowTargetGoal;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
@@ -18,13 +16,17 @@ import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.World;
 
-public class LeeSinEntity extends HostileEntity {
+public class SansEntity extends HostileEntity {
 
-    private static final double KNOCKBACK_MULT = 10.0D;
+    private static int MUSIC_LENGTH = 25 * 20;
 
-    public LeeSinEntity(EntityType type, World world) {
+    private int musicCooldown;
+
+    public SansEntity(EntityType type, World world) {
         super(type, world);
     }
 
@@ -63,37 +65,44 @@ public class LeeSinEntity extends HostileEntity {
     }
 
     @Override
-    public boolean tryAttack(Entity target) {
-        float attackDamage = (float) this.getAttributeValue(
-                EntityAttributes.GENERIC_ATTACK_DAMAGE
-            );
-        if (target instanceof LivingEntity) {
-            attackDamage +=
-                EnchantmentHelper.getAttackDamage(
-                    this.getMainHandStack(),
-                    ((LivingEntity) target).getGroup()
-                );
-        }
-
-        boolean damaged = target.damage(DamageSource.mob(this), attackDamage);
-        if (damaged) {
-            target.setVelocity(
-                target.getVelocity().x * KNOCKBACK_MULT,
-                target.getVelocity().y * KNOCKBACK_MULT * 0.3D,
-                target.getVelocity().z * KNOCKBACK_MULT
-            );
-
-            this.setVelocity(this.getVelocity().multiply(0.6D, 1.0D, 0.6D));
-
-            this.dealDamage(this, target);
-            this.onAttacking(target);
-        }
-
-        return damaged;
+    public void writeCustomDataToTag(CompoundTag tag) {
+        super.writeCustomDataToTag(tag);
+        tag.putInt("MusicCooldown", musicCooldown);
     }
 
+    @Override
+    public void readCustomDataFromTag(CompoundTag tag) {
+        super.readCustomDataFromTag(tag);
+        musicCooldown = tag.getInt("MusicCooldown");
+    }
+
+    @Override
+    public void playAmbientSound() {
+        if (musicCooldown == 0) {
+            musicCooldown = MUSIC_LENGTH;
+            super.playAmbientSound();
+        }
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return StrangerySounds.SANS_MUSIC;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return StrangerySounds.SANS_HURT;
+    }
+
+    @Override
+    protected float getSoundPitch() {
+        return 1.0F;
+    }
+
+    @Override
     public void tickMovement() {
         if (this.isAlive()) {
+            musicCooldown = Math.max(0, musicCooldown - 1);
             if (this.isAffectedByDaylight()) {
                 this.setOnFireFor(8);
             }
@@ -102,11 +111,11 @@ public class LeeSinEntity extends HostileEntity {
         super.tickMovement();
     }
 
-    public static DefaultAttributeContainer.Builder createLeeSinAttributes() {
+    public static DefaultAttributeContainer.Builder createSansAttributes() {
         return HostileEntity
             .createHostileAttributes()
             .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
-            .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.355D)
+            .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.405D)
             .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0D)
             .add(EntityAttributes.GENERIC_MAX_HEALTH, 25.0D);
     }

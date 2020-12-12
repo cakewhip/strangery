@@ -15,6 +15,12 @@ public class StrangerySounds {
     public static final Identifier ENDER_AGENT_HURT_ID = Strangery.id(
         "entity.ender_agent.hurt"
     );
+    public static final Identifier SANS_MUSIC_ID = Strangery.id(
+        "entity.sans.music"
+    );
+    public static final Identifier SANS_HURT_ID = Strangery.id(
+        "entity.sans.hurt"
+    );
 
     public static final SoundEvent ENDER_AGENT_AMBIENT = new SoundEvent(
         ENDER_AGENT_AMBIENT_ID
@@ -25,6 +31,8 @@ public class StrangerySounds {
     public static final SoundEvent ENDER_AGENT_HURT = new SoundEvent(
         ENDER_AGENT_HURT_ID
     );
+    public static final SoundEvent SANS_MUSIC = new SoundEvent(SANS_MUSIC_ID);
+    public static final SoundEvent SANS_HURT = new SoundEvent(SANS_HURT_ID);
 
     public static void init() {
         Registry.register(
@@ -42,5 +50,7 @@ public class StrangerySounds {
             ENDER_AGENT_HURT_ID,
             ENDER_AGENT_HURT
         );
+        Registry.register(Registry.SOUND_EVENT, SANS_MUSIC_ID, SANS_MUSIC);
+        Registry.register(Registry.SOUND_EVENT, SANS_HURT_ID, SANS_HURT);
     }
 }

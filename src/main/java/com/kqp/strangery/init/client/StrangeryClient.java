@@ -36,5 +36,11 @@ public class StrangeryClient implements ClientModInitializer {
             (dispatcher, context) ->
                 new GenericBipedRenderer(dispatcher, "lee_sin")
         );
+
+        EntityRendererRegistry.INSTANCE.register(
+            StrangeryEntities.SANS,
+            (dispatcher, context) ->
+                new GenericBipedRenderer(dispatcher, "sans")
+        );
     }
 }
