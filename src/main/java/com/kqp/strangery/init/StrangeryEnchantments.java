@@ -48,5 +48,11 @@ public class StrangeryEnchantments {
         new LightningStoneEnchantment()
     );
 
+    public static Enchantment HIGH_STEP = Registry.register(
+        Registry.ENCHANTMENT,
+        Strangery.id("high_step"),
+        new HighStepEnchantment()
+    );
+
     public static void init() {}
 }

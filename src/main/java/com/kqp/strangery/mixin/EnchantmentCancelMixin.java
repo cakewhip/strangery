@@ -2,6 +2,7 @@ package com.kqp.strangery.mixin;
 
 import com.kqp.strangery.enchantment.FrostEnchantment;
 import com.kqp.strangery.enchantment.FrozenEdgeEnchantment;
+import com.kqp.strangery.enchantment.HighStepEnchantment;
 import com.kqp.strangery.enchantment.WisdomEnchantment;
 import net.minecraft.enchantment.*;
 import org.spongepowered.asm.mixin.Mixin;
@@ -33,6 +34,13 @@ public class EnchantmentCancelMixin {
                     enchantment instanceof AquaAffinityEnchantment
                 ) &&
                 other instanceof WisdomEnchantment
+            ) ||
+            (
+                (
+                    enchantment instanceof FrostWalkerEnchantment ||
+                    enchantment instanceof DepthStriderEnchantment
+                ) &&
+                other instanceof HighStepEnchantment
             )
         ) {
             callbackInfo.setReturnValue(false);

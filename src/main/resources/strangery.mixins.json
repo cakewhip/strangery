@@ -18,6 +18,7 @@
         "FrostBowMixin",
         "FrostOnHitMixin",
         "FrozenEdgeMixin",
+        "HighStepMixin",
         "MoreFoodAdder",
         "PlayerDebuffsAdder",
         "SparringDamageAdder",
