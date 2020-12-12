@@ -36,5 +36,17 @@ public class StrangeryEnchantments {
         new WisdomEnchantment()
     );
 
+    public static Enchantment WATER_STONE = Registry.register(
+        Registry.ENCHANTMENT,
+        Strangery.id("water_stone"),
+        new WaterStoneEnchantment()
+    );
+
+    public static Enchantment LIGHTNING_STONE = Registry.register(
+        Registry.ENCHANTMENT,
+        Strangery.id("lightning_stone"),
+        new LightningStoneEnchantment()
+    );
+
     public static void init() {}
 }

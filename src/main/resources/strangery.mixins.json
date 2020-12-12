@@ -14,6 +14,7 @@
         "EnchantmentCancelMixin",
         "EntitySpawnMixin",
         "FeatherSuitEffectMixin",
+        "FlintAndSteelEnchantmentsMixin",
         "FrostBowMixin",
         "FrostOnHitMixin",
         "FrozenEdgeMixin",
