@@ -1,9 +1,7 @@
 package com.kqp.strangery.mixin;
 
 import com.google.common.collect.ImmutableMultimap;
-import com.kqp.strangery.entity.BossMob;
 import com.kqp.strangery.init.StrangeryItems;
-import java.util.Random;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.SpawnReason;
@@ -19,6 +17,8 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.LocalDifficulty;
@@ -31,11 +31,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Random;
+
 @Mixin(MobEntity.class)
-public class BossMixin implements BossMob {
+public class MiniBossMixin {
 
     private static final Random RANDOM = new Random();
-    private static final float BOSS_CHANCE = 0.01F;
+    private static final float BOSS_CHANCE = 0.2F;
     private static final Item[] POSSIBLE_LOOT = new Item[] {
         Items.DIAMOND_PICKAXE,
         Items.DIAMOND_AXE,
@@ -144,12 +146,26 @@ public class BossMixin implements BossMob {
         }
     }
 
-    @Inject(method = "mobTick", at = @At("TAIL"))
-    protected void injectMobTick(CallbackInfo callbackInfo) {
+    @Inject(method = "tick", at = @At("TAIL"))
+    protected void injectTick(CallbackInfo callbackInfo) {
         MobEntity mob = (MobEntity) (Object) this;
 
         if (strangeryBossBar != null) {
             strangeryBossBar.setPercent(mob.getHealth() / mob.getMaxHealth());
+
+            if (!mob.world.isClient) {
+                ServerWorld serverWorld = (ServerWorld) mob.world;
+
+                for (ServerPlayerEntity player : serverWorld.getPlayers()) {
+                    if (
+                        mob.getVisibilityCache().canSee(player) && mob.isAlive()
+                    ) {
+                        strangeryBossBar.addPlayer(player);
+                    } else {
+                        strangeryBossBar.removePlayer(player);
+                    }
+                }
+            }
         }
     }
 
@@ -178,10 +194,5 @@ public class BossMixin implements BossMob {
                 ((MobEntity) (Object) this).dropStack(drop);
             }
         }
-    }
-
-    @Override
-    public ServerBossBar getBossBar() {
-        return strangeryBossBar;
     }
 }
