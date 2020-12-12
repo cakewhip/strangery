@@ -199,7 +199,7 @@ public class EnderAgentEntity extends HostileEntity {
             .createHostileAttributes()
             .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
             .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.365D)
-            .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0D)
+            .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 0.25D)
             .add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D);
     }
 
