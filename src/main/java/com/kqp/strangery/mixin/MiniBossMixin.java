@@ -41,6 +41,7 @@ public class MiniBossMixin {
 
     private static final Random RANDOM = new Random();
     private static final float BOSS_CHANCE = 0.2F;
+    private static final double TRACKING_DISTANCE = 32.0D;
 
     @Shadow
     protected int experiencePoints;
@@ -119,7 +120,8 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_ATTACK_DAMAGE,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                    2.25D * ((double) bossLevel.level / BossLevel.GODLIKE.level),
+                    3.0D *
+                    ((double) bossLevel.level / BossLevel.GODLIKE.level),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
@@ -127,7 +129,7 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_MAX_HEALTH,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                    Math.min(bossLevel.level, 7.5),
+                    Math.min(bossLevel.level, 8.5),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
@@ -154,7 +156,10 @@ public class MiniBossMixin {
 
                 for (ServerPlayerEntity player : serverWorld.getPlayers()) {
                     if (
-                        mob.getVisibilityCache().canSee(player) && mob.isAlive()
+                        mob.distanceTo(player) < TRACKING_DISTANCE &&
+                        mob.getVisibilityCache().canSee(player) &&
+                        mob.isAlive() &&
+                        player.isAlive()
                     ) {
                         strangeryBossBar.addPlayer(player);
                     } else {
