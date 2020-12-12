@@ -60,18 +60,21 @@ public class MiniBossMixin {
     ) {
         MobEntity mob = (MobEntity) (Object) this;
 
-        bossLevel =
-            BossLevel.values()[RANDOM.nextInt(BossLevel.values().length)];
+        bossLevel = BossLevel.roll(RANDOM);
 
         if (mob instanceof HostileEntity && RANDOM.nextFloat() < BOSS_CHANCE) {
+            mob.setCustomName(
+                new TranslatableText(
+                    "entity.strangery.miniboss.level" + bossLevel.ordinal()
+                )
+                    .append(" ")
+                    .append(mob.getDisplayName())
+                    .formatted(bossLevel.formatting)
+            );
+
             strangeryBossBar =
                 new ServerBossBar(
-                    new TranslatableText(
-                        "entity.strangery.miniboss.level" + bossLevel.ordinal()
-                    )
-                        .append(" ")
-                        .append(mob.getDisplayName())
-                        .formatted(bossLevel.formatting),
+                    mob.getName(),
                     BossBar.Color.WHITE,
                     BossBar.Style.PROGRESS
                 );
@@ -120,8 +123,7 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_ATTACK_DAMAGE,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                    3.0D *
-                    ((double) bossLevel.level / BossLevel.GODLIKE.level),
+                    3.15D * ((double) bossLevel.level / BossLevel.GODLIKE.level),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
@@ -129,7 +131,7 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_MAX_HEALTH,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                    Math.min(bossLevel.level, 8.5),
+                    Math.min(bossLevel.level, 15.0D),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
@@ -194,6 +196,35 @@ public class MiniBossMixin {
 
                 ((MobEntity) (Object) this).dropStack(drop);
             }
+        }
+    }
+
+    @Inject(method = "writeCustomDataToTag", at = @At("TAIL"))
+    private void injectWriteCustomDataToTag(
+        CompoundTag tag,
+        CallbackInfo callbackInfo
+    ) {
+        if (strangeryBossBar != null) {
+            tag.putInt("BossLevel", bossLevel.ordinal());
+        }
+    }
+
+    @Inject(method = "readCustomDataFromTag", at = @At("TAIL"))
+    private void injectReadCustomDataFromTag(
+        CompoundTag tag,
+        CallbackInfo callbackInfo
+    ) {
+        if (tag.contains("BossLevel")) {
+            MobEntity mob = (MobEntity) (Object) this;
+
+            this.bossLevel = BossLevel.values()[tag.getInt("BossLevel")];
+
+            strangeryBossBar =
+                new ServerBossBar(
+                    mob.getName(),
+                    BossBar.Color.WHITE,
+                    BossBar.Style.PROGRESS
+                );
         }
     }
 }

@@ -5,6 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Formatting;
 
+import java.util.Random;
+
 public enum BossLevel {
     UNCOMMON(
         1,
@@ -165,5 +167,23 @@ public enum BossLevel {
         this.level = level;
         this.formatting = formatting;
         this.loot = loot;
+    }
+
+    public static BossLevel roll(Random random) {
+        double roll = random.nextDouble();
+
+        if (roll < 0.05D) {
+            return GODLIKE;
+        } else if (roll < 0.15D) {
+            return MYTHICAL;
+        } else if (roll < 0.25D) {
+            return LEGENDARY;
+        } else if (roll < 0.5D) {
+            return EPIC;
+        } else if (roll < 0.75D) {
+            return RARE;
+        } else {
+            return UNCOMMON;
+        }
     }
 }
