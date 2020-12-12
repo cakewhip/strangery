@@ -21,6 +21,7 @@
         "PlayerDebuffsAdder",
         "SparringDamageAdder",
         "StrangeryEnchantmentMixin",
+        "WisdomEnchantmentMixin",
         "WolfTargetEnderAgentMixin"
     ],
     "client": [

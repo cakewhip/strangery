@@ -1,9 +1,6 @@
 package com.kqp.strangery.init;
 
-import com.kqp.strangery.enchantment.AirLoadingEnchantment;
-import com.kqp.strangery.enchantment.FrostEnchantment;
-import com.kqp.strangery.enchantment.FrozenEdgeEnchantment;
-import com.kqp.strangery.enchantment.SlingEnchantment;
+import com.kqp.strangery.enchantment.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.registry.Registry;
 
@@ -31,6 +28,12 @@ public class StrangeryEnchantments {
         Registry.ENCHANTMENT,
         Strangery.id("frost"),
         new FrostEnchantment()
+    );
+
+    public static Enchantment WISDOM = Registry.register(
+        Registry.ENCHANTMENT,
+        Strangery.id("wisdom"),
+        new WisdomEnchantment()
     );
 
     public static void init() {}

@@ -2,9 +2,8 @@ package com.kqp.strangery.mixin;
 
 import com.kqp.strangery.enchantment.FrostEnchantment;
 import com.kqp.strangery.enchantment.FrozenEdgeEnchantment;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.FireAspectEnchantment;
-import net.minecraft.enchantment.FlameEnchantment;
+import com.kqp.strangery.enchantment.WisdomEnchantment;
+import net.minecraft.enchantment.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,14 +17,22 @@ public class EnchantmentCancelMixin {
         Enchantment other,
         CallbackInfoReturnable<Boolean> callbackInfo
     ) {
+        Enchantment enchantment = (Enchantment) (Object) this;
         if (
             (
-                (Object) this instanceof FireAspectEnchantment &&
+                enchantment instanceof FireAspectEnchantment &&
                 other instanceof FrozenEdgeEnchantment
             ) ||
             (
-                (Object) this instanceof FlameEnchantment &&
+                enchantment instanceof FlameEnchantment &&
                 other instanceof FrostEnchantment
+            ) ||
+            (
+                (
+                    enchantment instanceof RespirationEnchantment ||
+                    enchantment instanceof AquaAffinityEnchantment
+                ) &&
+                other instanceof WisdomEnchantment
             )
         ) {
             callbackInfo.setReturnValue(false);
