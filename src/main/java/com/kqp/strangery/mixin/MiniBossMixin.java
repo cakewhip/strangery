@@ -1,7 +1,11 @@
 package com.kqp.strangery.mixin;
 
 import com.google.common.collect.ImmutableMultimap;
+import com.kqp.strangery.entity.BossLevel;
 import com.kqp.strangery.init.StrangeryItems;
+import java.util.Random;
+
+import com.kqp.strangery.mixin.accessor.CreeperEntityAccessor;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.SpawnReason;
@@ -13,6 +17,7 @@ import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.*;
@@ -20,7 +25,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.LiteralText;
-import net.minecraft.util.Rarity;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import org.jetbrains.annotations.Nullable;
@@ -30,8 +36,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Random;
 
 @Mixin(MobEntity.class)
 public class MiniBossMixin {
@@ -65,7 +69,7 @@ public class MiniBossMixin {
     protected int experiencePoints;
 
     private ServerBossBar strangeryBossBar;
-    private int level;
+    private BossLevel bossLevel;
 
     @Inject(method = "initialize", at = @At("HEAD"))
     private void injectInitialize(
@@ -78,49 +82,52 @@ public class MiniBossMixin {
     ) {
         MobEntity mob = (MobEntity) (Object) this;
 
-        level = 1 + RANDOM.nextInt(Rarity.values().length - 1);
-        Rarity rarity = Rarity.values()[level];
+        bossLevel =
+            BossLevel.values()[RANDOM.nextInt(BossLevel.values().length)];
 
         if (mob instanceof HostileEntity && RANDOM.nextFloat() < BOSS_CHANCE) {
             strangeryBossBar =
                 new ServerBossBar(
-                    new LiteralText("Level " + level + " ")
+                    new TranslatableText(
+                        "entity.strangery.miniboss.level" + bossLevel.ordinal()
+                    )
+                        .append(" ")
                         .append(mob.getDisplayName())
-                        .formatted(rarity.formatting),
+                        .formatted(bossLevel.formatting),
                     BossBar.Color.values()[RANDOM.nextInt(
                             BossBar.Color.values().length
                         )],
                     BossBar.Style.PROGRESS
                 );
 
-            this.experiencePoints = level * (5 + RANDOM.nextInt(5));
+            this.experiencePoints = bossLevel.level * (5 + RANDOM.nextInt(5));
 
             mob.addStatusEffect(
                 new StatusEffectInstance(
                     StatusEffects.STRENGTH,
                     Integer.MAX_VALUE,
-                    RANDOM.nextInt(1 + level)
+                    RANDOM.nextInt(1 + bossLevel.level)
                 )
             );
             mob.addStatusEffect(
                 new StatusEffectInstance(
                     StatusEffects.SPEED,
                     Integer.MAX_VALUE,
-                    RANDOM.nextInt(level)
+                    RANDOM.nextInt(bossLevel.level)
                 )
             );
             mob.addStatusEffect(
                 new StatusEffectInstance(
                     StatusEffects.REGENERATION,
                     Integer.MAX_VALUE,
-                    RANDOM.nextInt(1 + level)
+                    RANDOM.nextInt(1 + bossLevel.level)
                 )
             );
             mob.addStatusEffect(
                 new StatusEffectInstance(
                     StatusEffects.RESISTANCE,
                     Integer.MAX_VALUE,
-                    RANDOM.nextInt(1 + level)
+                    RANDOM.nextInt(1 + bossLevel.level)
                 )
             );
 
@@ -129,7 +136,7 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_ATTACK_DAMAGE,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                    level * (0.25D + RANDOM.nextDouble() * 0.25D),
+                        bossLevel.level * (0.25D + RANDOM.nextDouble() * 0.25D),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
@@ -137,12 +144,16 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_MAX_HEALTH,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                    level,
+                        bossLevel.level,
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );
             mob.getAttributes().addTemporaryModifiers(builder.build());
             mob.setHealth(mob.getMaxHealth());
+
+            if (mob instanceof CreeperEntity) {
+                mob.getDataTracker().set(((CreeperEntityAccessor) mob).getCharged(), true);
+            }
         }
     }
 
@@ -177,7 +188,7 @@ public class MiniBossMixin {
         CallbackInfo callbackInfo
     ) {
         if (strangeryBossBar != null) {
-            for (int i = 0; i < level; i++) {
+            for (int i = 0; i < bossLevel.level; i++) {
                 ItemStack drop = new ItemStack(
                     POSSIBLE_LOOT[RANDOM.nextInt(POSSIBLE_LOOT.length)]
                 );
