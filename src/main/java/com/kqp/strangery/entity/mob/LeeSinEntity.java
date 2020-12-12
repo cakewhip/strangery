@@ -79,7 +79,7 @@ public class LeeSinEntity extends HostileEntity {
         if (damaged) {
             target.setVelocity(
                 target.getVelocity().x * KNOCKBACK_MULT,
-                target.getVelocity().y * KNOCKBACK_MULT * 0.1D,
+                target.getVelocity().y * KNOCKBACK_MULT * 0.3D,
                 target.getVelocity().z * KNOCKBACK_MULT
             );
 
