@@ -85,6 +85,13 @@
     "entity.strangery.courier.intro": "<Courier> I've been looking for you. Got something I'm supposed to deliver-- your hands only.",
     "entity.strangery.courier.bye": "<Courier> Looks like that's it. Got to go.",
 
+    "entity.strangery.miniboss.level0": "Uncommon",
+    "entity.strangery.miniboss.level1": "Rare",
+    "entity.strangery.miniboss.level2": "Epic",
+    "entity.strangery.miniboss.level3": "Legendary",
+    "entity.strangery.miniboss.level4": "Mythical",
+    "entity.strangery.miniboss.level5": "God-like",
+
     "subtitles.strangery.entity.ender_agent.ambient": "Ender Agent grunts",
     "subtitles.strangery.entity.ender_agent.hurt": "Ender Agent hurts",
     "subtitles.strangery.entity.ender_agent.death": "Ender Agent dies",
