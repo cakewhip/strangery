@@ -28,11 +28,6 @@ public class WisdomEnchantment extends StrangeryEnchantment {
     }
 
     @Override
-    public boolean isTreasure() {
-        return true;
-    }
-
-    @Override
     public int getMaxLevel() {
         return MAX_LEVEL;
     }
