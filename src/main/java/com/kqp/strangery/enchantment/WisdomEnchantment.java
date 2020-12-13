@@ -39,14 +39,4 @@ public class WisdomEnchantment extends StrangeryEnchantment {
     public int getMaxLevel() {
         return MAX_LEVEL;
     }
-
-    @Override
-    public boolean canAccept(Enchantment other) {
-        return (
-                other instanceof RespirationEnchantment ||
-                other instanceof AquaAffinityEnchantment
-            )
-            ? false
-            : super.canAccept(other);
-    }
 }

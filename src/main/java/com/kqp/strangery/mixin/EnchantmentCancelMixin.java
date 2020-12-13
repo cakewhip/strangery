@@ -30,13 +30,6 @@ public class EnchantmentCancelMixin {
             ) ||
             (
                 (
-                    enchantment instanceof RespirationEnchantment ||
-                    enchantment instanceof AquaAffinityEnchantment
-                ) &&
-                other instanceof WisdomEnchantment
-            ) ||
-            (
-                (
                     enchantment instanceof FrostWalkerEnchantment ||
                     enchantment instanceof DepthStriderEnchantment
                 ) &&
