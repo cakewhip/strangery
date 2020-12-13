@@ -2,9 +2,7 @@ package com.kqp.strangery.mixin;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.kqp.strangery.entity.BossLevel;
-import com.kqp.strangery.init.StrangeryItems;
 import com.kqp.strangery.mixin.accessor.CreeperEntityAccessor;
-import java.util.Random;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.SpawnReason;
@@ -19,13 +17,13 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Formatting;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import org.jetbrains.annotations.Nullable;
@@ -35,6 +33,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Random;
 
 @Mixin(MobEntity.class)
 public class MiniBossMixin {
@@ -123,7 +123,8 @@ public class MiniBossMixin {
                 EntityAttributes.GENERIC_ATTACK_DAMAGE,
                 new EntityAttributeModifier(
                     "strangery_boss",
-                    3.15D * ((double) bossLevel.level / BossLevel.GODLIKE.level),
+                    3.15D *
+                    ((double) bossLevel.level / BossLevel.GODLIKE.level),
                     EntityAttributeModifier.Operation.MULTIPLY_BASE
                 )
             );

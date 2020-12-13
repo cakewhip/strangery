@@ -2,7 +2,6 @@ package com.kqp.strangery.mixin;
 
 import com.google.common.collect.Sets;
 import com.kqp.strangery.init.StrangeryEnchantments;
-import java.util.Set;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -13,6 +12,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Set;
 
 @Mixin(ItemStack.class)
 public class ExcavatorEnchantmentMixin {

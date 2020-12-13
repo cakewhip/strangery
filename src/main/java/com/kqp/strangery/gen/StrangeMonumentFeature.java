@@ -1,7 +1,6 @@
 package com.kqp.strangery.gen;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.StructureStart;
 import net.minecraft.util.math.BlockBox;

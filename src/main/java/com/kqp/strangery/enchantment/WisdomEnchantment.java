@@ -1,8 +1,5 @@
 package com.kqp.strangery.enchantment;
 
-import net.minecraft.enchantment.AquaAffinityEnchantment;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.RespirationEnchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 

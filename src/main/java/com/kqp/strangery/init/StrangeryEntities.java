@@ -4,10 +4,6 @@ import com.kqp.strangery.entity.mob.CourierEntity;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.entity.mob.LeeSinEntity;
 import com.kqp.strangery.entity.mob.SansEntity;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import net.fabricmc.fabric.api.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
@@ -21,6 +17,11 @@ import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.SpawnSettings.SpawnEntry;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class StrangeryEntities {
 

@@ -16,7 +16,9 @@ public class MoreFoodAdder {
 
     @Inject(method = "isFood", at = @At("HEAD"), cancellable = true)
     private void injectIsFood(CallbackInfoReturnable<Boolean> callbackInfo) {
-        FoodComponent foodComponent = FoodDataOverrides.get((Item) (Object) this);
+        FoodComponent foodComponent = FoodDataOverrides.get(
+            (Item) (Object) this
+        );
 
         if (foodComponent != null) {
             callbackInfo.cancel();
@@ -28,7 +30,9 @@ public class MoreFoodAdder {
     private void injectGetFoodComponent(
         CallbackInfoReturnable<FoodComponent> callbackInfo
     ) {
-        FoodComponent foodComponent = FoodDataOverrides.get((Item) (Object) this);
+        FoodComponent foodComponent = FoodDataOverrides.get(
+            (Item) (Object) this
+        );
 
         if (foodComponent != null) {
             callbackInfo.cancel();
