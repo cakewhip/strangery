@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LivingEntity.class)
 public class CourierSpawningMixin {
 
-    private static final float HATE_MAIL_COURIER_CHANCE = 0.05F;
+    private static final float HATE_MAIL_COURIER_CHANCE = 0.005F;
 
     private static final Random RANDOM = new Random();
 
