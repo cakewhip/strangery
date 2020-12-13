@@ -54,5 +54,11 @@ public class StrangeryEnchantments {
         new HighStepEnchantment()
     );
 
+    public static Enchantment EXCAVATOR = Registry.register(
+        Registry.ENCHANTMENT,
+        Strangery.id("excavator"),
+        new ExcavatorEnchantment()
+    );
+
     public static void init() {}
 }
