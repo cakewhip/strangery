@@ -1,5 +1,7 @@
 package com.kqp.strangery.init;
 
+import com.kqp.strangery.block.StrangeryTorchBlock;
+import com.kqp.strangery.block.StrangeryWallTorchBlock;
 import com.kqp.strangery.block.XmasLightsBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
@@ -9,6 +11,7 @@ import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
 
@@ -148,6 +151,34 @@ public class StrangeryBlocks {
         );
          */
 
+    public static final Block LUMINANCE_TORCH = register(
+        new StrangeryTorchBlock(
+            FabricBlockSettings
+                .of(Material.SUPPORTED)
+                .noCollision()
+                .breakInstantly()
+                .luminance(14)
+                .sounds(BlockSoundGroup.WOOD),
+            ParticleTypes.FLAME
+        ),
+        "luminance_torch",
+        null
+    );
+
+    public static final Block WALL_LUMINANCE_TORCH = register(
+        new StrangeryWallTorchBlock(
+            FabricBlockSettings
+                .of(Material.SUPPORTED)
+                .noCollision()
+                .breakInstantly()
+                .luminance(14)
+                .sounds(BlockSoundGroup.WOOD),
+            ParticleTypes.FLAME
+        ),
+        "wall_luminance_torch",
+        null
+    );
+
     public static void init() {}
 
     private static Block register(Block block, String name) {
@@ -160,6 +191,20 @@ public class StrangeryBlocks {
                 new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)
             )
         );
+
+        return block;
+    }
+
+    private static Block register(
+        Block block,
+        String name,
+        BlockItem blockItem
+    ) {
+        Registry.register(Registry.BLOCK, Strangery.id(name), block);
+
+        if (blockItem != null) {
+            Registry.register(Registry.ITEM, Strangery.id(name), blockItem);
+        }
 
         return block;
     }

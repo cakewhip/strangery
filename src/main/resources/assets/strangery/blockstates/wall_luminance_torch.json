@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=east": {
+            "model": "strangery:block/wall_luminance_torch"
+        },
+        "facing=north": {
+            "model": "strangery:block/wall_luminance_torch",
+            "y": 270
+        },
+        "facing=south": {
+            "model": "strangery:block/wall_luminance_torch",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "strangery:block/wall_luminance_torch",
+            "y": 180
+        }
+    }
+}

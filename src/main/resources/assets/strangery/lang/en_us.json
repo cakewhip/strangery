@@ -11,6 +11,8 @@
     "block.strangery.sunstone_block": "Sunstone Block",
     "block.strangery.xmas_lights": "Christmas Lights",
     "block.strangery.star": "Star",
+    "block.luminance_torch": "Torch",
+    "block.wall_luminance_torch": "Torch",
 
     "item.strangery.unwieldy_stick": "Unwieldy Stick",
     "item.strangery.foodium": "Foodium",
@@ -64,6 +66,7 @@
     "enchantment.strangery.lightning_stone": "Lightning Stone",
     "enchantment.strangery.high_step": "High Step",
     "enchantment.strangery.excavator": "Excavator",
+    "enchantment.strangery.luminance": "Luminance",
 
     "item.strangery.feather_suit_helmet": "Feather Suit Helmet",
     "item.strangery.feather_suit_chestplate": "Feather Suit Chestplate",

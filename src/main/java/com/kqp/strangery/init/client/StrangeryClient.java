@@ -20,6 +20,15 @@ public class StrangeryClient implements ClientModInitializer {
 
         // BlockRenderLayerMap.INSTANCE.putBlock(B.STAR, RenderLayer.getCutout());
 
+        BlockRenderLayerMap.INSTANCE.putBlock(
+            StrangeryBlocks.LUMINANCE_TORCH,
+            RenderLayer.getCutout()
+        );
+        BlockRenderLayerMap.INSTANCE.putBlock(
+            StrangeryBlocks.WALL_LUMINANCE_TORCH,
+            RenderLayer.getCutout()
+        );
+
         EntityRendererRegistry.INSTANCE.register(
             StrangeryEntities.ENDER_AGENT,
             (dispatcher, context) -> new EnderAgentRenderer(dispatcher)
