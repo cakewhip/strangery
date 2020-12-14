@@ -57,6 +57,10 @@
 
     "item.strangery.longshot": "Longshot",
 
+    "item.strangery.sans_bone": "Sans's Bone",
+    "item.strangery.sans_bone.d1": "( ͡° ͜ʖ ͡°)",
+    "item.strangery.sans_bone.d2": "Plays Megalovania during combat",
+
     "enchantment.strangery.sling": "Sling",
     "enchantment.strangery.air_loading": "Air Loading",
     "enchantment.strangery.frozen_edge": "Frozen Edge",

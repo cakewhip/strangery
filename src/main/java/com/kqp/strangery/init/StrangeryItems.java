@@ -9,6 +9,7 @@ import com.kqp.strangery.item.tool.StrangeryPickaxeItem;
 import com.kqp.strangery.item.tool.StrangeryShovelItem;
 import com.kqp.strangery.item.tool.StrangerySwordItem;
 import com.kqp.strangery.item.tool.StrangeryToolMaterial;
+import com.kqp.strangery.item.trinket.SansBoneItem;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -318,6 +319,13 @@ public class StrangeryItems {
             EquipmentSlot.FEET
         ),
         "feather_suit_boots"
+    );
+
+    public static final Item SANS_BONE = register(
+        new SansBoneItem(
+            new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
+        ),
+        "sans_bone"
     );
 
     public static void init() {}

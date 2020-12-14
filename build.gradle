@@ -12,6 +12,13 @@ group = project.maven_group
 
 repositories {
 	jcenter()
+	maven {
+		url "https://jitpack.io"
+	}
+	maven {
+		name = "NerdHubMC"
+		url = "https://maven.abusedmaster.xyz/"
+	}
 }
 
 dependencies {
@@ -34,8 +41,10 @@ dependencies {
 	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-
 	include "me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}"
+
+	// Trinkets
+	modImplementation "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
 }
 
 processResources {
