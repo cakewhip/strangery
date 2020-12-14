@@ -1,6 +1,7 @@
 package com.kqp.strangery.init;
 
 import com.kqp.strangery.init.data.FoodDataOverrides;
+import com.kqp.strangery.init.data.StrangeryConfig;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 
@@ -10,6 +11,8 @@ public class Strangery implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        StrangeryConfig.init();
+
         StrangeryEnchantments.init();
         StrangerySounds.init();
 
