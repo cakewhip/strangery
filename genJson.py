@@ -4,49 +4,51 @@ from os import path
 MOD_ID = "strangery"
 
 BLOCKS = [
-    "foodium_ore",
-    "randomium_ore",
-    "loose_stone",
-    "bebsofyr_ore",
-    "bebsofyr_block",
-    "oily_black_stone",
-    "moonstone_ore",
-    "moonstone_block",
-    "sunstone_ore",
-    "sunstone_block"
+#     "foodium_ore",
+#     "randomium_ore",
+#     "loose_stone",
+#     "bebsofyr_ore",
+#     "bebsofyr_block",
+#     "oily_black_stone",
+#     "moonstone_ore",
+#     "moonstone_block",
+#     "sunstone_ore",
+#     "sunstone_block"
 ]
 
 ITEMS = [
-    "unwieldy_stick",
-    "foodium",
-    "bun",
-    "cheese",
-    "rice",
-    "french_fries",
-    "cheese_burger",
-    "ice_cream",
-    "chicken_fried_rice",
-    "chicken_tendies",
-    "korean_bbq",
-    "sushi",
-    "pho",
-    "ramen",
-    "pizza",
-    "rock_candy",
-    "bebsofyr_ingot",
-    "moonstone_fragment",
-    "sunstone_fragment",
-    "celestial_steel_ingot"
+#     "unwieldy_stick",
+#     "foodium",
+#     "bun",
+#     "cheese",
+#     "rice",
+#     "french_fries",
+#     "cheese_burger",
+#     "ice_cream",
+#     "chicken_fried_rice",
+#     "chicken_tendies",
+#     "korean_bbq",
+#     "sushi",
+#     "pho",
+#     "ramen",
+#     "pizza",
+#     "rock_candy",
+#     "bebsofyr_ingot",
+#     "moonstone_fragment",
+#     "sunstone_fragment",
+#     "celestial_steel_ingot"
+#     "lee_sin_blindfold",
+#     "sans_bone"
 ]
 
 TOOLS = [
-    ("bebsofyr", "bebsofyr_ingot"),
-    ("celestial_steel", "celestial_steel_ingot")
+#     ("bebsofyr", "bebsofyr_ingot"),
+#     ("celestial_steel", "celestial_steel_ingot")
 ]
 
 ARMOR = [
-    ("bebsofyr", "bebsofyr_ingot"),
-    ("celestial_steel", "celestial_steel_ingot")
+#     ("bebsofyr", "bebsofyr_ingot"),
+#     ("celestial_steel", "celestial_steel_ingot")
 ]
 
 BOWS = [

@@ -9,6 +9,7 @@ import com.kqp.strangery.item.tool.StrangeryPickaxeItem;
 import com.kqp.strangery.item.tool.StrangeryShovelItem;
 import com.kqp.strangery.item.tool.StrangerySwordItem;
 import com.kqp.strangery.item.tool.StrangeryToolMaterial;
+import com.kqp.strangery.item.trinket.LeeSinBlindfoldItem;
 import com.kqp.strangery.item.trinket.SansBoneItem;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -326,6 +327,13 @@ public class StrangeryItems {
             new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
         ),
         "sans_bone"
+    );
+
+    public static final Item LEE_SIN_BLINDFOLD = register(
+        new LeeSinBlindfoldItem(
+            new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
+        ),
+        "lee_sin_blindfold"
     );
 
     public static void init() {}
