@@ -81,7 +81,7 @@ public class SansEntity extends HostileEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return StrangerySounds.SANS_MUSIC;
+        return StrangerySounds.SANS_HURT;
     }
 
     @Override
