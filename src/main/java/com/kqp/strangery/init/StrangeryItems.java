@@ -9,6 +9,10 @@ import com.kqp.strangery.item.tool.StrangeryPickaxeItem;
 import com.kqp.strangery.item.tool.StrangeryShovelItem;
 import com.kqp.strangery.item.tool.StrangerySwordItem;
 import com.kqp.strangery.item.tool.StrangeryToolMaterial;
+import com.kqp.strangery.item.trinket.EmberKnifeItem;
+import com.kqp.strangery.item.trinket.HailBladeItem;
+import com.kqp.strangery.item.trinket.LeeSinBlindfoldItem;
+import com.kqp.strangery.item.trinket.SansBoneItem;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -318,6 +322,34 @@ public class StrangeryItems {
             EquipmentSlot.FEET
         ),
         "feather_suit_boots"
+    );
+
+    public static final Item SANS_BONE = register(
+        new SansBoneItem(
+            new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
+        ),
+        "sans_bone"
+    );
+
+    public static final Item LEE_SIN_BLINDFOLD = register(
+        new LeeSinBlindfoldItem(
+            new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
+        ),
+        "lee_sin_blindfold"
+    );
+
+    public static final Item EMBER_KNIFE = register(
+            new EmberKnifeItem(
+                    new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
+            ),
+            "ember_knife"
+    );
+
+    public static final Item HAIL_BLADE = register(
+            new HailBladeItem(
+                    new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
+            ),
+            "hail_blade"
     );
 
     public static void init() {}

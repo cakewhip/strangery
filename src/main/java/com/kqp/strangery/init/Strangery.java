@@ -12,6 +12,7 @@ public class Strangery implements ModInitializer {
     @Override
     public void onInitialize() {
         StrangeryConfig.init();
+        StrangeryTrinkets.init();
 
         StrangeryEnchantments.init();
         StrangerySounds.init();
