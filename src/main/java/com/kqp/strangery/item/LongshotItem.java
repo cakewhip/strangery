@@ -62,7 +62,11 @@ public class LongshotItem extends Item {
         if (user instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) user;
             boolean hasAirLoading =
-                EnchantmentHelper.getLevel(StrangeryEnchantments.AIR_LOADING, stack) > 0;
+                EnchantmentHelper.getLevel(
+                    StrangeryEnchantments.AIR_LOADING,
+                    stack
+                ) >
+                0;
 
             if (player.isOnGround() || hasAirLoading) {
                 int i = this.getMaxUseTime(stack) - remainingUseTicks;
@@ -76,14 +80,20 @@ public class LongshotItem extends Item {
                         pullProgress,
                         yaw,
                         Math.max(player.pitch, -MAX_PITCH),
-                        EnchantmentHelper.getLevel(StrangeryEnchantments.SLING, stack)
+                        EnchantmentHelper.getLevel(
+                            StrangeryEnchantments.SLING,
+                            stack
+                        )
                     )
                         .y;
                     Vec3d normalVel = calcSlingVelocity(
                         pullProgress,
                         yaw,
                         pitch,
-                        EnchantmentHelper.getLevel(StrangeryEnchantments.SLING, stack)
+                        EnchantmentHelper.getLevel(
+                            StrangeryEnchantments.SLING,
+                            stack
+                        )
                     );
                     double velY =
                         Math.signum(maxVelY) *
@@ -158,7 +168,11 @@ public class LongshotItem extends Item {
     ) {
         float speed =
             (pullProgress * 3.0F) *
-            (1.0F + 1.15F * (slingLevel / (float) StrangeryEnchantments.SLING.getMaxLevel()));
+            (
+                1.0F +
+                1.15F *
+                (slingLevel / (float) StrangeryEnchantments.SLING.getMaxLevel())
+            );
 
         return new Vec3d(
             -MathHelper.sin(yaw * 0.017453292F) *

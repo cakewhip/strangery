@@ -3,7 +3,6 @@ package com.kqp.strangery.mixin;
 import com.kqp.strangery.enchantment.FrostEnchantment;
 import com.kqp.strangery.enchantment.FrozenEdgeEnchantment;
 import com.kqp.strangery.enchantment.HighStepEnchantment;
-import com.kqp.strangery.enchantment.WisdomEnchantment;
 import net.minecraft.enchantment.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

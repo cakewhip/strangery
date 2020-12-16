@@ -1,10 +1,11 @@
 package com.kqp.strangery.block;
 
-import java.util.Random;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.VineBlock;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+
+import java.util.Random;
 
 public class XmasLightsBlock extends VineBlock {
 

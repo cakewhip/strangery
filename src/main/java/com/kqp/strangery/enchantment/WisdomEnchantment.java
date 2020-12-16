@@ -1,8 +1,5 @@
 package com.kqp.strangery.enchantment;
 
-import net.minecraft.enchantment.AquaAffinityEnchantment;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.RespirationEnchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 
@@ -28,11 +25,6 @@ public class WisdomEnchantment extends StrangeryEnchantment {
     @Override
     public int getMaxPower(int level) {
         return this.getMinPower(level) + 15;
-    }
-
-    @Override
-    public boolean isTreasure() {
-        return true;
     }
 
     @Override

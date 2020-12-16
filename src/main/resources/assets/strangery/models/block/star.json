@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "strangery:block/star"
-  }
+    "parent": "minecraft:block/cross",
+    "textures": {
+        "cross": "strangery:block/star"
+    }
 }

@@ -1,12 +1,13 @@
 package com.kqp.strangery.statuseffect;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class HallucinatingStatusEffect extends CustomStatusEffect {
 

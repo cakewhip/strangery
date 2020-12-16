@@ -2,7 +2,6 @@ package com.kqp.strangery.mixin;
 
 import com.kqp.strangery.entity.mob.CourierEntity;
 import com.kqp.strangery.init.StrangeryEntities;
-import java.util.Random;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
@@ -14,13 +13,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Random;
+
 /**
  * Spawns couriers with hate mail.
  */
 @Mixin(LivingEntity.class)
 public class CourierSpawningMixin {
 
-    private static final float HATE_MAIL_COURIER_CHANCE = 0.05F;
+    private static final float HATE_MAIL_COURIER_CHANCE = 0.005F;
 
     private static final Random RANDOM = new Random();
 
@@ -42,7 +43,9 @@ public class CourierSpawningMixin {
                 );
 
                 if (spawnPos != null) {
-                    CourierEntity courier = StrangeryEntities.COURIER.create(world);
+                    CourierEntity courier = StrangeryEntities.COURIER.create(
+                        world
+                    );
                     courier.makeHateMailCourier(attacker, (MobEntity) victim);
 
                     courier.updatePositionAndAngles(

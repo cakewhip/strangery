@@ -51,7 +51,11 @@ public class StrangeryStatusEffects {
         StatusEffect statusEffect,
         String name
     ) {
-        Registry.register(Registry.STATUS_EFFECT, Strangery.id(name), statusEffect);
+        Registry.register(
+            Registry.STATUS_EFFECT,
+            Strangery.id(name),
+            statusEffect
+        );
 
         return statusEffect;
     }

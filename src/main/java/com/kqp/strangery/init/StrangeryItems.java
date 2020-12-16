@@ -339,17 +339,17 @@ public class StrangeryItems {
     );
 
     public static final Item EMBER_KNIFE = register(
-            new EmberKnifeItem(
-                    new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
-            ),
-            "ember_knife"
+        new EmberKnifeItem(
+            new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
+        ),
+        "ember_knife"
     );
 
     public static final Item HAIL_BLADE = register(
-            new HailBladeItem(
-                    new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
-            ),
-            "hail_blade"
+        new HailBladeItem(
+            new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
+        ),
+        "hail_blade"
     );
 
     public static void init() {}

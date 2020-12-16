@@ -1,9 +1,10 @@
 package com.kqp.strangery.util;
 
 import com.google.common.collect.ImmutableSet;
+import net.minecraft.util.math.BlockPos;
+
 import java.util.HashMap;
 import java.util.HashSet;
-import net.minecraft.util.math.BlockPos;
 
 public class GenUtil {
 

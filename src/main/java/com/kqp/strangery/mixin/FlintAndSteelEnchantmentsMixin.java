@@ -1,7 +1,6 @@
 package com.kqp.strangery.mixin;
 
 import com.kqp.strangery.init.StrangeryEnchantments;
-import java.util.Random;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -22,6 +21,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Random;
 
 @Mixin(FlintAndSteelItem.class)
 public class FlintAndSteelEnchantmentsMixin {

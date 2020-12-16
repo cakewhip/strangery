@@ -55,15 +55,15 @@ public class StrangeryEnchantments {
     );
 
     public static Enchantment EXCAVATOR = Registry.register(
-            Registry.ENCHANTMENT,
-            Strangery.id("excavator"),
-            new ExcavatorEnchantment()
+        Registry.ENCHANTMENT,
+        Strangery.id("excavator"),
+        new ExcavatorEnchantment()
     );
 
     public static Enchantment LUMINANCE = Registry.register(
-            Registry.ENCHANTMENT,
-            Strangery.id("luminance"),
-            new LuminanceEnchantment()
+        Registry.ENCHANTMENT,
+        Strangery.id("luminance"),
+        new LuminanceEnchantment()
     );
 
     public static void init() {}

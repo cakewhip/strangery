@@ -2,8 +2,6 @@ package com.kqp.strangery.mixin;
 
 import com.kqp.strangery.init.data.StrangeryConfig;
 import com.kqp.strangery.mixin.accessor.BlockAccessor;
-import java.util.HashMap;
-import java.util.Map;
 import net.minecraft.block.Material;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -13,6 +11,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Used to add damage when breaking blocks with fists.

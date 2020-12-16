@@ -10,10 +10,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
 public class HighStepMixin {
+
     @Inject(method = "tickMovement", at = @At("HEAD"))
     private void injectTickMovement(CallbackInfo callbackInfo) {
         PlayerEntity player = (PlayerEntity) (Object) this;
-        int highStepLevel = EnchantmentHelper.getEquipmentLevel(StrangeryEnchantments.HIGH_STEP, player);
+        int highStepLevel = EnchantmentHelper.getEquipmentLevel(
+            StrangeryEnchantments.HIGH_STEP,
+            player
+        );
 
         if (highStepLevel > 0) {
             player.stepHeight = 1.0F;

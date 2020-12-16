@@ -1,9 +1,10 @@
 package com.kqp.strangery.item.tool;
 
-import java.util.function.Supplier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+
+import java.util.function.Supplier;
 
 public class StrangeryToolMaterial implements ToolMaterial {
 

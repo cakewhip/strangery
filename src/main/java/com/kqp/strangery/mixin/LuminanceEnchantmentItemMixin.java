@@ -20,8 +20,8 @@ public class LuminanceEnchantmentItemMixin {
         CallbackInfoReturnable<ActionResult> callbackInfo
     ) {
         int luminanceLevel = EnchantmentHelper.getLevel(
-                StrangeryEnchantments.LUMINANCE,
-                context.getStack()
+            StrangeryEnchantments.LUMINANCE,
+            context.getStack()
         );
 
         if (luminanceLevel > 0) {
