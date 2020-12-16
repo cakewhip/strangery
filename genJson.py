@@ -36,9 +36,11 @@ ITEMS = [
 #     "bebsofyr_ingot",
 #     "moonstone_fragment",
 #     "sunstone_fragment",
-#     "celestial_steel_ingot"
+#     "celestial_steel_ingot",
 #     "lee_sin_blindfold",
-#     "sans_bone"
+#     "sans_bone",
+#     "ember_knife",
+#     "hail_blade",
 ]
 
 TOOLS = [

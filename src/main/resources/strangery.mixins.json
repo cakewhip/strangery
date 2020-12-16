@@ -20,6 +20,7 @@
         "FrostOnHitMixin",
         "FrozenEdgeMixin",
         "HighStepMixin",
+        "JunglerTrinketMixin",
         "LeeSinBlindfoldMixin",
         "LuminanceEnchantmentBlockItemMixin",
         "LuminanceEnchantmentItemMixin",
