@@ -10,6 +10,17 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
+repositories {
+	jcenter()
+	maven {
+		url "https://jitpack.io"
+	}
+	maven {
+		name = "NerdHubMC"
+		url = "https://maven.abusedmaster.xyz/"
+	}
+}
+
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -25,6 +36,15 @@ dependencies {
 	// REI
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"
     modRuntime "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
+
+	// Auto Config
+	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	include "me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}"
+
+	// Trinkets
+	modImplementation "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
 }
 
 processResources {

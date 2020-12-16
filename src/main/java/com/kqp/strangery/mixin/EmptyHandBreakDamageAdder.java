@@ -1,5 +1,6 @@
 package com.kqp.strangery.mixin;
 
+import com.kqp.strangery.init.data.StrangeryConfig;
 import com.kqp.strangery.mixin.accessor.BlockAccessor;
 import net.minecraft.block.Material;
 import net.minecraft.entity.damage.DamageSource;
@@ -45,6 +46,10 @@ public class EmptyHandBreakDamageAdder {
         int progress,
         CallbackInfo callbackInfo
     ) {
+        if (!StrangeryConfig.get().fistMiningHurts) {
+            return;
+        }
+
         ServerWorld world = (ServerWorld) (Object) this;
         ServerPlayerEntity player = (ServerPlayerEntity) world.getEntityById(
             entityId
