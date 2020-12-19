@@ -28,7 +28,7 @@
         "MoreFoodAdder",
         "PlayerDebuffsAdder",
         "PresentDropMixin",
-        "SansBoneMixin",
+        "SansMusicMixin",
         "SparringDamageAdder",
         "StrangeryEnchantmentMixin",
         "WisdomEnchantmentMixin",
