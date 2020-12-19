@@ -37,7 +37,7 @@ public class ZombieSantaEntity extends ZombieEntity {
             .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
             .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3000000417232513D)
             .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 10.0D)
-            .add(EntityAttributes.GENERIC_MAX_HEALTH, 80.0D)
+            .add(EntityAttributes.GENERIC_MAX_HEALTH, 40.0D)
             .add(EntityAttributes.GENERIC_ARMOR, 20.0D)
             .add(EntityAttributes.ZOMBIE_SPAWN_REINFORCEMENTS);
     }
