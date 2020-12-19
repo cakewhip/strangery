@@ -4,7 +4,13 @@ import com.kqp.strangery.entity.mob.CourierEntity;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
 import com.kqp.strangery.entity.mob.LeeSinEntity;
 import com.kqp.strangery.entity.mob.SansEntity;
-import net.fabricmc.fabric.api.entity.FabricDefaultAttributeRegistry;
+import com.kqp.strangery.entity.mob.ZombieElfEntity;
+import com.kqp.strangery.entity.mob.ZombieSantaEntity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -17,11 +23,6 @@ import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.SpawnSettings.SpawnEntry;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class StrangeryEntities {
 
@@ -67,6 +68,26 @@ public class StrangeryEntities {
             .build()
     );
 
+    public static final EntityType<ZombieElfEntity> ZOMBIE_ELF = Registry.register(
+        Registry.ENTITY_TYPE,
+        Strangery.id("zombie_elf"),
+        FabricEntityTypeBuilder
+            .create(SpawnGroup.MONSTER, ZombieElfEntity::new)
+            .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
+            .trackable(72, 3)
+            .build()
+    );
+
+    public static final EntityType<ZombieSantaEntity> ZOMBIE_SANTA = Registry.register(
+        Registry.ENTITY_TYPE,
+        Strangery.id("zombie_santa"),
+        FabricEntityTypeBuilder
+            .create(SpawnGroup.MONSTER, ZombieSantaEntity::new)
+            .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
+            .trackable(72, 3)
+            .build()
+    );
+
     public static void init() {
         register(
             ENDER_AGENT,
@@ -87,12 +108,26 @@ public class StrangeryEntities {
             LeeSinEntity.createLeeSinAttributes()
         );
         register(SANS, 0xCCCCCC, 0x0000CC, SansEntity.createSansAttributes());
+        register(
+            ZOMBIE_ELF,
+            0x3BD500,
+            0x42823D,
+            ZombieElfEntity.createZombieElfAttributes()
+        );
+        register(
+            ZOMBIE_SANTA,
+            0xD30018,
+            0x5BAF48,
+            ZombieSantaEntity.createZombieSantaAttributes()
+        );
     }
 
     public static void initSpawns() {
         if (SPAWNS.isEmpty()) {
-            addSpawn(SpawnGroup.MONSTER, spawnEntry(ENDER_AGENT, 10, 1, 1));
-            addSpawn(SpawnGroup.MONSTER, spawnEntry(LEE_SIN, 5, 1, 1));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(ENDER_AGENT, 3, 1, 1));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(LEE_SIN, 1, 1, 1));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(ZOMBIE_ELF, 150, 4, 4));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(ZOMBIE_SANTA, 1, 1, 1));
         }
     }
 

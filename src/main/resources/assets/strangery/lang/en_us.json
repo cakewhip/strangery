@@ -71,6 +71,8 @@
     "item.strangery.ember_knife.d2": "0.5 health every 2 seconds",
     "item.strangery.ember_knife.d3": "when in the jungle or river.",
 
+    "item.strangery.present": "Present",
+
     "trinkets.slot.legs.charm": "Charm",
 
     "enchantment.strangery.sling": "Sling",
@@ -102,6 +104,10 @@
     "item.strangery.lee_sin_spawn_egg": "Lee Sin Spawn Egg",
     "entity.strangery.sans": "Sans",
     "item.strangery.sans_spawn_egg": "Sans Spawn Egg",
+    "entity.strangery.zombie_elf": "Zombie Elf",
+    "item.strangery.zombie_elf_spawn_egg": "Zombie Elf Spawn Egg",
+    "entity.strangery.zombie_santa": "Zombie Santa",
+    "item.strangery.zombie_santa_spawn_egg": "Zombie Santa Spawn Egg",
 
     "entity.strangery.courier.intro": "<Courier> I've been looking for you. Got something I'm supposed to deliver-- your hands only.",
     "entity.strangery.courier.bye": "<Courier> Looks like that's it. Got to go.",
@@ -117,5 +123,7 @@
     "subtitles.strangery.entity.ender_agent.hurt": "Ender Agent hurts",
     "subtitles.strangery.entity.ender_agent.death": "Ender Agent dies",
 
-    "subtitles.strangery.entity.sans.music": "Megalovania Plays"
+    "subtitles.strangery.entity.sans.music": "Megalovania Plays",
+
+    "subtitles.strangery.item.present.unwrap": "Present unwrapping"
 }

@@ -41,6 +41,7 @@ ITEMS = [
 #     "sans_bone",
 #     "ember_knife",
 #     "hail_blade",
+#     "present",
 ]
 
 TOOLS = [

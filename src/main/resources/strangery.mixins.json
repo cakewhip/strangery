@@ -27,6 +27,7 @@
         "LuminanceEnchantmentWallStandingBlockItemMixin",
         "MoreFoodAdder",
         "PlayerDebuffsAdder",
+        "PresentDropMixin",
         "SansMusicMixin",
         "SparringDamageAdder",
         "StrangeryEnchantmentMixin",
