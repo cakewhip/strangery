@@ -1,5 +1,6 @@
 package com.kqp.strangery.mixin;
 
+import com.kqp.strangery.entity.mob.ZombieElfEntity;
 import com.kqp.strangery.init.StrangeryItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -19,7 +20,13 @@ public class PresentDropMixin {
         LivingEntity entity = (LivingEntity) (Object) this;
 
         if (entity instanceof HostileEntity) {
-            if (entity.getRandom().nextDouble() < DROP_CHANCE) {
+            double dropChance = DROP_CHANCE;
+
+            if (entity instanceof ZombieElfEntity) {
+                dropChance *= 4.0D;
+            }
+
+            if (entity.getRandom().nextDouble() < dropChance) {
                 entity.dropItem(StrangeryItems.PRESENT);
             }
         }
