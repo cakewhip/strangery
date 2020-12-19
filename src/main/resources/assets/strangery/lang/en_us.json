@@ -106,6 +106,8 @@
     "item.strangery.sans_spawn_egg": "Sans Spawn Egg",
     "entity.strangery.zombie_elf": "Zombie Elf",
     "item.strangery.zombie_elf_spawn_egg": "Zombie Elf Spawn Egg",
+    "entity.strangery.zombie_santa": "Zombie Santa",
+    "item.strangery.zombie_santa_spawn_egg": "Zombie Santa Spawn Egg",
 
     "entity.strangery.courier.intro": "<Courier> I've been looking for you. Got something I'm supposed to deliver-- your hands only.",
     "entity.strangery.courier.bye": "<Courier> Looks like that's it. Got to go.",

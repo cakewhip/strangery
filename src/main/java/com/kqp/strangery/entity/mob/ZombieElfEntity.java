@@ -13,7 +13,7 @@ public class ZombieElfEntity extends ZombieEntity {
         super(type, world);
     }
 
-    public static DefaultAttributeContainer.Builder createZombieZombieAttributes() {
+    public static DefaultAttributeContainer.Builder createZombieElfAttributes() {
         return HostileEntity
             .createHostileAttributes()
             .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 35.0D)

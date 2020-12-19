@@ -29,5 +29,9 @@
             "strangery:item/present/unwrap2",
             "strangery:item/present/unwrap3"
         ]
+    },
+    "entity.zombie_santa.ambient": {
+        "subtitle": "subtitles.strangery.entity.zombie_santa.ambient",
+        "sounds": ["strangery:entity/zombie_santa/ambient"]
     }
 }

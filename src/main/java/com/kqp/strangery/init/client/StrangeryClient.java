@@ -57,5 +57,11 @@ public class StrangeryClient implements ClientModInitializer {
             (dispatcher, context) ->
                 new GenericBipedRenderer(dispatcher, "zombie_elf")
         );
+
+        EntityRendererRegistry.INSTANCE.register(
+            StrangeryEntities.ZOMBIE_SANTA,
+            (dispatcher, context) ->
+                new GenericBipedRenderer(dispatcher, "zombie_santa")
+        );
     }
 }

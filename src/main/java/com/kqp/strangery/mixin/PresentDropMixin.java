@@ -1,10 +1,12 @@
 package com.kqp.strangery.mixin;
 
 import com.kqp.strangery.entity.mob.ZombieElfEntity;
+import com.kqp.strangery.entity.mob.ZombieSantaEntity;
 import com.kqp.strangery.init.StrangeryItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,13 +23,19 @@ public class PresentDropMixin {
 
         if (entity instanceof HostileEntity) {
             double dropChance = DROP_CHANCE;
+            int count = 1;
 
             if (entity instanceof ZombieElfEntity) {
                 dropChance *= 4.0D;
             }
 
+            if (entity instanceof ZombieSantaEntity) {
+                dropChance = 1.0D;
+                count = 4 + entity.getRandom().nextInt(12);
+            }
+
             if (entity.getRandom().nextDouble() < dropChance) {
-                entity.dropItem(StrangeryItems.PRESENT);
+                entity.dropStack(new ItemStack(StrangeryItems.PRESENT, count));
             }
         }
     }
