@@ -1,11 +1,12 @@
 package com.kqp.strangery.item;
 
+import com.kqp.strangery.init.StrangeryItems;
 import com.kqp.strangery.init.StrangerySounds;
-import java.util.Random;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -14,10 +15,16 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 public class PresentItem extends Item {
 
     private static final double XP_CHANCE = 0.075D;
     private static final double ENCHANTMENT_CHANCE = 0.75D;
+
+    private static final Set<Item> ITEM_BLACK_LIST = new HashSet<Item>();
 
     public PresentItem(Settings settings) {
         super(settings);
@@ -74,7 +81,7 @@ public class PresentItem extends Item {
     private static ItemStack getDropItemStack(Random random) {
         Item item = Registry.ITEM.getRandom(random);
 
-        if (item instanceof SpawnEggItem) {
+        if (item instanceof SpawnEggItem || ITEM_BLACK_LIST.contains(item)) {
             return getDropItemStack(random);
         }
 
@@ -92,5 +99,14 @@ public class PresentItem extends Item {
         }
 
         return itemStack;
+    }
+
+    static {
+        ITEM_BLACK_LIST.add(StrangeryItems.CELESTIAL_STEEL_INGOT);
+        ITEM_BLACK_LIST.add(StrangeryItems.MOONSTONE_FRAGMENT);
+        ITEM_BLACK_LIST.add(StrangeryItems.SUNSTONE_FRAGMENT);
+        ITEM_BLACK_LIST.add(Items.NETHERITE_INGOT);
+        ITEM_BLACK_LIST.add(Items.ANCIENT_DEBRIS);
+        ITEM_BLACK_LIST.add(Items.NETHER_STAR);
     }
 }
