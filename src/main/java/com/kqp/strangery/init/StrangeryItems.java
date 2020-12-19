@@ -1,6 +1,7 @@
 package com.kqp.strangery.init;
 
 import com.kqp.strangery.item.LongshotItem;
+import com.kqp.strangery.item.PresentItem;
 import com.kqp.strangery.item.armor.StrangeryArmorItem;
 import com.kqp.strangery.item.armor.StrangeryArmorMaterial;
 import com.kqp.strangery.item.tool.StrangeryAxeItem;
@@ -350,6 +351,11 @@ public class StrangeryItems {
             new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)
         ),
         "hail_blade"
+    );
+
+    public static final Item PRESENT = register(
+        new PresentItem(new Item.Settings().group(ItemGroup.MISC)),
+        "present"
     );
 
     public static void init() {}

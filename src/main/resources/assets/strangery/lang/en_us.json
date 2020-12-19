@@ -71,6 +71,8 @@
     "item.strangery.ember_knife.d2": "0.5 health every 2 seconds",
     "item.strangery.ember_knife.d3": "when in the jungle or river.",
 
+    "item.strangery.present": "Present",
+
     "trinkets.slot.legs.charm": "Charm",
 
     "enchantment.strangery.sling": "Sling",
@@ -117,5 +119,7 @@
     "subtitles.strangery.entity.ender_agent.hurt": "Ender Agent hurts",
     "subtitles.strangery.entity.ender_agent.death": "Ender Agent dies",
 
-    "subtitles.strangery.entity.sans.music": "Megalovania Plays"
+    "subtitles.strangery.entity.sans.music": "Megalovania Plays",
+
+    "subtitles.strangery.item.present.unwrap": "Present unwrapping"
 }

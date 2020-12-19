@@ -21,5 +21,13 @@
     "entity.sans.hurt": {
         "subtitle": "subtitles.strangery.entity.sans.hurt",
         "sounds": ["strangery:entity/sans/hurt"]
+    },
+    "item.present.unwrap": {
+        "subtitle": "subtitles.strangery.item.present.unwrap",
+        "sounds": [
+            "strangery:item/present/unwrap1",
+            "strangery:item/present/unwrap2",
+            "strangery:item/present/unwrap3"
+        ]
     }
 }
