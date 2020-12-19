@@ -110,14 +110,14 @@ public class StrangeryEntities {
         register(SANS, 0xCCCCCC, 0x0000CC, SansEntity.createSansAttributes());
         register(
             ZOMBIE_ELF,
-            0x8F6650,
-            0xC71019,
+            0x3BD500,
+            0x42823D,
             ZombieElfEntity.createZombieElfAttributes()
         );
         register(
             ZOMBIE_SANTA,
-            0x8F6650,
-            0xC71019,
+            0xD30018,
+            0x5BAF48,
             ZombieSantaEntity.createZombieSantaAttributes()
         );
     }
