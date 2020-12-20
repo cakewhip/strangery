@@ -11,6 +11,10 @@ public class StrangeryConfig implements ConfigData {
 
     public boolean fistMiningHurts = false;
 
+    public boolean foodOverrides = true;
+
+    public boolean playerDebuffs = true;
+
     public static void init() {
         AutoConfig.register(
             StrangeryConfig.class,

@@ -1,6 +1,7 @@
 package com.kqp.strangery.mixin;
 
 import com.kqp.strangery.init.StrangeryStatusEffects;
+import com.kqp.strangery.init.data.StrangeryConfig;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -32,6 +33,10 @@ public class PlayerDebuffsAdder {
     private void injectPlayerTick(CallbackInfo callbackInfo) {
         ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
 
+        if (!StrangeryConfig.get().playerDebuffs) {
+            return;
+        }
+
         try {
             World world = player.getServerWorld();
 
@@ -41,7 +46,7 @@ public class PlayerDebuffsAdder {
             boolean triggerWeakness = false;
             boolean triggerSlowness = false;
 
-            // Darkness-induced hallucination and blindness
+            // Darkness-induced hallucination
             if (
                 world.getLightLevel(player.getBlockPos()) < 4 &&
                 !world.isSkyVisible(player.getBlockPos())
@@ -54,12 +59,10 @@ public class PlayerDebuffsAdder {
 
             if (darknessTimer >= DARKNESS_DEBUFF_THRESHOLD) {
                 triggerHallucination = true;
-                triggerBlindness = true;
             }
 
             // Sleep-induced fatigue and weakness
             if (getTimeSinceSlept(player) > SLEEP_DEBUFF_THRESHOLD) {
-                triggerFatigue = true;
                 triggerWeakness = true;
             }
 
