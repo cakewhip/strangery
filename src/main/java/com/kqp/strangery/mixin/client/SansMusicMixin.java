@@ -78,7 +78,8 @@ public class SansMusicMixin {
         play = play || isFightingSans();
 
         if (play && sansMusicSoundInstance == null) {
-            sansMusicSoundInstance = new PositionedSoundInstance(
+            sansMusicSoundInstance =
+                new PositionedSoundInstance(
                     StrangerySounds.SANS_MUSIC_ID,
                     SoundCategory.PLAYERS,
                     0.75F,
@@ -90,11 +91,17 @@ public class SansMusicMixin {
                     player.getY(),
                     player.getZ(),
                     true
-            );
+                );
 
-            MinecraftClient.getInstance().getSoundManager().play(sansMusicSoundInstance);
+            MinecraftClient
+                .getInstance()
+                .getSoundManager()
+                .play(sansMusicSoundInstance);
         } else if (!play && sansMusicSoundInstance != null) {
-            MinecraftClient.getInstance().getSoundManager().stop(sansMusicSoundInstance);
+            MinecraftClient
+                .getInstance()
+                .getSoundManager()
+                .stop(sansMusicSoundInstance);
             sansMusicSoundInstance = null;
         }
     }
@@ -103,15 +110,15 @@ public class SansMusicMixin {
         PlayerEntity player = (PlayerEntity) (Object) this;
 
         LivingEntity closestFightingSans = player.world.getClosestEntity(
-                SansEntity.class,
-                new TargetPredicate()
+            SansEntity.class,
+            new TargetPredicate()
                 .setPredicate(living -> living instanceof SansEntity)
                 .setBaseMaxDistance(16.0D),
-                player,
-                player.getX(),
-                player.getY(),
-                player.getZ(),
-                player.getBoundingBox().expand(16.0D)
+            player,
+            player.getX(),
+            player.getY(),
+            player.getZ(),
+            player.getBoundingBox().expand(16.0D)
         );
 
         return closestFightingSans != null;

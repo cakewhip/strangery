@@ -37,5 +37,13 @@
     "entity.moff_gideon.ambient": {
         "subtitle": "subtitles.strangery.entity.moff_gideon.ambient",
         "sounds": ["strangery:entity/moff_gideon/ambient"]
+    },
+    "entity.kylo_ren.ambient": {
+        "subtitle": "subtitles.strangery.entity.kylo_ren.ambient",
+        "sounds": [
+            "strangery:entity/kylo_ren/ambient1",
+            "strangery:entity/kylo_ren/ambient2",
+            "strangery:entity/kylo_ren/ambient3"
+        ]
     }
 }

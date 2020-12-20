@@ -1,6 +1,6 @@
 package com.kqp.strangery.mixin;
 
-import com.kqp.strangery.init.StrangeryItems;
+import com.kqp.strangery.item.tool.SaberItem;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
-public class DarkSaberBuffMixin {
+public class SaberBuffMixin {
 
     @Inject(
         method = "applyEnchantmentsToDamage",
@@ -26,10 +26,10 @@ public class DarkSaberBuffMixin {
             LivingEntity attacker = (LivingEntity) source.getAttacker();
 
             if (
-                attacker.getEquippedStack(EquipmentSlot.MAINHAND).getItem() ==
-                StrangeryItems.DARK_SABER
+                attacker
+                    .getEquippedStack(EquipmentSlot.MAINHAND)
+                    .getItem() instanceof SaberItem
             ) {
-                System.out.println("CANCEL");
                 callbackInfo.setReturnValue(amount);
             }
         }

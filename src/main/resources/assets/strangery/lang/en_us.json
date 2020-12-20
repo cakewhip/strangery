@@ -74,6 +74,7 @@
     "item.strangery.present": "Present",
 
     "item.strangery.dark_saber": "Dark Saber",
+    "item.strangery.kylo_ren_lightsaber": "Kylo Ren's Lightsaber",
 
     "trinkets.slot.legs.charm": "Charm",
 
@@ -112,6 +113,8 @@
     "item.strangery.zombie_santa_spawn_egg": "Zombie Santa Spawn Egg",
     "entity.strangery.moff_gideon": "Moff Gideon",
     "item.strangery.moff_gideon_spawn_egg": "Moff Gideon Spawn Egg",
+    "entity.strangery.kylo_ren": "Kylo Ren",
+    "item.strangery.kylo_ren_spawn_egg": "Kylo Ren Spawn Egg",
 
     "entity.strangery.courier.intro": "<Courier> I've been looking for you. Got something I'm supposed to deliver-- your hands only.",
     "entity.strangery.courier.bye": "<Courier> Looks like that's it. Got to go.",
@@ -133,5 +136,6 @@
 
     "subtitles.strangery.entity.zombie_santa.ambient": "Ho ho ho",
 
-    "subtitles.strangery.entity.moff_gideon.ambient": "You have something that I want"
+    "subtitles.strangery.entity.moff_gideon.ambient": "Moff Gideon talking",
+    "subtitles.strangery.entity.kylo_ren.ambient": "Kylo Ren Talking"
 }

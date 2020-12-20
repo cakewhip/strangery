@@ -69,5 +69,10 @@ public class StrangeryClient implements ClientModInitializer {
             (dispatcher, context) ->
                 new GenericBipedRenderer(dispatcher, "moff_gideon")
         );
+        EntityRendererRegistry.INSTANCE.register(
+            StrangeryEntities.KYLO_REN,
+            (dispatcher, context) ->
+                new GenericBipedRenderer(dispatcher, "kylo_ren")
+        );
     }
 }

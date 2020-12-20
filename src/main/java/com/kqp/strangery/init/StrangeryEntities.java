@@ -2,6 +2,7 @@ package com.kqp.strangery.init;
 
 import com.kqp.strangery.entity.mob.CourierEntity;
 import com.kqp.strangery.entity.mob.EnderAgentEntity;
+import com.kqp.strangery.entity.mob.KyloRenEntity;
 import com.kqp.strangery.entity.mob.LeeSinEntity;
 import com.kqp.strangery.entity.mob.MoffGideonEntity;
 import com.kqp.strangery.entity.mob.SansEntity;
@@ -99,6 +100,16 @@ public class StrangeryEntities {
             .build()
     );
 
+    public static final EntityType<KyloRenEntity> KYLO_REN = Registry.register(
+        Registry.ENTITY_TYPE,
+        Strangery.id("kylo_ren"),
+        FabricEntityTypeBuilder
+            .create(SpawnGroup.MONSTER, KyloRenEntity::new)
+            .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
+            .trackable(72, 3)
+            .build()
+    );
+
     public static void init() {
         register(
             ENDER_AGENT,
@@ -137,6 +148,12 @@ public class StrangeryEntities {
             0x540009,
             MoffGideonEntity.createMoffGideonAttributes()
         );
+        register(
+            KYLO_REN,
+            0x1E1E1E,
+            0xAA0009,
+            KyloRenEntity.createKyloRenAttributes()
+        );
     }
 
     public static void initSpawns() {
@@ -146,6 +163,7 @@ public class StrangeryEntities {
             addSpawn(SpawnGroup.MONSTER, spawnEntry(ZOMBIE_ELF, 150, 4, 4));
             addSpawn(SpawnGroup.MONSTER, spawnEntry(ZOMBIE_SANTA, 1, 1, 1));
             addSpawn(SpawnGroup.MONSTER, spawnEntry(MOFF_GIDEON, 1, 1, 1));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(KYLO_REN, 1, 1, 1));
         }
     }
 

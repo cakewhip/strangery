@@ -9,20 +9,20 @@ public class StrangeryTrinkets {
 
     public static void init() {
         TrinketSlots.addSlot(
-                SlotGroups.LEGS,
-                Slots.CHARM,
-                new Identifier(
-                        "trinkets",
-                        "textures/item/empty_trinket_slot_charm.png"
-                )
+            SlotGroups.LEGS,
+            Slots.CHARM,
+            new Identifier(
+                "trinkets",
+                "textures/item/empty_trinket_slot_charm.png"
+            )
         );
         TrinketSlots.addSlot(
-                SlotGroups.HEAD,
-                Slots.MASK,
-                new Identifier(
-                        "trinkets",
-                        "textures/item/empty_trinket_slot_mask.png"
-                )
+            SlotGroups.HEAD,
+            Slots.MASK,
+            new Identifier(
+                "trinkets",
+                "textures/item/empty_trinket_slot_mask.png"
+            )
         );
     }
 }

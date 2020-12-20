@@ -28,9 +28,9 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class MoffGideonEntity extends HostileEntity {
+public class KyloRenEntity extends HostileEntity {
 
-    public MoffGideonEntity(EntityType type, World world) {
+    public KyloRenEntity(EntityType type, World world) {
         super(type, world);
     }
 
@@ -100,7 +100,7 @@ public class MoffGideonEntity extends HostileEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return StrangerySounds.MOFF_GIDEON_AMBIENT;
+        return StrangerySounds.KYLO_REN_AMBIENT;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class MoffGideonEntity extends HostileEntity {
 
         this.equipStack(
                 EquipmentSlot.MAINHAND,
-                new ItemStack(StrangeryItems.DARK_SABER)
+                new ItemStack(StrangeryItems.KYLO_REN_LIGHTSABER)
             );
     }
 
@@ -120,7 +120,7 @@ public class MoffGideonEntity extends HostileEntity {
         boolean allowDrops
     ) {}
 
-    public static DefaultAttributeContainer.Builder createMoffGideonAttributes() {
+    public static DefaultAttributeContainer.Builder createKyloRenAttributes() {
         return HostileEntity
             .createHostileAttributes()
             .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
