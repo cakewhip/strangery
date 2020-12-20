@@ -21,14 +21,12 @@
         "FrozenEdgeMixin",
         "HighStepMixin",
         "JunglerTrinketMixin",
-        "LeeSinBlindfoldMixin",
         "LuminanceEnchantmentBlockItemMixin",
         "LuminanceEnchantmentItemMixin",
         "LuminanceEnchantmentWallStandingBlockItemMixin",
         "MoreFoodAdder",
         "PlayerDebuffsAdder",
         "PresentDropMixin",
-        "SansMusicMixin",
         "SparringDamageAdder",
         "StrangeryEnchantmentMixin",
         "WisdomEnchantmentMixin",
@@ -37,7 +35,9 @@
     "client": [
         "client.accessor.HeldItemFeatureRendererAccessor",
         "client.ConfusionEffectApplier",
-        "client.DeafEffectApplier"
+        "client.DeafEffectApplier",
+        "client.LeeSinBlindfoldMixin",
+        "client.SansMusicMixin"
     ],
     "injectors": {
         "defaultRequire": 1

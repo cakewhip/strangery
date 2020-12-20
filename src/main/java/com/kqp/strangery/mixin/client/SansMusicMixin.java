@@ -1,4 +1,4 @@
-package com.kqp.strangery.mixin;
+package com.kqp.strangery.mixin.client;
 
 import com.kqp.strangery.entity.mob.SansEntity;
 import com.kqp.strangery.init.StrangeryItems;
