@@ -1,10 +1,9 @@
 package com.kqp.strangery.item.tool;
 
+import java.util.function.Supplier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-
-import java.util.function.Supplier;
 
 public class StrangeryToolMaterial implements ToolMaterial {
 
@@ -17,6 +16,8 @@ public class StrangeryToolMaterial implements ToolMaterial {
         6.9F,
         22
     );
+
+    public static final ToolMaterial SABER = tool(-1, 8124, 8.0F, 5.0F, 22);
 
     private final int miningLevel;
     private final int durability;

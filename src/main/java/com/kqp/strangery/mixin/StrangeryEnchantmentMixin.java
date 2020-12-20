@@ -1,6 +1,8 @@
 package com.kqp.strangery.mixin;
 
 import com.kqp.strangery.enchantment.StrangeryEnchantment;
+import java.util.Iterator;
+import java.util.List;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -13,9 +15,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Redirects EnchantmentTarget calls to the StrangeryEnchantment target predicate.

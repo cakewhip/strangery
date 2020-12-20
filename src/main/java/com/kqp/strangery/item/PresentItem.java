@@ -2,6 +2,9 @@ package com.kqp.strangery.item;
 
 import com.kqp.strangery.init.StrangeryItems;
 import com.kqp.strangery.init.StrangerySounds;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -14,10 +17,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
 
 public class PresentItem extends Item {
 

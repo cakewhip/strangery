@@ -1,6 +1,7 @@
 package com.kqp.strangery.item.armor;
 
 import com.kqp.strangery.init.StrangeryItems;
+import java.util.function.Supplier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.EquipmentSlot;
@@ -9,8 +10,6 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-
-import java.util.function.Supplier;
 
 /**
  * Used to create custom armor materials.
