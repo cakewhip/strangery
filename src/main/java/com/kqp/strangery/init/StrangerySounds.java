@@ -27,6 +27,9 @@ public class StrangerySounds {
     public static final Identifier ZOMBIE_SANTA_AMBIENT_ID = Strangery.id(
         "entity.zombie_santa.ambient"
     );
+    public static final Identifier MOFF_GIDEON_AMBIENT_ID = Strangery.id(
+        "entity.moff_gideon.ambient"
+    );
 
     public static final SoundEvent ENDER_AGENT_AMBIENT = new SoundEvent(
         ENDER_AGENT_AMBIENT_ID
@@ -41,6 +44,7 @@ public class StrangerySounds {
     public static final SoundEvent SANS_HURT = new SoundEvent(SANS_HURT_ID);
     public static final SoundEvent ZOMBIE_SANTA_AMBIENT = new SoundEvent(ZOMBIE_SANTA_AMBIENT_ID);
     public static final SoundEvent PRESENT_UNWRAP = new SoundEvent(PRESENT_UNWRAP_ID);
+    public static final SoundEvent MOFF_GIDEON_AMBIENT = new SoundEvent(MOFF_GIDEON_AMBIENT_ID);
 
     public static void init() {
         Registry.register(

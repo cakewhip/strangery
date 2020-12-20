@@ -18,6 +18,14 @@ public class StrangeryToolMaterial implements ToolMaterial {
         22
     );
 
+    public static final ToolMaterial DARK_SABER = tool(
+        -1,
+        8124,
+        8.0F,
+        5.0F,
+        22
+    );
+
     private final int miningLevel;
     private final int durability;
     private final float miningSpeed;

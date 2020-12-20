@@ -358,6 +358,11 @@ public class StrangeryItems {
         "present"
     );
 
+    public static final Item DARK_SABER = register(
+        new StrangerySwordItem(StrangeryToolMaterial.DARK_SABER),
+        "dark_saber"
+    );
+
     public static void init() {}
 
     private static Item register(Item item, String name) {

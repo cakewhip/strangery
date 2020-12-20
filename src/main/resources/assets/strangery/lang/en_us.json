@@ -73,6 +73,8 @@
 
     "item.strangery.present": "Present",
 
+    "item.strangery.dark_saber": "Dark Saber",
+
     "trinkets.slot.legs.charm": "Charm",
 
     "enchantment.strangery.sling": "Sling",
@@ -108,6 +110,8 @@
     "item.strangery.zombie_elf_spawn_egg": "Zombie Elf Spawn Egg",
     "entity.strangery.zombie_santa": "Zombie Santa",
     "item.strangery.zombie_santa_spawn_egg": "Zombie Santa Spawn Egg",
+    "entity.strangery.moff_gideon": "Moff Gideon",
+    "item.strangery.moff_gideon_spawn_egg": "Moff Gideon Spawn Egg",
 
     "entity.strangery.courier.intro": "<Courier> I've been looking for you. Got something I'm supposed to deliver-- your hands only.",
     "entity.strangery.courier.bye": "<Courier> Looks like that's it. Got to go.",
@@ -125,5 +129,9 @@
 
     "subtitles.strangery.entity.sans.music": "Megalovania Plays",
 
-    "subtitles.strangery.item.present.unwrap": "Present unwrapping"
+    "subtitles.strangery.item.present.unwrap": "Present unwrapping",
+
+    "subtitles.strangery.entity.zombie_santa.ambient": "Ho ho ho",
+
+    "subtitles.strangery.entity.moff_gideon.ambient": "You have something that I want"
 }

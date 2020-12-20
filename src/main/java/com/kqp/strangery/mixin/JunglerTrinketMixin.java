@@ -39,7 +39,6 @@ public class JunglerTrinketMixin {
                         if (
                             getBiomes().contains(biome) && player.age % 40 == 0
                         ) {
-                            System.out.println("HEAL");
                             player.heal(0.5F);
                         }
                     }

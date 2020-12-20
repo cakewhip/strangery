@@ -72,7 +72,6 @@ public class SansMusicMixin {
 
         if (player.age % 20 == 0) {
             this.fightingSans = isFightingSans();
-            System.out.println(this.fightingSans);
         }
 
         play = play || endSongTimer > 0;
@@ -92,8 +91,6 @@ public class SansMusicMixin {
                     player.getZ(),
                     true
             );
-
-            System.out.println("PLAY");
 
             MinecraftClient.getInstance().getSoundManager().play(sansMusicSoundInstance);
         } else if (!play && sansMusicSoundInstance != null) {

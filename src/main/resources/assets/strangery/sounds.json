@@ -33,5 +33,9 @@
     "entity.zombie_santa.ambient": {
         "subtitle": "subtitles.strangery.entity.zombie_santa.ambient",
         "sounds": ["strangery:entity/zombie_santa/ambient"]
+    },
+    "entity.moff_gideon.ambient": {
+        "subtitle": "subtitles.strangery.entity.moff_gideon.ambient",
+        "sounds": ["strangery:entity/moff_gideon/ambient"]
     }
 }
