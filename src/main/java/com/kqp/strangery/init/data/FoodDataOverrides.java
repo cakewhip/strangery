@@ -1,6 +1,8 @@
 package com.kqp.strangery.init.data;
 
 import com.kqp.strangery.init.StrangeryStatusEffects;
+import java.util.HashMap;
+import java.util.Map;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.FoodComponent;
@@ -8,9 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class FoodDataOverrides {
 

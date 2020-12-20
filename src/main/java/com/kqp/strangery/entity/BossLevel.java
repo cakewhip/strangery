@@ -1,11 +1,10 @@
 package com.kqp.strangery.entity;
 
 import com.kqp.strangery.init.StrangeryItems;
+import java.util.Random;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Formatting;
-
-import java.util.Random;
 
 public enum BossLevel {
     UNCOMMON(

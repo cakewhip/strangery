@@ -3,6 +3,9 @@ package com.kqp.strangery.gen;
 import com.kqp.strangery.init.StrangeryBlocks;
 import com.kqp.strangery.init.StrangeryWorldFeatures;
 import com.kqp.strangery.util.GenUtil;
+import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.structure.SimpleStructurePiece;
@@ -15,10 +18,6 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-
-import java.util.Random;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class StrangeMonumentPiece extends SimpleStructurePiece {
 

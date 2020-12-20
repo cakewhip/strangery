@@ -3,6 +3,7 @@ package com.kqp.strangery.mixin;
 import com.google.common.collect.ImmutableMultimap;
 import com.kqp.strangery.entity.BossLevel;
 import com.kqp.strangery.mixin.accessor.CreeperEntityAccessor;
+import java.util.Random;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.SpawnReason;
@@ -33,8 +34,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Random;
 
 @Mixin(MobEntity.class)
 public class MiniBossMixin {

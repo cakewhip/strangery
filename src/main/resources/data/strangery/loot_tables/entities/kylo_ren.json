@@ -6,15 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "strangery:ember_knife"
-                },
-                {
-                    "type": "minecraft:item",
-                    "name": "strangery:hail_blade"
-                },
-                {
-                    "type": "minecraft:item",
-                    "name": "strangery:lee_sin_blindfold"
+                    "name": "strangery:kylo_ren_lightsaber"
                 }
             ],
             "conditions": [
@@ -23,8 +15,8 @@
                 },
                 {
                     "condition": "minecraft:random_chance_with_looting",
-                    "chance": 0.5,
-                    "looting_multiplier": 0.1
+                    "chance": 0.025,
+                    "looting_multiplier": 0.01
                 }
             ]
         }
