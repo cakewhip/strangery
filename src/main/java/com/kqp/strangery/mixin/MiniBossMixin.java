@@ -86,7 +86,7 @@ public class MiniBossMixin {
                     new StatusEffectInstance(
                         StatusEffects.STRENGTH,
                         Integer.MAX_VALUE,
-                        RANDOM.nextInt(4)
+                        RANDOM.nextInt(12)
                     )
                 );
             }
@@ -95,7 +95,7 @@ public class MiniBossMixin {
                     new StatusEffectInstance(
                         StatusEffects.SPEED,
                         Integer.MAX_VALUE,
-                        RANDOM.nextInt(3)
+                        RANDOM.nextInt(5)
                     )
                 );
             }
@@ -104,7 +104,7 @@ public class MiniBossMixin {
                     new StatusEffectInstance(
                         StatusEffects.REGENERATION,
                         Integer.MAX_VALUE,
-                        RANDOM.nextInt(2)
+                        RANDOM.nextInt(3)
                     )
                 );
             }
@@ -113,7 +113,7 @@ public class MiniBossMixin {
                     new StatusEffectInstance(
                         StatusEffects.RESISTANCE,
                         Integer.MAX_VALUE,
-                        RANDOM.nextInt(3)
+                        RANDOM.nextInt(8)
                     )
                 );
             }
@@ -193,7 +193,7 @@ public class MiniBossMixin {
                 ) {
                     drop = EnchantmentHelper.enchant(RANDOM, drop, 15 + RANDOM.nextInt(15), true);
                 } else {
-                    drop.setCount(Math.min(drop.getMaxCount(), 4 + RANDOM.nextInt(32)));
+                    drop.setCount(Math.min(drop.getMaxCount(), 4 + RANDOM.nextInt(16)));
                 }
 
                 ((MobEntity) (Object) this).dropStack(drop);
