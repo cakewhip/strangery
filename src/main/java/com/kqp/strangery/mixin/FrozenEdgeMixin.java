@@ -35,7 +35,7 @@ public class FrozenEdgeMixin {
                     target.extinguish();
                 }
 
-                ((LivingEntity) target).applyStatusEffect(
+                ((LivingEntity) target).addStatusEffect(
                         new StatusEffectInstance(
                             StatusEffects.SLOWNESS,
                             20,
