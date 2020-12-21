@@ -18,6 +18,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
@@ -179,8 +180,9 @@ public class MiniBossMixin {
         boolean allowDrops,
         CallbackInfo callbackInfo
     ) {
-        if (strangeryBossBar != null) {
-            for (int i = 0; i < bossLevel.level; i++) {
+        if (strangeryBossBar != null && source.getAttacker() instanceof PlayerEntity) {
+            int loot = 1 + RANDOM.nextInt(2);
+            for (int i = 0; i < loot; i++) {
                 ItemStack drop = new ItemStack(
                     bossLevel.loot[RANDOM.nextInt(bossLevel.loot.length)]
                 );
@@ -189,9 +191,9 @@ public class MiniBossMixin {
                     drop.getItem() instanceof ToolItem ||
                     drop.getItem() instanceof ArmorItem
                 ) {
-                    drop = EnchantmentHelper.enchant(RANDOM, drop, 30, true);
+                    drop = EnchantmentHelper.enchant(RANDOM, drop, 15 + RANDOM.nextInt(15), true);
                 } else {
-                    drop.setCount(4 + RANDOM.nextInt(32));
+                    drop.setCount(Math.min(drop.getMaxCount(), 4 + RANDOM.nextInt(32)));
                 }
 
                 ((MobEntity) (Object) this).dropStack(drop);
