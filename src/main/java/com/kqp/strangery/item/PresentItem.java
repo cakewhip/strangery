@@ -108,5 +108,11 @@ public class PresentItem extends Item {
         ITEM_BLACK_LIST.add(Items.ANCIENT_DEBRIS);
         ITEM_BLACK_LIST.add(Items.NETHER_STAR);
         ITEM_BLACK_LIST.add(Items.BARRIER);
+        ITEM_BLACK_LIST.add(Items.COMMAND_BLOCK);
+        ITEM_BLACK_LIST.add(Items.COMMAND_BLOCK_MINECART);
+        ITEM_BLACK_LIST.add(Items.CHAIN_COMMAND_BLOCK);
+        ITEM_BLACK_LIST.add(Items.REPEATING_COMMAND_BLOCK);
+        ITEM_BLACK_LIST.add(Items.BEDROCK);
+        ITEM_BLACK_LIST.add(Items.AIR);
     }
 }
