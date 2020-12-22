@@ -180,7 +180,10 @@ public class MiniBossMixin {
         boolean allowDrops,
         CallbackInfo callbackInfo
     ) {
-        if (strangeryBossBar != null && source.getAttacker() instanceof PlayerEntity) {
+        if (
+            strangeryBossBar != null &&
+            source.getAttacker() instanceof PlayerEntity
+        ) {
             int loot = 1 + RANDOM.nextInt(2);
             for (int i = 0; i < loot; i++) {
                 ItemStack drop = new ItemStack(
@@ -191,9 +194,17 @@ public class MiniBossMixin {
                     drop.getItem() instanceof ToolItem ||
                     drop.getItem() instanceof ArmorItem
                 ) {
-                    drop = EnchantmentHelper.enchant(RANDOM, drop, 15 + RANDOM.nextInt(15), true);
+                    drop =
+                        EnchantmentHelper.enchant(
+                            RANDOM,
+                            drop,
+                            15 + RANDOM.nextInt(15),
+                            true
+                        );
                 } else {
-                    drop.setCount(Math.min(drop.getMaxCount(), 4 + RANDOM.nextInt(16)));
+                    drop.setCount(
+                        Math.min(drop.getMaxCount(), 4 + RANDOM.nextInt(16))
+                    );
                 }
 
                 ((MobEntity) (Object) this).dropStack(drop);

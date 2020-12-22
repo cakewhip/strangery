@@ -107,5 +107,6 @@ public class PresentItem extends Item {
         ITEM_BLACK_LIST.add(Items.NETHERITE_INGOT);
         ITEM_BLACK_LIST.add(Items.ANCIENT_DEBRIS);
         ITEM_BLACK_LIST.add(Items.NETHER_STAR);
+        ITEM_BLACK_LIST.add(Items.BARRIER);
     }
 }
