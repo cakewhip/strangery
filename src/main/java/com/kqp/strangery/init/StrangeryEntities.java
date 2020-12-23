@@ -37,6 +37,7 @@ public class StrangeryEntities {
             .create(SpawnGroup.MONSTER, EnderAgentEntity::new)
             .dimensions(EntityDimensions.fixed(0.75F, 1.0F))
             .trackable(72, 3)
+            .spawnGroup(SpawnGroup.MONSTER)
             .build()
     );
 
@@ -57,6 +58,7 @@ public class StrangeryEntities {
             .create(SpawnGroup.MONSTER, LeeSinEntity::new)
             .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
             .trackable(72, 3)
+            .spawnGroup(SpawnGroup.MONSTER)
             .build()
     );
 
@@ -67,6 +69,7 @@ public class StrangeryEntities {
             .create(SpawnGroup.MONSTER, SansEntity::new)
             .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
             .trackable(72, 3)
+            .spawnGroup(SpawnGroup.MONSTER)
             .build()
     );
 
@@ -77,6 +80,7 @@ public class StrangeryEntities {
             .create(SpawnGroup.MONSTER, ZombieElfEntity::new)
             .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
             .trackable(72, 3)
+            .spawnGroup(SpawnGroup.MONSTER)
             .build()
     );
 
@@ -87,6 +91,7 @@ public class StrangeryEntities {
             .create(SpawnGroup.MONSTER, ZombieSantaEntity::new)
             .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
             .trackable(72, 3)
+            .spawnGroup(SpawnGroup.MONSTER)
             .build()
     );
 
@@ -97,6 +102,7 @@ public class StrangeryEntities {
             .create(SpawnGroup.MONSTER, MoffGideonEntity::new)
             .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
             .trackable(72, 3)
+            .spawnGroup(SpawnGroup.MONSTER)
             .build()
     );
 
@@ -107,6 +113,7 @@ public class StrangeryEntities {
             .create(SpawnGroup.MONSTER, KyloRenEntity::new)
             .dimensions(EntityDimensions.fixed(0.75F, 1.95F))
             .trackable(72, 3)
+            .spawnGroup(SpawnGroup.MONSTER)
             .build()
     );
 
@@ -158,12 +165,12 @@ public class StrangeryEntities {
 
     public static void initSpawns() {
         if (SPAWNS.isEmpty()) {
-            addSpawn(SpawnGroup.MONSTER, spawnEntry(ENDER_AGENT, 3, 1, 1));
-            addSpawn(SpawnGroup.MONSTER, spawnEntry(LEE_SIN, 1, 1, 1));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(ENDER_AGENT, 10, 1, 1));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(LEE_SIN, 10, 1, 1));
             addSpawn(SpawnGroup.MONSTER, spawnEntry(ZOMBIE_ELF, 150, 4, 4));
-            addSpawn(SpawnGroup.MONSTER, spawnEntry(ZOMBIE_SANTA, 1, 1, 1));
-            addSpawn(SpawnGroup.MONSTER, spawnEntry(MOFF_GIDEON, 1, 1, 1));
-            addSpawn(SpawnGroup.MONSTER, spawnEntry(KYLO_REN, 1, 1, 1));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(ZOMBIE_SANTA, 5, 1, 1));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(MOFF_GIDEON, 10, 1, 1));
+            addSpawn(SpawnGroup.MONSTER, spawnEntry(KYLO_REN, 10, 1, 1));
         }
     }
 

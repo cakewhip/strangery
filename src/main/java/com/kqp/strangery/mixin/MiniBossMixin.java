@@ -40,7 +40,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MiniBossMixin {
 
     private static final Random RANDOM = new Random();
-    private static final float BOSS_CHANCE = 0.025F;
+    private static final float BOSS_CHANCE = 0.05F;
     private static final double TRACKING_DISTANCE = 32.0D;
 
     @Shadow
